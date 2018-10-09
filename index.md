@@ -87,22 +87,27 @@ From https://github.com/Lancger/opslinux
  
 3、比较本地仓库与下载的temp分支
 [root@linux-node1 opslinux]# git diff temp
-diff --git a/README.md b/README.md
+diff --git a/index.md b/index.md
 deleted file mode 100644
-index 76699ed..0000000
---- a/README.md
+index ff6da49..0000000
+--- a/index.md
 +++ /dev/null
-@@ -1,6 +0,0 @@
--Animations
--==========
--
-。。。
-
+@@ -1,109 +0,0 @@
+...........
 
 4、合并temp分支到本地的master分支
-git merge temp
+[root@linux-node1 opslinux]# git merge temp
 对比区别之后，如果觉得没有问题，可以使用如下命令进行代码合并：
+[root@linux-node1 opslinux]# git merge temp
+Already up-to-date.
 
+5、删除temp分支
+[root@linux-node1 opslinux]# git branch -d temp
+Deleted branch temp (was 7eb97aa).
+
+ 如果该分支的代码之前没有merge到本地，那么删除该分支会报错，可以使用git branch -D temp强制删除该分支。
+ 
+ 
 
 https://blog.csdn.net/liang0000zai/article/details/50724632
 ```
