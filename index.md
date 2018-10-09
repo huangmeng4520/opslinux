@@ -9,6 +9,8 @@ git init
 
 git add .
 
+git status
+
 3.把添加的文件提交到版本库，并填写提交备注(必不可少)
 
 git commit -m "update readme"
