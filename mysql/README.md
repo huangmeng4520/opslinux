@@ -3,6 +3,8 @@
 
 - [Centos7安装mysql5.6](https://github.com/Lancger/opslinux/blob/master/mysql/mysql5.6/centos7-one-install.md)
 
+- [Mysql主从架构](https://github.com/Lancger/opslinux/blob/master/mysql/mysql5.6/centos7-one-install.md)
+
 ## 二、修改密码
 ```
 #方式一
