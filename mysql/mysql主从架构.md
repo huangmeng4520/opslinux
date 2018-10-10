@@ -4,11 +4,7 @@
 
     2）MySQL主从是基于binlog的，主上须开启binlog才能进行主从。
 
-
-
-
-
-#### d、MySQL主从原理图如下：
+## 二、MySQL主从原理图如下：
 
   ![Mysql主从原理图](https://github.com/Lancger/opslinux/blob/master/images/mysql-ab.png)
   
@@ -45,7 +41,7 @@
     3、Master和Slave数据库中的数据要一致 
     4、Master开启二进制日志，Master和Slave的server_id在局域网内必须唯一
 
-## 二、MySQL主从配置使用场景
+## 三、MySQL主从配置使用场景
 
     1）将从用于做数据备份
 
