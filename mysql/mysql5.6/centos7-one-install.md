@@ -40,7 +40,21 @@ systemctl stop mysqld
 systemctl status mysqld
 ```
 
-## 五、mysql修改密码
+## 五、设置字符集
+```
+#修改 /etc/my.cnf 文件，添加字符集的设置
+
+vim /etc/my.cnf
+[mysqld]
+character_set_server = utf8
+
+[mysql]
+default-character-set = utf8
+
+重启 MySQL ,可以看到字符集已经修改了
+```
+
+## 六、mysql修改密码
 
 ### 方法一：
 ```
@@ -130,16 +144,4 @@ Cleaning up...
 [root@master ~]#
 ```
 
-## 六、设置字符集
-```
-#修改 /etc/my.cnf 文件，添加字符集的设置
 
-vim /etc/my.cnf
-[mysqld]
-character_set_server = utf8
-
-[mysql]
-default-character-set = utf8
-
-重启 MySQL ,可以看到字符集已经修改了
-```
