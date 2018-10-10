@@ -1,6 +1,6 @@
 # mysql手册
-- [Centos6安装mysql5.6](mysql/mysql5.6/centos6-one-install.md)
-- [Centos7安装mysql5.6](mysql/mysql5.7/centos6-one-install.md)
+- [Centos6安装mysql5.6](https://github.com/Lancger/opslinux/blob/master/mysql/mysql5.6/centos6-one-install.md)
+- [Centos7安装mysql5.6](https://github.com/Lancger/opslinux/blob/master/mysql/mysql5.6/centos6-one-install.md)
 
 
 ## 一、修改密码
