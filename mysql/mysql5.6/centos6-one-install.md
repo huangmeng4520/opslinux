@@ -18,12 +18,57 @@ rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
 #这个时候查看当前可用的mysql安装资源：
 
 yum repolist enabled | grep "mysql.*-community.*"
+
+一般来说，只要安装mysql-server跟mysql-client 这个时候我们可以直接使用yum的方式安装MySQL了
 ```
 
 ## 三、通过 Yum 来安装 MySQL
 ```
 yum clean all   
 yum -y install mysql-community-server
+
+#报错
+错误：Package: mysql-community-client-5.6.39-2.el7.x86_64 (mysql56-community)
+          Requires: libc.so.6(GLIBC_2.17)(64bit)
+ You could try using --skip-broken to work around the problem
+
+1、原因应该是centos6应该是el/6，centos应该是el/7的源
+    
+#解决办法
+http://blog.csdn.net/lcyaiym/article/details/77282348
+
+A、删除yum remove "mysql56-community-release-el7.*"
+
+   yum remove "mysql56-community-release-el7.*"
+
+B、清楚缓存yum clean all
+
+   yum clean all   
+
+C、修改mysql-community.repo中baseurl的值
+
+       //修改之前
+
+        # enable to use MySQL 5.6
+
+        [mysql56-community]
+        name=MySQL 5.6 Community Server
+        baseurl=http://repo.mysql.com/yum/mysql-5.6-community/el/7/$basearch/
+        enabled=1
+        gpgcheck=1
+        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+        
+        //修改之后
+
+        # enable to use MySQL 5.6
+
+        [mysql56-community]
+        name=MySQL 5.6 Community Server
+        baseurl=http://repo.mysql.com/yum/mysql-5.6-community/el/6/$basearch/
+        enabled=1
+        gpgcheck=1
+        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+        
 ```
 
 ## 四、启动mysql服务
