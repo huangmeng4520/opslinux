@@ -96,6 +96,8 @@
 ## 四、MySQL主从配置
    
    mysql安装详见：https://github.com/Lancger/opslinux/blob/master/mysql/mysql5.6/centos7-one-install.md
+   
+
 
 参考文档： 
 
