@@ -134,6 +134,7 @@ Cleaning up...
 ```
 修改 /etc/my.cnf 文件，添加字符集的设置
 
+vim /etc/my.cnf
 [mysqld]
 character_set_server = utf8
 
