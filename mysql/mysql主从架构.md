@@ -4,21 +4,9 @@
 
     2）MySQL主从是基于binlog的，主上须开启binlog才能进行主从。
 
-#### a、主从过程大致有3个步骤
 
-    1）主将更改操作记录到binlog里
 
-    2）从将主的binlog事件(sql语句)同步到从本机上并记录在relaylog里
 
-    3）从根据relaylog里面的sql语句按顺序执行
-
-#### b、主上有一个log dump线程，用来和从的I/O线程传递binlog
-
-#### c、从上有两个线程，其中I/O线程用来同步主的binlog并生成relaylog，另外一个SQL线程用来把relaylog里面的sql语句落地
-
-    其中binlog  二进制日志
-
-    relaylog  中继日志
 
 #### d、MySQL主从原理图如下：
 
@@ -33,6 +21,23 @@
     1、Master将数据改变记录到二进制日志(binary log)中，也就是配置文件log-bin指定的文件，这些记录叫做二进制日志事件(binary log events) 
     2、Slave通过I/O线程读取Master中的binary log events并写入到它的中继日志(relay log) 
     3、Slave重做中继日志中的事件，把中继日志中的事件信息一条一条的在本地执行一次，完成数据在本地的存储，从而实现将改变反映到它自己的数据(数据重放)
+    
+    #### a、主从过程大致有3个步骤
+
+    1）主将更改操作记录到binlog里
+
+    2）从将主的binlog事件(sql语句)同步到从本机上并记录在relaylog里
+
+    3）从根据relaylog里面的sql语句按顺序执行
+    
+    #### b、主上有一个log dump线程，用来和从的I/O线程传递binlog
+
+    #### c、从上有两个线程，其中I/O线程用来同步主的binlog并生成relaylog，另外一个SQL线程用来把relaylog里面的sql语句落地
+
+    其中binlog  二进制日志
+
+    relaylog  中继日志
+    
  ##### 要求
 
     1、主从服务器操作系统版本和位数一致 
