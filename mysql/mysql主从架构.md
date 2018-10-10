@@ -131,6 +131,7 @@ expire_logs_days=7
 
 ## 复制过滤：也就是指定哪个数据库不用同步（mysql库一般不同步）
 binlog-ignore-db=mysql
+binlog-ignore-db=information_schema
 
 ## 为每个session 分配的内存，在事务过程中用来存储二进制日志的缓存
 binlog_cache_size=1M
@@ -149,9 +150,6 @@ log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
 
 [mysql]
-default-character-set=utf8
-
-[client]
 default-character-set=utf8
    ```
 
