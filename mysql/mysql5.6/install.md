@@ -1,4 +1,4 @@
-## 设置主机host
+## 一、设置主机host
 ```
 cat > /etc/hosts <<EOF
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
