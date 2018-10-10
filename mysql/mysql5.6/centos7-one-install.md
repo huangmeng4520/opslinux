@@ -78,6 +78,8 @@ EOF
 
 ## 五、启动mysql服务
 ```
+touch /var/log/mysqld-slow.log && chmod 640 /var/log/mysqld-slow.log && chown mysql:mysql /var/log/mysqld-slow.log
+
 systemctl enable mysqld
 systemctl disable mysqld
 
