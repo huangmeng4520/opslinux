@@ -196,6 +196,9 @@ binlog_cache_size=1M
 ## relay_log配置中继日志
 relay_log=/var/lib/mysql/mysql-relay-bin
 
+## 打开自动清除中继日志
+relay_log_purge=1
+
 ## 防止改变数据(除了特殊的线程)
 read_only=1  
 
