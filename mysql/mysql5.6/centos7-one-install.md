@@ -132,7 +132,7 @@ Cleaning up...
 
 ## 六、设置字符集
 ```
-修改 /etc/my.cnf 文件，添加字符集的设置
+#修改 /etc/my.cnf 文件，添加字符集的设置
 
 vim /etc/my.cnf
 [mysqld]
