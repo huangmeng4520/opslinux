@@ -41,28 +41,30 @@ default-character-set = utf8
 
 #最终配置
 cat > /etc/my.cnf <<EOF
-# For advice on how to change settings please see
-# http://dev.mysql.com/doc/refman/5.6/en/server-configuration-defaults.html
+[client]
+port=3306
+socket=/var/lib/mysql/mysql.sock
+default-character-set=utf8
 
 [mysqld]
-#
-# Remove leading # and set to the amount of RAM for the most important data
-# cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.
-# innodb_buffer_pool_size = 128M
-#
-# Remove leading # to turn on a very important data integrity option: logging
-# changes to the binary log between backups.
-# log_bin
-#
-# Remove leading # to set options mainly useful for reporting servers.
-# The server defaults are faster for transactions and fast SELECTs.
-# Adjust sizes as needed, experiment to find the optimal values.
-# join_buffer_size = 128M
-# sort_buffer_size = 2M
-# read_rnd_buffer_size = 2M
-datadir=/var/lib/mysql
+datadir= /var/lib/mysql
+port=3306
 socket=/var/lib/mysql/mysql.sock
-character_set_server = utf8
+pid-file=/var/run/mysqld/mysqld.pid
+collation-server=utf8_general_ci
+log-error=/var/log/mysqld.error
+max_connections=1000
+
+character_set_server=utf8
+character_set_client=utf8
+
+server-id=1
+log-bin=/var/lib/mysql/mysql-bin
+binlog_format=MIXED
+
+slow_query_log=on
+slow-query-log-file=/var/log/mysqld-slow.log
+long_query_time=1
 
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
@@ -70,9 +72,19 @@ symbolic-links=0
 # Recommended in standard MySQL setup
 sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 
+
+#(注意linux下mysql安装完后是默认：表名区分大小写，列名不区分大小写； 0：区分大小写，1：不区分大小写)
+lower_case_table_names=1
+
 [mysqld_safe]
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
+
+[mysql]
+default-character-set = utf8
+
+[client]
+default-character-set=utf8
 EOF
 ```
 
