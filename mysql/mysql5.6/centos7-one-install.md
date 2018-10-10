@@ -26,21 +26,7 @@ yum clean all
 yum -y install mysql-community-server
 ```
 
-## 四、启动mysql服务
-
-```
-systemctl enable mysqld
-systemctl disable mysqld
-
-systemctl start mysqld
-systemctl restart mysqld
-
-systemctl stop mysqld
-
-systemctl status mysqld
-```
-
-## 五、设置字符集
+## 四、设置字符集
 ```
 #修改 /etc/my.cnf 文件，添加字符集的设置
 
@@ -88,6 +74,19 @@ sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
 EOF
+```
+
+## 五、启动mysql服务
+```
+systemctl enable mysqld
+systemctl disable mysqld
+
+systemctl start mysqld
+systemctl restart mysqld
+
+systemctl stop mysqld
+
+systemctl status mysqld
 ```
 
 ## 六、mysql修改密码
