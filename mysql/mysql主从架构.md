@@ -157,20 +157,6 @@ default-character-set=utf8
 
    ##### 配置slave
    ```
-   #主从不一致的地方
-   server-id=2
-   
-   ## relay_log配置中继日志
-   relay_log=/var/lib/mysql/mysql-relay-bin
-
-   ## 打开自动清除中继日志
-   relay_log_purge=1
-
-   ## 防止改变数据(除了特殊的线程)
-   read_only=1 
-   ```
-   ################
-   ```
    [client]
 port=3306
 socket=/var/lib/mysql/mysql.sock
@@ -235,6 +221,21 @@ default-character-set=utf8
 [client]
 default-character-set=utf8
    ```
+   ################   
+   ```
+   #主从不一致的地方
+   server-id=2
+   
+   ## relay_log配置中继日志
+   relay_log=/var/lib/mysql/mysql-relay-bin
+
+   ## 打开自动清除中继日志
+   relay_log_purge=1
+
+   ## 防止改变数据(除了特殊的线程)
+   read_only=1 
+   ```
+   ################
 
 参考文档： 
 
