@@ -16,9 +16,9 @@
 
 #### c、从上有两个线程，其中I/O线程用来同步主的binlog并生成relaylog，另外一个SQL线程用来把relaylog里面的sql语句落地
 
-     其中binlog  二进制日志
+    其中binlog  二进制日志
 
-     relaylog  中继日志
+    relaylog  中继日志
 
 #### d、MySQL主从原理图如下：
 
