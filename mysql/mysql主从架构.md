@@ -165,7 +165,6 @@ port=3306
 socket=/var/lib/mysql/mysql.sock
 pid-file=/var/run/mysqld/mysqld.pid
 collation-server=utf8_general_ci
-log-error=/var/log/mysqld.error
 max_connections=1000
 
 character_set_server=utf8
@@ -184,8 +183,9 @@ binlog_format=MIXED
 ## 二进制日志自动删除/过期的天数。默认值为0，表示不自动删除。
 expire_logs_days=7
 
-## 复制过滤：也就是指定哪个数据库不用同步（mysql库一般不同步）
+## 复制过滤：也就是指定哪个数据库不用同步（mysql、information_schema库一般不同步）
 binlog-ignore-db=mysql
+binlog-ignore-db=information_schema
 
 ## 为每个session 分配的内存，在事务过程中用来存储二进制日志的缓存
 binlog_cache_size=1M
@@ -197,7 +197,7 @@ relay_log=/var/lib/mysql/mysql-relay-bin
 relay_log_purge=1
 
 ## 防止改变数据(除了特殊的线程)
-read_only=1  
+read_only=1
 
 ## Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
@@ -213,9 +213,6 @@ log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
 
 [mysql]
-default-character-set=utf8
-
-[client]
 default-character-set=utf8
    ```
    ################   
