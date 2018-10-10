@@ -276,7 +276,7 @@ scp /tmp/all.sql 192.168.56.20:/tmp/
 mysql -uroot -p -h127.0.0.1 -P3306 < /tmp/all.sql   //恢复数据到从库
 
 2、给从数据库设置复制的主数据库信息（注意修改MASTER_LOG_FILE和MASTER_LOG_POS的值
-mysql> CHANGE MASTER TO MASTER_HOST='192.168.56.10',MASTER_USER='repl',MASTER_PASSWORD='repl',MASTER_LOG_FILE='mysql-bin.000001',MASTER_LOG_POS=332;
+mysql> CHANGE MASTER TO MASTER_HOST='192.168.56.10',MASTER_USER='repl',MASTER_PASSWORD='repl',MASTER_LOG_FILE='mysql-bin.000027',MASTER_LOG_POS=538;
 
 3、然后启动从数据库的复制线程
 mysql> START slave;
