@@ -192,7 +192,6 @@ installation should now be secure.
 
 Thanks for using MySQL!
 
-
 Cleaning up...
 [root@master ~]#
 ```
