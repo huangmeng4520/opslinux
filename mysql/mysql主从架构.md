@@ -265,8 +265,11 @@ mysqldump -uroot -p -h127.0.0.1 -P3306 --all-databases --triggers --routines --e
 
 --routines, -R   //导出存储过程以及自定义函数。
 
-5、解锁第（2）步主数据的锁表操作：
+5、解锁第（2）步主数据的锁表操作:
 mysql> UNLOCK TABLES;
+
+6、将备份库同步到从库:
+scp /tmp/all.sql 192.168.56.20:/tmp/
 
 #SSH登录到从数据库
 1、将备份的数据库导入到slave节点
