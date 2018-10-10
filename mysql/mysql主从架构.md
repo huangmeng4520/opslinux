@@ -1,6 +1,6 @@
-### 一、MySQL主从介绍
+## 一、MySQL主从介绍
 
-•MySQL主从又叫做Replication、AB复制。简单讲就是A和B两台机器做主从后，在A上写数据，另外一台B也会跟着写数据，两者数据实时同步的
+• MySQL主从又叫做Replication、AB复制。简单讲就是A和B两台机器做主从后，在A上写数据，另外一台B也会跟着写数据，两者数据实时同步的
 
 • MySQL主从是基于binlog的，主上须开启binlog才能进行主从。
 
