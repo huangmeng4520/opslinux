@@ -1,20 +1,20 @@
-## 修改密码
+## 一、修改密码
 ```
+#方式一
 /usr/bin/mysqladmin -u root password '123456'
 
-三、Mysql赋权限和修改密码
+#方式二
+mysql> set password=password('123456');
 
-mysql> grant all privileges on *.* to root@"%" identified by '123456';
-Query OK, 0 rows affected, 1 warning (0.01 sec)
-
-mysql> flush privileges;
-Query OK, 0 rows affected (0.00 sec)
-
+#方式三
+mysql> use mysql
+mysql> desc user;
+mysql> GRANT ALL PRIVILEGES ON *.* TO root@"%" IDENTIFIED BY "root";
+mysql> update user set Password = password('123456') where User='root';
 mysql> show grants for root@"%";
-+-------------------------------------------------------------+
-| Grants for root@%                                           |
-+-------------------------------------------------------------+
-| GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION |
-+-------------------------------------------------------------+
-1 row in set (0.00 sec)
+mysql> flush privileges;
+mysql> select Host,User,Password from user where User='root';
+mysql> exit
 ```
+
+## 一、插入数据
