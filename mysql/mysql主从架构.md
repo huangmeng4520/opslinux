@@ -132,6 +132,9 @@ expire_logs_days=7
 binlog-ignore-db=mysql
 binlog-ignore-db=information_schema
 
+## 指定需要同步的数据库
+#binlog-do-db=memberdb
+
 ## 为每个session 分配的内存，在事务过程中用来存储二进制日志的缓存
 binlog_cache_size=1M
 
@@ -187,6 +190,9 @@ expire_logs_days=7
 binlog-ignore-db=mysql
 binlog-ignore-db=information_schema
 
+## 指定需要同步的数据库
+#binlog-do-db=memberdb
+
 ## 为每个session 分配的内存，在事务过程中用来存储二进制日志的缓存
 binlog_cache_size=1M
 
@@ -231,8 +237,51 @@ default-character-set=utf8
    ```
    ################
 
+## 五、MySQL主从操作
+```
+#SSH登录到主数据库
+1、在主数据库上创建用于主从复制的账户(192.168.56.20换成你的从数据库IP,这里有多个从,所以写成%):
+GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.56.%' IDENTIFIED BY 'repl';
+
+2、主数据库锁表(禁止再插入数据以获取主数据库的的二进制日志坐标):
+FLUSH TABLES WITH READ LOCK;
+
+3、然后克隆一个SSH会话窗口，在这个窗口打开MySQL命令行:
+SHOW MASTER STATUS;
+
+在这个例子中，二进制日志文件是mysqlmaster-bin.000001，位置是332，记录下这两个值，稍后要用到。 
+
+4、在主数据库上使用mysqldump命令创建一个数据快照:
+mysqldump -uroot -p -h127.0.0.1 -P3306 --all-databases --triggers --routines --events >/tmp/all.sql   //备份库
+
+--routines, -R   //导出存储过程以及自定义函数。
+
+5、解锁第（2）步主数据的锁表操作：
+UNLOCK TABLES;
+
+#SSH登录到从数据库
+1、将备份的数据库导入到slave节点
+mysql -uroot -p -h127.0.0.1 -P3306 < /tmp/all.sql   //恢复数据到从库
+
+2、给从数据库设置复制的主数据库信息（注意修改MASTER_LOG_FILE和MASTER_LOG_POS的值
+CHANGE MASTER TO MASTER_HOST='192.168.56.10',MASTER_USER='repl',MASTER_PASSWORD='repl',MASTER_LOG_FILE='mysql-bin.000001',MASTER_LOG_POS=332;
+
+3、然后启动从数据库的复制线程
+START slave;
+
+4、接着查询数据库的slave状态
+SHOW slave STATUS \G 
+如果下面两个参数都是Yes，则说明主从配置成功！
+Slave_IO_Running: Yes
+Slave_SQL_Running: Yes 
+
+5、接下来你可以在主数据库上创建数据库、表、插入数据，然后看从数据库是否同步了这些操作。
+```
+
 参考文档： 
 
 https://my.oschina.net/runforfuture/blog/1627996
 
 https://my.oschina.net/u/3746774/blog/1788963
+
+https://my.oschina.net/ailingling/blog/354277
