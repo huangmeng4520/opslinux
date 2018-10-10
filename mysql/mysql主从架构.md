@@ -157,6 +157,20 @@ default-character-set=utf8
 
    ##### 配置slave
    ```
+   #主从不一致的地方
+   server-id=2
+   
+   ## relay_log配置中继日志
+   relay_log=/var/lib/mysql/mysql-relay-bin
+
+   ## 打开自动清除中继日志
+   relay_log_purge=1
+
+   ## 防止改变数据(除了特殊的线程)
+   read_only=1 
+   ```
+   ################
+   ```
    [client]
 port=3306
 socket=/var/lib/mysql/mysql.sock
@@ -178,7 +192,7 @@ slow_query_log=on
 slow-query-log-file=/var/log/mysqld-slow.log
 long_query_time=1
 
-server-id=1
+server-id=2
 log-bin=/var/lib/mysql/mysql-bin
 
 ## 主从复制的格式（mixed,statement,row，默认格式是statement）
