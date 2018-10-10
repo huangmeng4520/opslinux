@@ -18,11 +18,9 @@
     2、Slave通过I/O线程读取Master中的binary log events并写入到它的中继日志(relay log) 
     3、Slave重做中继日志中的事件，把中继日志中的事件信息按顺序一条一条的在本地执行一次，完成数据在本地的存储，从而实现将改变反映到它自己的数据(数据重放)
     
-    主上有一个log dump线程，用来和从的I/O线程传递binlog
+    * 主上有一个log dump线程，用来和从的I/O线程传递binlog
 
-    从上有两个线程，其中I/O线程用来同步主的binlog并生成relaylog，另外一个SQL线程用来把relaylog里面的sql语句落地
-
-    其中
+    * 从上有两个线程，其中I/O线程用来同步主的binlog并生成relaylog，另外一个SQL线程用来把relaylog里面的sql语句落地，其中
     
     binlog  二进制日志
 
