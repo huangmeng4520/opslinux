@@ -65,7 +65,7 @@ mysql> show variables like '%quer%';
 | have_query_cache                       | YES                      |
 | log_queries_not_using_indexes          | OFF                      |
 | log_throttle_queries_not_using_indexes | 0                        |
-| long_query_time                        | 3.000000                 |    --这里设置的超过3会记录到慢查询日志
+| long_query_time                        | 3.000000                 |    --这里设置的超过3秒会记录到慢查询日志
 | query_alloc_block_size                 | 8192                     |
 | query_cache_limit                      | 1048576                  |
 | query_cache_min_res_unit               | 4096                     |
