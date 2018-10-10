@@ -32,6 +32,26 @@ mysql> show create table user\G;
 mysql> describe user;
 ```
 
-## 四、插入数据
+## 四、查看参数变量
 ```
+mysql> show variables like 'log_error';
++---------------+---------------------+
+| Variable_name | Value               |
++---------------+---------------------+
+| log_error     | /var/log/mysqld.log |
++---------------+---------------------+
+1 row in set (0.01 sec)
+
+mysql> show variables like '%slow%';
++---------------------------+--------------------------------+
+| Variable_name             | Value                          |
++---------------------------+--------------------------------+
+| log_slow_admin_statements | OFF                            |
+| log_slow_slave_statements | OFF                            |
+| slow_launch_time          | 2                              |
+| slow_query_log            | OFF                            |
+| slow_query_log_file       | /var/lib/mysql/master-slow.log |
++---------------------------+--------------------------------+
+5 rows in set (0.00 sec)
 ```
+
