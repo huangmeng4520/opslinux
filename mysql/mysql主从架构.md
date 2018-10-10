@@ -240,6 +240,9 @@ default-character-set=utf8
 ## 五、MySQL主从操作
 ```
 #SSH登录到主数据库
+
+mysql -uroot -p123456 -e "show databases"
+
 1、在主数据库上创建用于主从复制的账户(192.168.56.20换成你的从数据库IP,这里有多个从,所以写成%):
 GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.56.%' IDENTIFIED BY 'repl';
 
