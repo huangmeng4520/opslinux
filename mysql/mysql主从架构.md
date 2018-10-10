@@ -10,8 +10,9 @@
   
   ##### 复制方式
 
-    MySQL5.6开始主从复制有两种方式：基于日志（binlog）、基于GTID（全局事务标示符）。 
+    #MySQL5.6开始主从复制有两种方式：基于日志（binlog）、基于GTID（全局事务标示符）。 
     本文只涉及基于日志binlog的主从配置
+    
     复制原理
 
     1、Master将数据改变记录到二进制日志(binary log)中，也就是配置文件log-bin指定的文件，这些记录叫做二进制日志事件(binary log events) 
