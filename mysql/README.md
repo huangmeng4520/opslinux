@@ -56,6 +56,28 @@ mysql> show variables like '%slow%';
 ```
 ## 五、模拟产生慢日志
 ```
+mysql> show variables like '%quer%';
++----------------------------------------+--------------------------+
+| Variable_name                          | Value                    |
++----------------------------------------+--------------------------+
+| binlog_rows_query_log_events           | OFF                      |
+| ft_query_expansion_limit               | 20                       |
+| have_query_cache                       | YES                      |
+| log_queries_not_using_indexes          | OFF                      |
+| log_throttle_queries_not_using_indexes | 0                        |
+| long_query_time                        | 3.000000                 |    --这里设置的超过3会记录到慢查询日志
+| query_alloc_block_size                 | 8192                     |
+| query_cache_limit                      | 1048576                  |
+| query_cache_min_res_unit               | 4096                     |
+| query_cache_size                       | 1048576                  |
+| query_cache_type                       | OFF                      |
+| query_cache_wlock_invalidate           | OFF                      |
+| query_prealloc_size                    | 8192                     |
+| slow_query_log                         | ON                       |    --开启了慢日志查询
+| slow_query_log_file                    | /var/log/mysqld-slow.log |    --慢日志文件
++----------------------------------------+--------------------------+
+15 rows in set (0.00 sec)
+
 mysql> select sleep(10) as a, 1 as b;
 +---+---+
 | a | b |
