@@ -25,4 +25,6 @@ mysql> show create table user\G;
 mysql> describe user;
 ```
 
-## 三、查看表结构
+## 三、插入数据
+```
+```
