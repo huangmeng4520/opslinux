@@ -54,7 +54,7 @@
 
   ![Mysql主从原理图](https://github.com/Lancger/opslinux/blob/master/images/mysql-ab.png)
   
-  ##### 复制方式
+   ##### 复制方式
 
     MySQL5.6开始主从复制有两种方式：基于日志（binlog）、基于GTID（全局事务标示符）。 
     本文只涉及基于日志binlog的主从配置
@@ -64,13 +64,28 @@
     2、Slave通过I/O线程读取Master中的binary log events并写入到它的中继日志(relay log) 
     3、Slave重做中继日志中的事件，把中继日志中的事件信息按顺序一条一条的在本地执行一次，完成数据在本地的存储，从而实现将改变反映到它自己的数据(数据重放)
     
-  ##### 主上有一个log dump线程，用来和从的I/O线程传递binlog
+   ##### 主上有一个log dump线程，用来和从的I/O线程传递binlog
 
-  ##### 从上有两个线程，其中I/O线程用来同步主的binlog并生成relaylog，另外一个SQL线程用来把relaylog里面的sql语句落地，其中
+   ##### 从上有两个线程，其中I/O线程用来同步主的binlog并生成relaylog，另外一个SQL线程用来把relaylog里面的sql语句落地，其中
     
     binlog  二进制日志
 
     relaylog  中继日志
+    
+    
+   ##### 复制类型
+
+    1、基于语句的复制
+
+    在Master上执行的SQL语句，在Slave上执行同样的语句。MySQL默认采用基于语句的复制，效率比较高。一旦发现没法精确复制时，会自动选着基于行的复制
+
+    2、基于行的复制
+
+    把改变的内容复制到Slave，而不是把命令在Slave上执行一遍。从MySQL5.0开始支持
+
+    3、混合类型的复制
+
+    默认采用基于语句的复制，一旦发现基于语句的无法精确的复制时，就会采用基于行的复制
     
    ##### 要求
 
