@@ -78,6 +78,12 @@ EOF
 
 ## 五、启动mysql服务
 ```
+#关闭selinux
+[root@master ~]# setenforce 0
+[root@master ~]# getenforce
+Permissive
+
+#创建慢日志文件
 touch /var/log/mysqld-slow.log && chmod 640 /var/log/mysqld-slow.log && chown mysql:mysql /var/log/mysqld-slow.log
 
 systemctl enable mysqld
