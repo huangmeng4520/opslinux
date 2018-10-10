@@ -41,8 +41,8 @@ systemctl status mysqld
 ```
 
 ## 五、mysql安全设置（设置密码）
+### 方法一：
 ```
-#方法一：
 /usr/bin/mysqladmin -u root password '123456'
 
 #Mysql赋权限和修改密码
@@ -59,8 +59,10 @@ mysql> show grants for root@"%";
 | GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION |
 +-------------------------------------------------------------+
 1 row in set (0.00 sec)
+```
 
-#方法二：
+### 方法二：
+```
 [root@master ~]# mysql_secure_installation
 
 NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MySQL
