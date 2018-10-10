@@ -4,7 +4,7 @@
 
     2）MySQL主从是基于binlog的，主上须开启binlog才能进行主从。
 
-#### 1、主从过程大致有3个步骤
+#### a、主从过程大致有3个步骤
 
     1）主将更改操作记录到binlog里
 
@@ -12,15 +12,15 @@
 
     3）从根据relaylog里面的sql语句按顺序执行
 
-#### 2、主上有一个log dump线程，用来和从的I/O线程传递binlog
+#### b、主上有一个log dump线程，用来和从的I/O线程传递binlog
 
-#### 3、从上有两个线程，其中I/O线程用来同步主的binlog并生成relaylog，另外一个SQL线程用来把relaylog里面的sql语句落地
+#### c、从上有两个线程，其中I/O线程用来同步主的binlog并生成relaylog，另外一个SQL线程用来把relaylog里面的sql语句落地
 
     其中binlog  二进制日志
 
     relaylog  中继日志
 
-#### 4、MySQL主从原理图如下：
+#### d、MySQL主从原理图如下：
 
   ![Mysql主从原理图](https://github.com/Lancger/opslinux/blob/master/images/mysql-ab.png)
 
