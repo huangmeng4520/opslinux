@@ -78,7 +78,7 @@ mysql> show variables like '%quer%';
 +----------------------------------------+--------------------------+
 15 rows in set (0.00 sec)
 
-mysql> select sleep(10) as a, 1 as b;
+mysql> select sleep(10) as a, 1 as b;    --模拟产生慢日志
 +---+---+
 | a | b |
 +---+---+
