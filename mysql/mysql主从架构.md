@@ -239,6 +239,10 @@ pid-file=/var/run/mysqld/mysqld.pid
 
 ## 五、MySQL主从操作
 ```
+systemctl restart mysqld
+systemctl stop mysqld
+systemctl status mysqld
+
 #SSH登录到主数据库
 
 mysql -uroot -p123456 -e "show databases"
