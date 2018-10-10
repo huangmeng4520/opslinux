@@ -90,6 +90,7 @@ EOF
 ## 五、启动mysql服务
 ```
 #关闭selinux
+[root@master ~]# sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
 [root@master ~]# setenforce 0
 [root@master ~]# getenforce
 Permissive
