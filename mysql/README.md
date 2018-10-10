@@ -8,7 +8,6 @@ mysql> set password=password('123456');
 
 #方式三
 mysql> use mysql
-mysql> desc user;
 mysql> GRANT ALL PRIVILEGES ON *.* TO root@"%" IDENTIFIED BY "root";
 mysql> update user set Password = password('123456') where User='root';
 mysql> show grants for root@"%";
@@ -17,4 +16,13 @@ mysql> select Host,User,Password from user where User='root';
 mysql> exit
 ```
 
-## 一、插入数据
+## 二、查看表结构
+```
+mysql> desc user;
+
+mysql> show create table user\G;
+
+mysql> describe user;
+```
+
+## 三、查看表结构
