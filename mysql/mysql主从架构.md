@@ -23,6 +23,22 @@
 #### d、MySQL主从原理图如下：
 
   ![Mysql主从原理图](https://github.com/Lancger/opslinux/blob/master/images/mysql-ab.png)
+  
+  ##### 复制方式
+
+    MySQL5.6开始主从复制有两种方式：基于日志（binlog）、基于GTID（全局事务标示符）。 
+    本文只涉及基于日志binlog的主从配置
+    复制原理
+
+    1、Master将数据改变记录到二进制日志(binary log)中，也就是配置文件log-bin指定的文件，这些记录叫做二进制日志事件(binary log events) 
+    2、Slave通过I/O线程读取Master中的binary log events并写入到它的中继日志(relay log) 
+    3、Slave重做中继日志中的事件，把中继日志中的事件信息一条一条的在本地执行一次，完成数据在本地的存储，从而实现将改变反映到它自己的数据(数据重放)
+ ##### 要求
+
+    1、主从服务器操作系统版本和位数一致 
+    2、Master和Slave数据库的版本要一致 
+    3、Master和Slave数据库中的数据要一致 
+    4、Master开启二进制日志，Master和Slave的server_id在局域网内必须唯一
 
 ## 二、MySQL主从配置使用场景
 
