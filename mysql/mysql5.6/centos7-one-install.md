@@ -40,6 +40,7 @@ default-character-set = utf8
 #重启 MySQL ,可以看到字符集已经修改了
 
 #最终配置
+
 cat > /etc/my.cnf <<EOF
 [client]
 port=3306
@@ -52,7 +53,6 @@ port=3306
 socket=/var/lib/mysql/mysql.sock
 pid-file=/var/run/mysqld/mysqld.pid
 collation-server=utf8_general_ci
-log-error=/var/log/mysqld.error
 max_connections=1000
 
 character_set_server=utf8
@@ -82,9 +82,6 @@ pid-file=/var/run/mysqld/mysqld.pid
 
 [mysql]
 default-character-set = utf8
-
-[client]
-default-character-set=utf8
 EOF
 ```
 
