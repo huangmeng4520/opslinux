@@ -38,3 +38,7 @@
     1、将从用于做数据备份
 
     2、从不仅用于数据备份，而且还用于web客户端读取从上的数据，减轻主读的压力
+    
+    
+参考文档： https://my.oschina.net/runforfuture/blog/1627996
+         https://my.oschina.net/u/3746774/blog/1788963
