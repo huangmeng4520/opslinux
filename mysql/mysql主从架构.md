@@ -97,7 +97,121 @@
    
    mysql安装详见：https://github.com/Lancger/opslinux/blob/master/mysql/mysql5.6/centos7-one-install.md
    
+   ##### 配置master
+   ```
+   [client]
+port=3306
+socket=/var/lib/mysql/mysql.sock
+default-character-set=utf8
 
+[mysqld]
+datadir= /var/lib/mysql
+port=3306
+socket=/var/lib/mysql/mysql.sock
+pid-file=/var/run/mysqld/mysqld.pid
+collation-server=utf8_general_ci
+log-error=/var/log/mysqld.error
+max_connections=1000
+
+character_set_server=utf8
+character_set_client=utf8
+
+slow_query_log=on
+slow-query-log-file=/var/log/mysqld-slow.log
+long_query_time=1
+
+server-id=1
+log-bin=/var/lib/mysql/mysql-bin
+
+## 主从复制的格式（mixed,statement,row，默认格式是statement）
+binlog_format=MIXED
+
+## 二进制日志自动删除/过期的天数。默认值为0，表示不自动删除。
+expire_logs_days=7
+
+## 复制过滤：也就是指定哪个数据库不用同步（mysql库一般不同步）
+binlog-ignore-db=mysql
+
+## 为每个session 分配的内存，在事务过程中用来存储二进制日志的缓存
+binlog_cache_size=1M
+
+## Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+
+## Recommended in standard MySQL setup
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+
+## (注意linux下mysql安装完后是默认：表名区分大小写，列名不区分大小写； 0：区分大小写，1：不区分大小写)
+lower_case_table_names=1
+
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+
+[mysql]
+default-character-set=utf8
+
+[client]
+default-character-set=utf8
+   ```
+
+   ##### 配置slave
+   ```
+   [client]
+port=3306
+socket=/var/lib/mysql/mysql.sock
+default-character-set=utf8
+
+[mysqld]
+datadir= /var/lib/mysql
+port=3306
+socket=/var/lib/mysql/mysql.sock
+pid-file=/var/run/mysqld/mysqld.pid
+collation-server=utf8_general_ci
+log-error=/var/log/mysqld.error
+max_connections=1000
+
+character_set_server=utf8
+character_set_client=utf8
+
+slow_query_log=on
+slow-query-log-file=/var/log/mysqld-slow.log
+long_query_time=1
+
+server-id=1
+log-bin=/var/lib/mysql/mysql-bin
+
+## 主从复制的格式（mixed,statement,row，默认格式是statement）
+binlog_format=MIXED
+
+## 二进制日志自动删除/过期的天数。默认值为0，表示不自动删除。
+expire_logs_days=7
+
+## 复制过滤：也就是指定哪个数据库不用同步（mysql库一般不同步）
+binlog-ignore-db=mysql
+
+## 为每个session 分配的内存，在事务过程中用来存储二进制日志的缓存
+binlog_cache_size=1M
+
+## Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+
+## Recommended in standard MySQL setup
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+
+## (注意linux下mysql安装完后是默认：表名区分大小写，列名不区分大小写； 0：区分大小写，1：不区分大小写)
+lower_case_table_names=1
+
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+
+[mysql]
+default-character-set=utf8
+
+[client]
+default-character-set=utf8
+   ```
 
 参考文档： 
 
