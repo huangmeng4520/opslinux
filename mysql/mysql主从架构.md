@@ -193,6 +193,12 @@ binlog-ignore-db=mysql
 ## 为每个session 分配的内存，在事务过程中用来存储二进制日志的缓存
 binlog_cache_size=1M
 
+## relay_log配置中继日志
+relay_log=/var/lib/mysql/mysql-relay-bin
+
+## 防止改变数据(除了特殊的线程)
+read_only=1  
+
 ## Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
 
