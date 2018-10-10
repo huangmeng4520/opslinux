@@ -251,8 +251,14 @@ mysql> FLUSH TABLES WITH READ LOCK;
 
 3、然后克隆一个SSH会话窗口，在这个窗口打开MySQL命令行:
 mysql> SHOW MASTER STATUS;
++------------------+----------+--------------+--------------------------+-------------------+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB         | Executed_Gtid_Set |
++------------------+----------+--------------+--------------------------+-------------------+
+| mysql-bin.000027 |      538 |              | mysql,information_schema |                   |
++------------------+----------+--------------+--------------------------+-------------------+
+1 row in set (0.01 sec)
 
-在这个例子中，二进制日志文件是mysqlmaster-bin.000001，位置是332，记录下这两个值，稍后要用到。 
+在这个例子中，二进制日志文件是mysql-bin.000027，位置是538，记录下这两个值，稍后要用到。 
 
 4、在主数据库上使用mysqldump命令创建一个数据快照:
 mysqldump -uroot -p -h127.0.0.1 -P3306 --all-databases --triggers --routines --events >/tmp/all.sql   //备份库
