@@ -75,6 +75,7 @@ C、修改mysql-community.repo中baseurl的值
 systemctl enable mysqld
 systemctl disable mysqld
 
+
 systemctl start mysqld
 systemctl restart mysqld
 
