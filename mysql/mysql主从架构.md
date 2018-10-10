@@ -24,8 +24,7 @@
 
   ![Mysql主从原理图](https://github.com/Lancger/opslinux/blob/master/images/mysql-ab.png)
 
-
-    MySQL主从配置使用场景
+## 二、MySQL主从配置使用场景
 
     1）将从用于做数据备份
 
