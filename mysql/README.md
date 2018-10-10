@@ -1,9 +1,9 @@
-# mysql手册
+# 一、mysql手册
 - [Centos6安装mysql5.6](https://github.com/Lancger/opslinux/blob/master/mysql/mysql5.6/centos6-one-install.md)
 - [Centos7安装mysql5.6](https://github.com/Lancger/opslinux/blob/master/mysql/mysql5.6/centos7-one-install.md)
 
 
-## 一、修改密码
+## 二、修改密码
 ```
 #方式一
 /usr/bin/mysqladmin -u root password '123456'
@@ -21,7 +21,7 @@ mysql> select Host,User,Password from user where User='root';
 mysql> exit
 ```
 
-## 二、查看表结构
+## 三、查看表结构
 ```
 mysql> desc user;
 
@@ -30,6 +30,6 @@ mysql> show create table user\G;
 mysql> describe user;
 ```
 
-## 三、插入数据
+## 四、插入数据
 ```
 ```
