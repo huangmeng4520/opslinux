@@ -1,4 +1,8 @@
-## 一、git 初始化
+## 一、手册
+- [Mysql手册](https://github.com/Lancger/opslinux/blob/master/mysql/README.md)
+
+
+## 二、git 初始化
 
 ```
 1.初始化版本库：
