@@ -30,8 +30,14 @@ yum -y install mysql-community-server
 
 ```
 systemctl enable mysqld
+systemctl disable mysqld
+
 systemctl start mysqld
-mysql_secure_installation
+systemctl restart mysqld
+
+systemctl stop mysqld
+
+systemctl status mysqld
 ```
 
 ## 五、mysql安全设置（设置密码）
