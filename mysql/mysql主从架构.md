@@ -244,13 +244,13 @@ default-character-set=utf8
 mysql -uroot -p123456 -e "show databases"
 
 1、在主数据库上创建用于主从复制的账户(192.168.56.20换成你的从数据库IP,这里有多个从,所以写成%):
-GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.56.%' IDENTIFIED BY 'repl';
+mysql> GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.56.%' IDENTIFIED BY 'repl';
 
 2、主数据库锁表(禁止再插入数据以获取主数据库的的二进制日志坐标):
-FLUSH TABLES WITH READ LOCK;
+mysql> FLUSH TABLES WITH READ LOCK;
 
 3、然后克隆一个SSH会话窗口，在这个窗口打开MySQL命令行:
-SHOW MASTER STATUS;
+mysql> SHOW MASTER STATUS;
 
 在这个例子中，二进制日志文件是mysqlmaster-bin.000001，位置是332，记录下这两个值，稍后要用到。 
 
@@ -260,20 +260,20 @@ mysqldump -uroot -p -h127.0.0.1 -P3306 --all-databases --triggers --routines --e
 --routines, -R   //导出存储过程以及自定义函数。
 
 5、解锁第（2）步主数据的锁表操作：
-UNLOCK TABLES;
+mysql> UNLOCK TABLES;
 
 #SSH登录到从数据库
 1、将备份的数据库导入到slave节点
 mysql -uroot -p -h127.0.0.1 -P3306 < /tmp/all.sql   //恢复数据到从库
 
 2、给从数据库设置复制的主数据库信息（注意修改MASTER_LOG_FILE和MASTER_LOG_POS的值
-CHANGE MASTER TO MASTER_HOST='192.168.56.10',MASTER_USER='repl',MASTER_PASSWORD='repl',MASTER_LOG_FILE='mysql-bin.000001',MASTER_LOG_POS=332;
+mysql> CHANGE MASTER TO MASTER_HOST='192.168.56.10',MASTER_USER='repl',MASTER_PASSWORD='repl',MASTER_LOG_FILE='mysql-bin.000001',MASTER_LOG_POS=332;
 
 3、然后启动从数据库的复制线程
-START slave;
+mysql> START slave;
 
 4、接着查询数据库的slave状态
-SHOW slave STATUS \G 
+mysql> SHOW slave STATUS \G 
 如果下面两个参数都是Yes，则说明主从配置成功！
 Slave_IO_Running: Yes
 Slave_SQL_Running: Yes 
