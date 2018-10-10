@@ -96,8 +96,9 @@ EOF
 [root@master ~]# getenforce
 Permissive
 
-#创建慢日志文件
-touch /var/log/mysqld-slow.log && chmod 640 /var/log/mysqld-slow.log && chown mysql:mysql /var/log/mysqld-slow.log
+#创建慢日志文件并赋权限
+touch /var/log/mysqld-slow.log
+chown mysql:mysql /var/log/mysqld-slow.log
 
 systemctl enable mysqld
 systemctl disable mysqld
