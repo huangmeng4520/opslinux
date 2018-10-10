@@ -147,12 +147,12 @@ sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 ## (注意linux下mysql安装完后是默认：表名区分大小写，列名不区分大小写； 0：区分大小写，1：不区分大小写)
 lower_case_table_names=1
 
+[mysql]
+default-character-set=utf8
+
 [mysqld_safe]
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
-
-[mysql]
-default-character-set=utf8
    ```
 
    ##### 配置slave
@@ -214,12 +214,12 @@ sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 ## (注意linux下mysql安装完后是默认：表名区分大小写，列名不区分大小写； 0：区分大小写，1：不区分大小写)
 lower_case_table_names=1
 
+[mysql]
+default-character-set=utf8
+
 [mysqld_safe]
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
-
-[mysql]
-default-character-set=utf8
    ```
    ################   
    ```
