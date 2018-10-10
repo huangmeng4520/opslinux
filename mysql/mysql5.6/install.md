@@ -40,7 +40,8 @@ systemctl stop mysqld
 systemctl status mysqld
 ```
 
-## 五、mysql安全设置（设置密码）
+## 五、mysql修改密码
+
 ### 方法一：
 ```
 /usr/bin/mysqladmin -u root password '123456'
@@ -61,7 +62,7 @@ mysql> show grants for root@"%";
 1 row in set (0.00 sec)
 ```
 
-### 方法二：
+### 方法二: 安全设置（设置密码）
 ```
 [root@master ~]# mysql_secure_installation
 
