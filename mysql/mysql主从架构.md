@@ -12,9 +12,9 @@
 
     3）从根据relaylog里面的sql语句按顺序执行
 
-主上有一个log dump线程，用来和从的I/O线程传递binlog
+#### 主上有一个log dump线程，用来和从的I/O线程传递binlog
 
-从上有两个线程，其中I/O线程用来同步主的binlog并生成relaylog，另外一个SQL线程用来把relaylog里面的sql语句落地
+#### 从上有两个线程，其中I/O线程用来同步主的binlog并生成relaylog，另外一个SQL线程用来把relaylog里面的sql语句落地
 
     其中binlog  二进制日志
 
