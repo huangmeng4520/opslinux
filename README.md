@@ -1,6 +1,6 @@
 ## 一、手册
 - [Mysql手册](https://github.com/Lancger/opslinux/blob/master/mysql/README.md)
-- [Linux手册](https://github.com/Lancger/opslinux/blob/master/mysql/README.md)
+- [Linux手册](https://github.com/Lancger/opslinux/blob/master/linux/README.md)
 
 
 ## 二、git 初始化
