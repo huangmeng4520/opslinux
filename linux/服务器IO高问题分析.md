@@ -20,7 +20,7 @@ Total DISK READ: 0.00 B/s | Total DISK WRITE: 41.00 K/s
 
 
 ########################
-#iostat -x -k -d 1 2。每隔2S输出磁盘IO的详细详细，总共采样5次。
+#iostat -x -k -d 2 5。每隔2s输出磁盘IO的详细详细，总共采样5次。
 
 -c：只显示系统CPU统计信息，即单独输出avg-cpu结果，不包括device结果
 -d：单独输出Device结果，不包括cpu结果
@@ -37,7 +37,6 @@ avg-cpu:  %user   %nice %system %iowait  %steal   %idle
 Device:         rrqm/s   wrqm/s     r/s     w/s   rsec/s   wsec/s avgrq-sz avgqu-sz   await r_await w_await  svctm  %util
 sdb               0.00   959.11    0.41   23.22    70.35  7858.67   335.48     0.12    5.25   17.44    5.04   2.12   5.01
 sda               0.77     6.42    0.62    8.45    15.57   118.94    14.83     0.04    4.49    9.18    4.14   3.09   2.80
-
 
 rrqm/s: 每秒对该设备的读请求被合并次数，文件系统会对读取同块(block)的请求进行合并
 wrqm/s: 每秒对该设备的写请求被合并次数
