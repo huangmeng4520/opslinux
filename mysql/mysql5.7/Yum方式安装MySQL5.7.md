@@ -23,3 +23,29 @@ yum -y install mysql-community-server
 
     #此时MySQL已经开始正常运行，不过要想进入MySQL还得先找出此时root用户的密码，通过如下命令可以在日志文件中找出密码：
     grep "password" /var/log/mysqld.log
+
+    如下命令进入数据库
+    mysql -uroot -p
+      
+    输入初始密码，此时不能做任何事情，因为MySQL默认必须修改密码之后才能操作数据库：
+    ALTER USER 'root'@'localhost' IDENTIFIED BY 'new password';
+    
+    这里有个问题，新密码设置的时候如果设置的过于简单会报错：
+    
+    原因是因为MySQL有密码设置的规范，具体是与validate_password_policy的值有关：
+    
+    
+    
+      MySQL完整的初始密码规则可以通过如下命令查看：
+      
+      
+      修改密码长度和策略限制
+      mysql> set global validate_password_policy=0;
+      mysql> set global validate_password_length=1;
+      
+      
+     但此时还有一个问题，就是因为安装了Yum Repository，以后每次yum操作都会自动更新，需要把这个卸载掉：
+     yum -y remove mysql57-community-release-el7-10.noarch
+     大功告成
+      
+      
