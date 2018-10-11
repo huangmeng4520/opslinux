@@ -141,6 +141,39 @@ EOF
 #配置VIP
 #为了防止脑裂发生,推荐生产环境采用脚本的方式来管理虚拟 ip,而不是使用 keepalived来完成。
 
+#vip启停脚本
+cat >/etc/mha/scripts/vip.sh <<EOF
+#!/bin/sh
+
+if [ $# -ne 1 ];then
+    echo "Usage vip.sh {start|stop} "
+    exit 0
+fi
+
+if="eth0"
+key=1
+vip="192.168.56.200"
+
+start_vip(){
+    /sbin/ifconfig $if:$key $vip/24;arping -A -c 1 $vip
+}
+
+stop_vip(){
+    /sbin/ifconfig $if:$key down
+}
+
+case $1 in
+"stop")
+    stop_vip $2;
+    ;;
+"start")
+    start_vip $2;
+    ;;
+*)
+    echo "Usage vip.sh {start|stop} "
+    ;;
+esac
+EOF
 ```
     
  
