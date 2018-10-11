@@ -8,7 +8,7 @@ yum -q install /usr/bin/iostat
 ## 二、现场抓取
 ```
 ########################
-[root@master ~]# iotop
+[root@localhost ~]# iotop
 Total DISK READ: 0.00 B/s | Total DISK WRITE: 0.00 B/s
   TID  PRIO  USER     DISK READ  DISK WRITE  SWAPIN     IO>    COMMAND
  1024 be/4 root        0.00 B/s    0.00 B/s  0.00 %  0.00 % -bash
