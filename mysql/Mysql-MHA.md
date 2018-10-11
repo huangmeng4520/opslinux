@@ -75,7 +75,7 @@ yum -y install perl-DBD-MySQL perl-Config-Tiny perl-Log-Dispatch perl-Parallel-F
 ````
 
 ## 四、Master节点
-    仅在manager节点上安装mha管理软件
+    1、仅在manager节点上安装mha管理软件
 ```
 wget https://qiniu.wsfnk.com/mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
 #wget https://github.com/yoshinorim/mha4mysql-manager/releases/download/v0.58/mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
@@ -87,12 +87,12 @@ rpm -ivh mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
 rpm -e mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
 
 ```
-#### 1、配置MHA（在manager节点上操作）
+#### 2、配置MHA（在manager节点上操作）
 ```
 ```
  
 ## 五、Node节点
-    在三个节点上都装mha的node软件
+    1、在三个节点上都装mha的node软件
 ```
 wget https://qiniu.wsfnk.com/mha4mysql-node-0.58-0.el7.centos.noarch.rpm
 #wget https://github.com/yoshinorim/mha4mysql-node/releases/download/v0.58/mha4mysql-node-0.58-0.el7.centos.noarch.rpm
