@@ -89,10 +89,33 @@ rpm -e mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
 ```
     2、配置MHA（在manager节点上操作）
 ```
-	#创建目录
-	mkdir -p /etc/mha/scripts
-    
-    
+#创建目录
+mkdir -p /etc/mha/scripts
+
+#配置全局配置文件/etc/masterha_default.cn #一定要是这个路径,不然后期masterha_check_ssh会提示未找到全局文件
+
+cat > /etc/masterha_default.cnf <<EOF
+[server default]
+user=root
+password=123456
+ssh_user=root
+repl_user=repl_user
+repl_password=123456
+ping_interval=3
+ping_type=insert
+#master_binlog_dir= /var/lib/mysql,/var/log/mysql
+secondary_check_script=masterha_secondary_check -s 192.168.56.10 -s 192.168.56.20 -s 192.168.56.30 
+master_ip_failover_script="/etc/mha/scripts/master_ip_failover"
+master_ip_online_change_script="/etc/mha/scripts/master_ip_online_change"
+report_script="/etc/mha/scripts/send_report"
+EOF
+
+参数介绍：
+
+ping_interval：这个参数表示mha manager多久ping（执行select ping sql语句）一次master，连续三个丢失ping连接，mha master就判定mater死了，因此，通过4次ping间隔的最大时间的机制来发现故障，默认是3，表示间隔是3秒
+
+ping_type:   从0.53版本开始支持，默认情况下，mha master基于一个到master的已经存在的连接执行select 1(ping_type=select)语句来检查master的可用性，但是在有些场景下，最好是每次通过新建/断开连接的方式来检测，因为这能够更严格以及更快速地发现TCP连接级别的故障，把ping_type设置为connect就可以实现。从0.56开始新增了ping_type=INSERT类型。
+
 ```
  
 ## 五、Node节点
