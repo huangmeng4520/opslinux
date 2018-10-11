@@ -64,3 +64,25 @@ svctm: 平均每次IO请求的处理时间(毫秒为单位)
 ```
 
 ## 三、分析
+```
+从截图中可以发现
+iotop观察到命令[flush-8:16]和[jbd2/sdb2-8]交替使用99.99％的IO。
+然后，也没有看到任何异常dmesg或/var/log/syslog。
+
+它们是文件系统的一部分 - flush将RAM缓冲区/缓存写入磁盘，jbd2处理ext4日志
+
+猜测
+我冒险猜测：
+/dev/sdb1 也许交换空间？
+
+free -m 使用了多少交换空间：
+[root@localhost ~]# free -m
+             total       used       free     shared    buffers     cached
+Mem:         31868      31509        359          0         20      23647
+-/+ buffers/cache:       7840      24027
+Swap:        20479       1130      19349
+
+如果这是问题，您可以将swap移至sda或禁用sdb的spindowns。
+```
+
+参考文档： https://askubuntu.com/questions/30191/how-can-i-prevent-flush-816-and-jbd2-sdb2-8-from-causing-gui-unresponsivene
