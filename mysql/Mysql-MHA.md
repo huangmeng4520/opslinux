@@ -58,8 +58,6 @@ for i in mha_node1 mha_node2 mha_manager; do ssh-copy-id $i; done
 测试登录
 for i in mha_node1 mha_node2 mha_manager; do ssh $i; done
 
-
-
 ```
 
 ## 三、环境初始化：
