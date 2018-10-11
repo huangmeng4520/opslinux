@@ -1,12 +1,20 @@
 ## 一、设置主机host
 ```
+#设置主机名
+hostnamectl set-hostname master.example.com
+
+#绑定host
 cat > /etc/hosts <<EOF
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 192.168.56.10 master master.example.com
-192.168.56.20 node1  node1.example.com
-192.168.56.30 node2  node2.example.com
 EOF
+
+#关闭selinux
+[root@master ~]# sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
+[root@master ~]# setenforce 0
+[root@master ~]# getenforce
+Permissive
 ```
 
 ## 二、设置yum源
@@ -86,12 +94,6 @@ EOF
 
 ## 五、启动mysql服务
 ```
-#关闭selinux
-[root@master ~]# sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
-[root@master ~]# setenforce 0
-[root@master ~]# getenforce
-Permissive
-
 #创建慢日志文件并赋权限
 touch /var/log/mysqld-slow.log
 chown mysql:mysql /var/log/mysqld-slow.log
