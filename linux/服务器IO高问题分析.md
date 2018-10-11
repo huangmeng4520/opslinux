@@ -2,22 +2,22 @@
 
   ![iotop抓取图](https://github.com/Lancger/opslinux/blob/master/images/iotop.jpg)
   ![iostat抓取图](https://github.com/Lancger/opslinux/blob/master/images/iostat.jpg)
-
+  
+yum -q install /usr/bin/iostat  
+  
 ## 二、现场抓取
 ```
 ########################
 [root@master ~]# iotop
-Total DISK READ: 0.00 B/s | Total DISK WRITE: 41.00 K/s
-  TID  PRIO  USER     DISK READ  DISK WRITE  SWAPIN     IO>    COMMAND                                                                                                              
-52026 be/4 root        0.00 B/s    3.42 K/s  0.00 %  0.00 % java -Xms256m -Xmx256m -server -XX:+UseConcMarkSweepGC -XX:~-client/.o_galaxy_xyipk.exist --skip 86400 --ignore_ts false
-33857 be/4 nobody      0.00 B/s  293.83 K/s  0.00 %  0.00 % nginx: worker process
-33858 be/4 nobody      0.00 B/s  201.58 K/s  0.00 %  0.00 % nginx: worker process
-33859 be/4 nobody      0.00 B/s  205.00 K/s  0.00 %  0.00 % nginx: worker process
-33860 be/4 nobody      0.00 B/s  150.33 K/s  0.00 %  0.00 % nginx: worker process
-33865 be/4 nobody      0.00 B/s  245.99 K/s  0.00 %  0.00 % nginx: worker process
-33866 be/4 nobody      0.00 B/s  208.41 K/s  0.00 %  0.00 % nginx: worker process
-
-
+Total DISK READ: 0.00 B/s | Total DISK WRITE: 0.00 B/s
+  TID  PRIO  USER     DISK READ  DISK WRITE  SWAPIN     IO>    COMMAND
+ 1024 be/4 root        0.00 B/s    0.00 B/s  0.00 %  0.00 % -bash
+    1 be/4 root        0.00 B/s    0.00 B/s  0.00 %  0.00 % init
+    2 be/4 root        0.00 B/s    0.00 B/s  0.00 %  0.00 % [kthreadd]
+    3 rt/4 root        0.00 B/s    0.00 B/s  0.00 %  0.00 % [migration/0]
+    4 be/4 root        0.00 B/s    0.00 B/s  0.00 %  0.00 % [ksoftirqd/0]
+    5 rt/4 root        0.00 B/s    0.00 B/s  0.00 %  0.00 % [stopper/0]
+    6 rt/4 root        0.00 B/s    0.00 B/s  0.00 %  0.00 % [watchdog/0]
 
 ########################
 #iostat -x -k -d 2 5。每隔2s输出磁盘IO的详细详细，总共采样5次。
