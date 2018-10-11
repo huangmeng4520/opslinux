@@ -12,10 +12,13 @@ yum -y install mysql-community-server
 ```
 
 ## 2、MySQL数据库设置
-   首先启动MySQL
-   systemctl start  mysqld.service
-   查看MySQL运行状态，运行状态如图：
    
-   此时MySQL已经开始正常运行，不过要想进入MySQL还得先找出此时root用户的密码，通过如下命令可以在日志文件中找出密码：
+    首先启动MySQL
    
-   grep "password" /var/log/mysqld.log
+    systemctl start  mysqld.service
+    
+    查看MySQL运行状态，运行状态如图：
+   
+    此时MySQL已经开始正常运行，不过要想进入MySQL还得先找出此时root用户的密码，通过如下命令可以在日志文件中找出密码：
+   
+    grep "password" /var/log/mysqld.log
