@@ -14,13 +14,29 @@ mysql-master-bak：  192.168.56.20            ------> mha_node2
 mysql-slave：       192.168.56.30            ------> mha_manager
 ```
 
-## 环境部署：
+## 二、环境初始化：
 
     三台机器安装mysql5.6，并配置好主从
 
 ```
+1、关闭防火墙以及selinx
+systemctl disable firewalld 
+systemctl disable NetworkManager
 
-1、更改主机名，添加hosts文件
+sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
+
+setenforce 0 
+
+2、集群主机时间同步
+yum install -y wget lrzsz vim net-tools openssh-clients ntpdate unzip xz telnet
+
+#加入crontab
+1 * * * * /usr/sbin/ntpdate ntp1.aliyun.com >/dev/null 2>&1
+
+#设置时区
+cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+3、更改主机名，添加hosts文件
 hostnamectl set-hostname mha_node1
 hostnamectl set-hostname mha_node2
 hostnamectl set-hostname mha_manager
@@ -33,6 +49,21 @@ cat > /etc/hosts <<EOF
 192.168.56.30 mha_manager mha_manager.example.com
 EOF
 
+4、配置密钥ssh(所有主机各配置相同操作)
+ssh-keygen -t rsa 
+
+在所有主机都必须拷贝密钥于其他主机
+for i in mha_node1 mha_node2 mha_manager; do ssh-copy-id $i; done
+
+测试登录
+for i in mha_node1 mha_node2 mha_manager; do ssh $i; done
+
+
+
+```
+
+## 三、环境初始化：
+```
 1、安装依赖包
 yum install -y gcc ntpdate wget lrzsz vim net-tools openssh-clients*
 
