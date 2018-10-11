@@ -87,7 +87,9 @@ rpm -ivh mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
 rpm -e mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
 
 ```
- #### 配置MHA（在manager节点上操作）
+#### 1、配置MHA（在manager节点上操作）
+```
+```
  
 ## 五、Node节点
     在三个节点上都装mha的node软件
