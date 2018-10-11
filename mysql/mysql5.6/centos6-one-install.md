@@ -1,10 +1,16 @@
-## 一、设置主机host
+## 一、设置主机host和关闭selinux
 ```
 cat > /etc/hosts <<EOF
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 192.168.56.10 master master.example.com
 EOF
+
+#关闭selinux
+[root@master ~]# sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
+[root@master ~]# setenforce 0
+[root@master ~]# getenforce
+Permissive
 ```
 
 ## 二、设置yum源
