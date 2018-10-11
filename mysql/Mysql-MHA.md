@@ -1,11 +1,11 @@
 ## 一、结构图
 
-    测试服务器环境均为Centos7，测试结构如下图：
+    #测试服务器环境均为Centos7，测试结构如下图：
 
   ![MHA测试架构](https://github.com/Lancger/opslinux/blob/master/images/MHA测试架构.png)
-  ```
-  其中master对外提供写服务，备选master（实际的slave，主机名server03）提供读服务，slave也提供相关的读服务，一旦master宕机，将会把备选master提升为新的master，slave指向新的master
-  ```
+  
+    其中master对外提供写服务，备选master（实际的slave，主机名server03）提供读服务，slave也提供相关的读服务，一旦master宕机，将会把备选master提升为新的master，slave指向新的master
+  
   
 ```
 mysql-master：      192.168.56.10            ------> mha_node1 
