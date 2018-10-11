@@ -31,15 +31,16 @@ yum -y remove mysql-libs.x86_64
 wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
 rpm -ivh mysql-community-release-el6-5.noarch.rpm
 
-yum clean all   
 yum -y install mysql-community-server
-
 ```
+
 ## 三、错误提示
 ```
-如果上面使用的mysql-community-release-el7-5.noarch.rpm包安装的，会报如下错误
+rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm  --使用这个源，会报下面的错误（建议直接使用centos6的源）
+
+如果使用上面的mysql-community-release-el7-5.noarch.rpm包安装的，会报如下错误
+
 #报错
-#rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm  --使用这个源，会报下面的错误（建议直接使用centos6的rpm）
 
 错误：Package: mysql-community-client-5.6.39-2.el7.x86_64 (mysql56-community)
           Requires: libc.so.6(GLIBC_2.17)(64bit)
