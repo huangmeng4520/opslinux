@@ -18,6 +18,13 @@ Total DISK READ: 0.00 B/s | Total DISK WRITE: 41.00 K/s
 33866 be/4 nobody      0.00 B/s  208.41 K/s  0.00 %  0.00 % nginx: worker process
 
 #iostat -x -k -d 1 2。每隔2S输出磁盘IO的详细详细，总共采样5次。
+
+-c：只显示系统CPU统计信息，即单独输出avg-cpu结果，不包括device结果
+-d：单独输出Device结果，不包括cpu结果
+-k/-m：输出结果以kB/mB为单位，而不是以扇区数为单位
+-x:输出更详细的io设备统计信息
+interval/count：每次输出间隔时间，count表示输出次数，不带count表示循环输出
+
 [root@tw06a1671 ~]# iostat -x 2 5
 Linux 2.6.32-431.el6.x86_64 (tw06a1671)         10/11/2018      _x86_64_        (24 CPU)
 
