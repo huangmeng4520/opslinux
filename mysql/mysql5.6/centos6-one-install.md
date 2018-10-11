@@ -13,6 +13,9 @@ EOF
 
 rpm -Uvh http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
 
+#如果是centos6.8的就是用下面的rpm
+rpm -Uvh http://repo.mysql.com/mysql-community-release-el6-8.noarch.rpm
+
 #这个时候查看当前可用的mysql安装资源：
 
 yum repolist all | grep mysql
