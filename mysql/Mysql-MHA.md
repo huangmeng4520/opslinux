@@ -15,8 +15,10 @@ mysql-slave：       192.168.56.30            ------> mha_manager
 ```
 
 ## 环境部署：
+
+    三台机器安装mysql5.6，并配置好主从
+
 ```
-三台机器安装mysql5.6，并配置好主从
 
 1、更改主机名，添加hosts文件
 hostnamectl set-hostname mha_node1
