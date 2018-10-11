@@ -7,6 +7,9 @@
 
 - [Mysql-MHA原理和部署](https://github.com/Lancger/opslinux/blob/master/mysql/Mysql-MHA.md)
 
+- [Mysql架构分享和调优](https://github.com/Lancger/opslinux/blob/master/mysql/MYSQL企业常用架构与调优经验分享.md)
+
+
 
 ## 二、修改密码
 ```
