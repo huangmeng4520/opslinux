@@ -87,8 +87,12 @@ rpm -ivh mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
 rpm -e mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
 
 ```
-#### 2、配置MHA（在manager节点上操作）
+    2、配置MHA（在manager节点上操作）
 ```
+	#创建目录
+	mkdir -p /etc/mha/scripts
+    
+    
 ```
  
 ## 五、Node节点
