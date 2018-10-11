@@ -11,21 +11,36 @@ EOF
 ```
 #Centos自带的repo是不会自动更新每个软件的最新版本，所以无法通过yum方式安装MySQL的高级版本。所以，即使使劲用yum -y install mysql mysql-server mysql-devel，也是没用的。 所以，正确的安装mysql5姿势是要先安装带有可用的mysql5系列社区版资源的rpm包
 
-rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+rpm -Uvh http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
 
 #这个时候查看当前可用的mysql安装资源：
 
-yum repolist enabled | grep "mysql.*-community.*"
+yum repolist all | grep mysql
 
 一般来说，只要安装mysql-server跟mysql-client 这个时候我们可以直接使用yum的方式安装MySQL了
 ```
 
 ## 三、通过 Yum 来安装 MySQL
 ```
+1、检查系统是否安装其他版本的MYSQL数据
+
+yum list installed | grep mysql
+yum -y remove mysql-libs.x86_64
+
+2、安装及配置
+wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
+rpm -ivh mysql-community-release-el6-5.noarch.rpm
+
 yum clean all   
 yum -y install mysql-community-server
 
+```
+## 三、错误提示
+```
+如果上面使用的mysql-community-release-el7-5.noarch.rpm包安装的，会报如下错误
 #报错
+#rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm  --使用这个源，会报下面的错误（建议直接使用centos6的rpm）
+
 错误：Package: mysql-community-client-5.6.39-2.el7.x86_64 (mysql56-community)
           Requires: libc.so.6(GLIBC_2.17)(64bit)
  You could try using --skip-broken to work around the problem
@@ -72,16 +87,9 @@ C、修改mysql-community.repo中baseurl的值
 ## 四、启动mysql服务
 
 ```
-systemctl enable mysqld
-systemctl disable mysqld
-
-
-systemctl start mysqld
-systemctl restart mysqld
-
-systemctl stop mysqld
-
-systemctl status mysqld
+#设置为开机启动
+chkconfig --list | grep mysqld
+chkconfig mysqld on
 ```
 
 ## 五、mysql修改密码
