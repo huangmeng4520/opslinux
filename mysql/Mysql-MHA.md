@@ -18,5 +18,25 @@ mysql-slave：       192.168.56.30            ------> mha_manager
 ```
 三台机器安装mysql5.6，并配置好主从
 
-分别在mysql中执行grant all on *.* to root@'%' identified by '123456';
+1、更改主机名，添加hosts文件
+hostnamectl set-hostname mha_node1
+hostnamectl set-hostname mha_node2
+hostnamectl set-hostname mha_manager
+
+cat > /etc/hosts <<EOF
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.56.10 mha_node1   mha_node1.example.com
+192.168.56.20 mha_node2   mha_node1.example.com
+192.168.56.30 mha_manager mha_manager.example.com
+EOF
+
+1、安装依赖包
+yum install -y gcc ntpdate wget lrzsz vim net-tools openssh-clients*
+
+2、安装epel源
+yum install -y epel-release
+
+3、安装组件
+
 ````
