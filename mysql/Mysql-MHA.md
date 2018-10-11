@@ -65,19 +65,30 @@ for i in mha_node1 mha_node2 mha_manager; do ssh $i; done
 1、安装epel源
 yum install -y epel-release
 
+wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+rpm -ivh epel-release-latest-7.noarch.rpm
+
 2、安装依赖包
 yum clean all
 yum -y install perl-DBD-MySQL perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager perl-Config-IniFiles ncftp perl-Params-Validate perl-CPAN perl-Test-Mock-LWP.noarch perl-LWP-Authen-Negotiate.noarch perl-devel perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
 
 ````
 
-## 四、Master
-仅在manager节点上安装mha管理软件
+## 四、Master节点
+    仅在manager节点上安装mha管理软件
 ```
-	wget https://qiniu.wsfnk.com/mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
-	#wget https://github.com/yoshinorim/mha4mysql-manager/releases/download/v0.58/mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
-	rpm -ivh mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
-```
-## 五、Node节点
-在三个节点上都装mha的node软件
+wget https://qiniu.wsfnk.com/mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
+#wget https://github.com/yoshinorim/mha4mysql-manager/releases/download/v0.58/mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
 
+rpm -ivh mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
+```
+ #### 配置MHA（在manager节点上操作）
+ 
+## 五、Node节点
+    在三个节点上都装mha的node软件
+```
+wget https://qiniu.wsfnk.com/mha4mysql-node-0.58-0.el7.centos.noarch.rpm
+#wget https://github.com/yoshinorim/mha4mysql-node/releases/download/v0.58/mha4mysql-node-0.58-0.el7.centos.noarch.rpm
+	
+rpm -ivh mha4mysql-node-0.58-0.el7.centos.noarch.rpm
+```
