@@ -11,6 +11,7 @@ EOF
 ```
 #Centos自带的repo是不会自动更新每个软件的最新版本，所以无法通过yum方式安装MySQL的高级版本。所以，即使使劲用yum -y install mysql mysql-server mysql-devel，也是没用的。 所以，正确的安装mysql5姿势是要先安装带有可用的mysql5系列社区版资源的rpm包
 
+#如果是centos6.5的就是用下面的rpm
 rpm -Uvh http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
 
 #如果是centos6.8的就是用下面的rpm
