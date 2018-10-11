@@ -146,6 +146,10 @@ pid-file=/var/run/mysqld/mysqld.pid
 ## 五、启动mysql服务
 
 ```
+/etc/init.d/mysqld start
+/etc/init.d/mysqld stop
+/etc/init.d/mysqld restart
+
 #设置为开机启动
 chkconfig --list | grep mysqld
 chkconfig mysqld on
