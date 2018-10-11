@@ -63,8 +63,9 @@ C、修改mysql-community.repo中baseurl的值
 
     //修改之前
 
+    vim /etc/yum.repos.d/mysql-community.repo
+    
     # enable to use MySQL 5.6
-
     [mysql56-community]
     name=MySQL 5.6 Community Server
     baseurl=http://repo.mysql.com/yum/mysql-5.6-community/el/7/$basearch/
@@ -75,7 +76,6 @@ C、修改mysql-community.repo中baseurl的值
     //修改之后
 
     # enable to use MySQL 5.6
-
     [mysql56-community]
     name=MySQL 5.6 Community Server
     baseurl=http://repo.mysql.com/yum/mysql-5.6-community/el/6/$basearch/
