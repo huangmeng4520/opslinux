@@ -28,15 +28,14 @@ Total DISK READ: 0.00 B/s | Total DISK WRITE: 0.00 B/s
 -x:输出更详细的io设备统计信息
 interval/count：每次输出间隔时间，count表示输出次数，不带count表示循环输出
 
-[root@master ~]# iostat -x 2 5
-Linux 2.6.32-431.el6.x86_64 (tw06a1671)         10/11/2018      _x86_64_        (24 CPU)
+[root@localhost ~]# iostat -x -k -d 2 5
+Linux 2.6.32-504.el6.x86_64 (localhost.localdomain) 	10/11/2018 	_x86_64_	(1 CPU)
 
-avg-cpu:  %user   %nice %system %iowait  %steal   %idle
-           9.76    0.00    7.81    0.18    0.00   82.25
-
-Device:         rrqm/s   wrqm/s     r/s     w/s   rsec/s   wsec/s avgrq-sz avgqu-sz   await r_await w_await  svctm  %util
-sdb               0.00   959.11    0.41   23.22    70.35  7858.67   335.48     0.12    5.25   17.44    5.04   2.12   5.01
-sda               0.77     6.42    0.62    8.45    15.57   118.94    14.83     0.04    4.49    9.18    4.14   3.09   2.80
+Device:         rrqm/s   wrqm/s     r/s     w/s    rkB/s    wkB/s avgrq-sz avgqu-sz   await r_await w_await  svctm  %util
+scd0              0.00     0.00    0.00    0.00     0.02     0.00     8.00     0.00    0.97    0.97    0.00   0.97   0.00
+sda               0.18     0.42    0.54    0.18    10.98     2.38    37.31     0.00    0.62    0.38    1.34   0.33   0.02
+dm-0              0.00     0.00    0.57    0.59    10.47     2.38    22.09     0.00    1.87    0.67    3.03   0.19   0.02
+dm-1              0.00     0.00    0.04    0.00     0.14     0.00     8.00     0.00    0.22    0.22    0.00   0.12   0.00
 
 rrqm/s: 每秒对该设备的读请求被合并次数，文件系统会对读取同块(block)的请求进行合并
 wrqm/s: 每秒对该设备的写请求被合并次数
