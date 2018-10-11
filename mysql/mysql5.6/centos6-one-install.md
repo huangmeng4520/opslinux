@@ -66,7 +66,6 @@ B、清楚缓存yum clean all
 C、修改mysql-community.repo中baseurl的值
 
     //修改之前
-
     vim /etc/yum.repos.d/mysql-community.repo
     
     # enable to use MySQL 5.6
@@ -78,15 +77,13 @@ C、修改mysql-community.repo中baseurl的值
     gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
         
     //修改之后
-
     # enable to use MySQL 5.6
     [mysql56-community]
     name=MySQL 5.6 Community Server
     baseurl=http://repo.mysql.com/yum/mysql-5.6-community/el/6/$basearch/
     enabled=1
     gpgcheck=1
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
-        
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql     
 ```
 
 ## 四、配置my.cnf
@@ -184,6 +181,7 @@ mysql> show grants for root@"%";
 mysql> update user set Password = password('123456') where User='root';
 mysql> select Host,User,Password from user where User='root';
 mysql> flush privileges;
+#####################
 ```
 
 ### 方法二: 安全设置（设置密码）
