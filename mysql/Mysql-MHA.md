@@ -14,7 +14,7 @@ mysql-master-bak：  192.168.56.20            ------> mha_node2
 mysql-slave：       192.168.56.30            ------> mha_manager
 ```
 
-## 二、环境初始化：
+## 二、环境初始化
 
     三台机器安装mysql5.6，并配置好主从
 
@@ -60,7 +60,7 @@ for i in mha_node1 mha_node2 mha_manager; do ssh $i; done
 
 ```
 
-## 三、环境初始化：
+## 三、环境初始化
 ```
 1、安装epel源
 yum install -y epel-release
@@ -69,6 +69,15 @@ yum install -y epel-release
 yum clean all
 yum -y install perl-DBD-MySQL perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager perl-Config-IniFiles ncftp perl-Params-Validate perl-CPAN perl-Test-Mock-LWP.noarch perl-LWP-Authen-Negotiate.noarch perl-devel perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
 
-3、安装组件
-
 ````
+
+## 四、Master
+仅在manager节点上安装mha管理软件
+```
+	wget https://qiniu.wsfnk.com/mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
+	#wget https://github.com/yoshinorim/mha4mysql-manager/releases/download/v0.58/mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
+	rpm -ivh mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
+```
+## 五、Node节点
+在三个节点上都装mha的node软件
+
