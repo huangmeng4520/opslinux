@@ -5,8 +5,8 @@
 
 ## 二、现场抓取
 ```
-#
-[root@tw06a1671 ~]# iotop
+########################
+[root@master ~]# iotop
 Total DISK READ: 0.00 B/s | Total DISK WRITE: 41.00 K/s
   TID  PRIO  USER     DISK READ  DISK WRITE  SWAPIN     IO>    COMMAND                                                                                                              
 52026 be/4 root        0.00 B/s    3.42 K/s  0.00 %  0.00 % java -Xms256m -Xmx256m -server -XX:+UseConcMarkSweepGC -XX:~-client/.o_galaxy_xyipk.exist --skip 86400 --ignore_ts false
@@ -17,6 +17,9 @@ Total DISK READ: 0.00 B/s | Total DISK WRITE: 41.00 K/s
 33865 be/4 nobody      0.00 B/s  245.99 K/s  0.00 %  0.00 % nginx: worker process
 33866 be/4 nobody      0.00 B/s  208.41 K/s  0.00 %  0.00 % nginx: worker process
 
+
+
+########################
 #iostat -x -k -d 1 2。每隔2S输出磁盘IO的详细详细，总共采样5次。
 
 -c：只显示系统CPU统计信息，即单独输出avg-cpu结果，不包括device结果
@@ -25,7 +28,7 @@ Total DISK READ: 0.00 B/s | Total DISK WRITE: 41.00 K/s
 -x:输出更详细的io设备统计信息
 interval/count：每次输出间隔时间，count表示输出次数，不带count表示循环输出
 
-[root@tw06a1671 ~]# iostat -x 2 5
+[root@master ~]# iostat -x 2 5
 Linux 2.6.32-431.el6.x86_64 (tw06a1671)         10/11/2018      _x86_64_        (24 CPU)
 
 avg-cpu:  %user   %nice %system %iowait  %steal   %idle
