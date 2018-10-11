@@ -80,10 +80,12 @@ yum -y install perl-DBD-MySQL perl-Config-Tiny perl-Log-Dispatch perl-Parallel-F
 wget https://qiniu.wsfnk.com/mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
 #wget https://github.com/yoshinorim/mha4mysql-manager/releases/download/v0.58/mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
 
+#安装
 rpm -ivh mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
 
 #卸载
 rpm -e mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
+
 ```
  #### 配置MHA（在manager节点上操作）
  
@@ -93,8 +95,34 @@ rpm -e mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
 wget https://qiniu.wsfnk.com/mha4mysql-node-0.58-0.el7.centos.noarch.rpm
 #wget https://github.com/yoshinorim/mha4mysql-node/releases/download/v0.58/mha4mysql-node-0.58-0.el7.centos.noarch.rpm
 
-#	
+#安装	
 rpm -ivh mha4mysql-node-0.58-0.el7.centos.noarch.rpm
+
 #卸载
 rpm -e mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
+
+```
+
+### 六、查看软件包的安装位置
+
+```
+#查看包的安装位置
+root># rpm -qa|grep mha
+mha4mysql-node-0.58-0.el7.centos.noarch
+mha4mysql-manager-0.58-0.el7.centos.noarch
+
+root># rpm -ql mha4mysql-manager-0.58-0.el7.centos.noarch
+/usr/bin/masterha_check_repl
+/usr/bin/masterha_check_ssh
+/usr/bin/masterha_check_status
+/usr/bin/masterha_conf_host
+
+root># rpm -ql mha4mysql-node-0.58-0.el7.centos.noarch
+/usr/bin/apply_diff_relay_logs
+/usr/bin/filter_mysqlbinlog
+/usr/bin/purge_relay_logs
+
+#卸载
+yum remove -y mha4mysql-manager-0.58-0.el7.centos.noarch
+yum remove -y mha4mysql-node-0.58-0.el7.centos.noarch
 ```
