@@ -62,11 +62,12 @@ for i in mha_node1 mha_node2 mha_manager; do ssh $i; done
 
 ## 三、环境初始化：
 ```
-1、安装依赖包
-yum install -y gcc ntpdate wget lrzsz vim net-tools openssh-clients*
-
-2、安装epel源
+1、安装epel源
 yum install -y epel-release
+
+2、安装依赖包
+yum clean all
+yum -y install perl-DBD-MySQL perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager perl-Config-IniFiles ncftp perl-Params-Validate perl-CPAN perl-Test-Mock-LWP.noarch perl-LWP-Authen-Negotiate.noarch perl-devel perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
 
 3、安装组件
 
