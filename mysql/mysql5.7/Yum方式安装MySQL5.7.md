@@ -54,6 +54,7 @@ yum -y install mysql-community-server
       7 rows in set (0.01 sec)
 
     7、修改密码长度和策略限制
+    
     mysql> set global validate_password_policy=0;
     mysql> set global validate_password_length=1;
       
