@@ -181,3 +181,5 @@ root># rpm -ql mha4mysql-node-0.58-0.el7.centos.noarch
 yum remove -y mha4mysql-manager-0.58-0.el7.centos.noarch
 yum remove -y mha4mysql-node-0.58-0.el7.centos.noarch
 ```
+
+参看文档： https://boke.wsfnk.com/archives/537.html
