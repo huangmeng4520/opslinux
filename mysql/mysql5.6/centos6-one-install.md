@@ -175,6 +175,11 @@ mysql> show grants for root@"%";
 | GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION |
 +-------------------------------------------------------------+
 1 row in set (0.00 sec)
+
+#####################
+mysql> update user set Password = password('123456') where User='root';
+mysql> select Host,User,Password from user where User='root';
+mysql> flush privileges;
 ```
 
 ### 方法二: 安全设置（设置密码）
