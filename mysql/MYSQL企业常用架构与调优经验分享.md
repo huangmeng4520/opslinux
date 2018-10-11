@@ -1,5 +1,6 @@
 ## 一、选择Percona Server、MariaDB还是MySQL
 
+```
 1、Mysql三种存储引擎
 
 MySQL提供了两种存储引擎：MyISAM和 InnoDB，MySQL4和5使用默认的MyISAM存储引擎。从MYSQL5.5开始，MySQL已将默认存储引擎从MyISAM更改为InnoDB。
@@ -25,3 +26,4 @@ MariaDB提供了MySQL提供的标准存储引擎，即MyISAM和InnoDB，10.0.9�
 4、如何选择
 
 综合多年使用经验和性能对比，首选Percona分支，其次是MariaDB，如果你不想冒一点风险，那就选择MYSQL官方版本。
+```
