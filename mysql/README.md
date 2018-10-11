@@ -3,6 +3,8 @@
 
 - [Centos7安装mysql5.6](https://github.com/Lancger/opslinux/blob/master/mysql/mysql5.6/centos7-one-install.md)
 
+- [Centos7安装mysql5.7](https://github.com/Lancger/opslinux/blob/master/mysql/mysql5.7/centos7-one-install.md)
+
 - [Mysql主从架构](https://github.com/Lancger/opslinux/blob/master/mysql/mysql%E4%B8%BB%E4%BB%8E%E6%9E%B6%E6%9E%84.md)
 
 - [Mysql-MHA原理和部署](https://github.com/Lancger/opslinux/blob/master/mysql/Mysql-MHA.md)
