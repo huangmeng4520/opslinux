@@ -60,3 +60,5 @@ FW Version         : 4.250.01-4405
 NVDATA Version     : 3.1411.01-0015
 Boot Block Version : 3.02.00.00-0001
 ```
+
+参考文档： https://blog.csdn.net/xinqidian_xiao/article/details/80940306
