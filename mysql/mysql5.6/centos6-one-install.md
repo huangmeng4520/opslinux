@@ -1,5 +1,10 @@
 ## 一、设置主机host和关闭selinux
 ```
+#设置主机名
+[root@localhost ~]# vi /etc/hostname 
+master.example.com
+
+#绑定host
 cat > /etc/hosts <<EOF
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
