@@ -8,3 +8,10 @@ mysql-master-bak：  192.168.56.20            ------> mha_node2
 
 mysql-slave：       192.168.56.30            ------> mha_manager
 ```
+
+## 环境部署：
+```
+三台机器安装mysql5.6，并配置好主从
+
+分别在mysql中执行grant all on *.* to root@'%' identified by '123456';
+````
