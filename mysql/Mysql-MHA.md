@@ -137,6 +137,10 @@ master_binlog_dir="/var/lib/mysql"
 #表示没有机会成为master
 no_master=1
 EOF
+
+#配置VIP
+#为了防止脑裂发生,推荐生产环境采用脚本的方式来管理虚拟 ip,而不是使用 keepalived来完成。
+
 ```
     
  
