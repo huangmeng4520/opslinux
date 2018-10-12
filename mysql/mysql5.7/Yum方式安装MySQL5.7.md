@@ -9,6 +9,13 @@ wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm
 yum -y install mysql57-community-release-el7-10.noarch.rpm
 
 yum -y install mysql-community-server
+
+#关闭selinux
+[root@master ~]# sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
+[root@master ~]# setenforce 0
+[root@master ~]# getenforce
+Permissive
+
 ```
 
 ## 2、MySQL数据库设置
