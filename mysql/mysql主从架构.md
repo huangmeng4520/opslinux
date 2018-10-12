@@ -249,6 +249,7 @@ mysql -uroot -p123456 -e "show databases"
 
 1、在主数据库上创建用于主从复制的账户(192.168.56.20换成你的从数据库IP,这里有多个从,所以写成%):
 mysql> GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.56.%' IDENTIFIED BY 'repl';
+mysql> GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%' IDENTIFIED BY 'repl';
 
 2、主数据库锁表(禁止再插入数据以获取主数据库的的二进制日志坐标):
 mysql> FLUSH TABLES WITH READ LOCK;
