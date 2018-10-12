@@ -63,5 +63,53 @@ yum -y install mysql-community-server
     yum -y remove mysql57-community-release-el7-10.noarch
      
     大功告成
-      
-      
+ 
+ 
+## 3、MySQL配置文件
+```
+cat >/etc/my.cnf <<EOF
+# For advice on how to change settings please see
+# http://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html
+
+[mysqld]
+#
+# Remove leading # and set to the amount of RAM for the most important data
+# cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.
+# innodb_buffer_pool_size = 128M
+#
+# Remove leading # to turn on a very important data integrity option: logging
+# changes to the binary log between backups.
+# log_bin
+#
+# Remove leading # to set options mainly useful for reporting servers.
+# The server defaults are faster for transactions and fast SELECTs.
+# Adjust sizes as needed, experiment to find the optimal values.
+# join_buffer_size = 128M
+# sort_buffer_size = 2M
+# read_rnd_buffer_size = 2M
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+
+character_set_server=utf8
+init_connect='SET NAMES utf8'
+
+## 开启binlog日志记录
+server-id=1
+log-bin=/var/lib/mysql/mysql-bin
+
+## 禁用密码检测插件
+validate_password=OFF
+
+## 开启慢查询日志记录
+slow_query_log=on
+slow-query-log-file=/var/log/mysqld-slow.log
+long_query_time=1
+
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+EOF
+```
+
