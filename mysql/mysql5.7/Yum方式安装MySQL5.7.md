@@ -114,6 +114,19 @@ slow_query_log=on
 slow-query-log-file=/var/log/mysqld-slow.log
 long_query_time=1
 
+## 主从复制的格式（mixed,statement,row，默认格式是statement）
+binlog_format=MIXED
+
+## 二进制日志自动删除/过期的天数。默认值为0，表示不自动删除。
+expire_logs_days=7
+
+## 复制过滤：也就是指定哪个数据库不用同步（mysql、information_schema库一般不同步）
+binlog-ignore-db=mysql
+binlog-ignore-db=information_schema
+
+## 指定需要同步的数据库
+#binlog-do-db=memberdb
+
 ## 禁用密码检测插件
 validate_password=OFF
 
