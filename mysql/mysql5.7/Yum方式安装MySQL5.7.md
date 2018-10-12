@@ -97,13 +97,13 @@ init_connect='SET NAMES utf8'
 server-id=1
 log-bin=/var/lib/mysql/mysql-bin
 
-## 禁用密码检测插件
-validate_password=OFF
-
 ## 开启慢查询日志记录
 slow_query_log=on
 slow-query-log-file=/var/log/mysqld-slow.log
 long_query_time=1
+
+## 禁用密码检测插件
+validate_password=OFF
 
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
