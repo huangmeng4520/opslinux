@@ -64,6 +64,20 @@ Permissive
     
     mysql> set global validate_password_policy=0;
     mysql> set global validate_password_length=1;
+    
+    接下来就可以修改密码了
+    
+    #方式一
+    mysql> set password=password('123456');
+
+    #方式二
+    mysql> use mysql
+    mysql> GRANT ALL PRIVILEGES ON *.* TO root@"%" IDENTIFIED BY "root";
+    mysql> update user set Password = password('123456') where User='root';
+    mysql> show grants for root@"%";
+    mysql> flush privileges;
+    mysql> select Host,User,Password from user where User='root';
+    mysql> exit
       
     8、但此时还有一个问题，就是因为安装了Yum Repository，以后每次yum操作都会自动更新，需要把这个卸载掉：
      
