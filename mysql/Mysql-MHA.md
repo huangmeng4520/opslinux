@@ -72,6 +72,10 @@ rpm -ivh epel-release-latest-7.noarch.rpm
 yum clean all
 yum -y install perl-DBD-MySQL perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager perl-Config-IniFiles ncftp perl-Params-Validate perl-CPAN perl-Test-Mock-LWP.noarch perl-LWP-Authen-Negotiate.noarch perl-devel perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
 
+3、数据库授权
+mysql> GRANT ALL PRIVILEGES ON *.* TO root@"192.168.56.%" IDENTIFIED BY "123456";
+mysql> flush privileges;
+mysql> exit
 ````
 
 ## 四、Node节点(node需要先安装)
