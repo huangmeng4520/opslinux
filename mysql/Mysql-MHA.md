@@ -74,6 +74,7 @@ yum -y install perl-DBD-MySQL perl-Config-Tiny perl-Log-Dispatch perl-Parallel-F
 
 3、数据库授权
 mysql> GRANT ALL PRIVILEGES ON *.* TO root@"192.168.56.%" IDENTIFIED BY "123456";
+mysql> GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%' IDENTIFIED BY 'repl';
 mysql> flush privileges;
 mysql> exit
 ````
