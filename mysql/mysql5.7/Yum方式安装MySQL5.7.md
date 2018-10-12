@@ -125,3 +125,5 @@ pid-file=/var/run/mysqld/mysqld.pid
 EOF
 ```
 
+    systemctl restart mysqld.service
+
