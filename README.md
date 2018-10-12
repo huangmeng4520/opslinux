@@ -114,7 +114,15 @@ Deleted branch temp (was 7eb97aa).
 
 如果该分支的代码之前没有merge到本地，那么删除该分支会报错，可以使用git branch -D temp强制删除该分支。
  
-test
+6、然后再执行
+
+git add *
+  
+git commit -m "项目更新"
+
+git push origin master
+  
+#解决了冲突合并了，才可以提交上来
 ```
 参考：https://blog.csdn.net/liang0000zai/article/details/50724632
 
