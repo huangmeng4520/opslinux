@@ -282,4 +282,65 @@ yum remove -y mha4mysql-manager-0.58-0.el7.centos.noarch
 yum remove -y mha4mysql-node-0.58-0.el7.centos.noarch
 ```
 
+### 七、切换步骤记录
+```
+mysql -uroot -p -h127.0.0.1 -P3306 < /tmp/all.sql
+
+GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.56.%' IDENTIFIED BY 'repl';
+GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%' IDENTIFIED BY 'repl';
+
+FLUSH TABLES WITH READ LOCK;
+mysql> SHOW MASTER STATUS;
++------------------+----------+--------------+--------------------------+-------------------+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB         | Executed_Gtid_Set |
++------------------+----------+--------------+--------------------------+-------------------+
+| mysql-bin.000019 |      154 |              | mysql,information_schema |                   |
++------------------+----------+--------------+--------------------------+-------------------+
+1 row in set (0.00 sec)
+
+
+show grants for repl@"%";
+
+mysqldump -uroot -p -h127.0.0.1 -P3306 --all-databases --triggers --routines --events >/tmp/all.sql
+
+scp /tmp/all.sql 192.168.56.20:/tmp/
+
+scp /tmp/all.sql 192.168.56.30:/tmp/
+
+
+systemctl restart mysqld
+
+tail -100f /var/log/mysqld.log
+
+mysql -uroot -p123456
+stop slave;
+reset slave;
+CHANGE MASTER TO MASTER_HOST='192.168.56.10',MASTER_USER='repl',MASTER_PASSWORD='repl',MASTER_LOG_FILE='mysql-bin.000019',MASTER_LOG_POS=154,MASTER_CONNECT_RETRY=5;
+start slave;
+exit
+
+
+mysql -uroot -p123456 -e "show slave hosts;"
+
+
+rm -rf /etc/masterha
+
+scp -rp /etc/masterha 192.168.56.10:/etc/
+scp -rp /etc/masterha 192.168.56.20:/etc/
+
+
+mysql -uroot -p123456 -e "show grants for repl@'%';"
+
+masterha_check_ssh --conf=/etc/masterha/vip_app_default.cnf
+
+masterha_check_repl --conf=/etc/masterha/vip_app_default.cnf
+
+masterha_check_status --conf=/etc/masterha/vip_app_default.cnf
+
+#手动切换
+masterha_master_switch --master_state=alive --conf=/etc/masterha/vip_app_default.cnf --orig_master_is_new_slave
+
+tail -100f /var/log/mysqld.log
+```
+
 参看文档： https://boke.wsfnk.com/archives/537.html
