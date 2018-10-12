@@ -66,6 +66,11 @@ yum -y install mysql-community-server
  
  
 ## 3、MySQL配置文件
+
+    #创建慢日志文件并赋权限
+    touch /var/log/mysqld-slow.log
+    chown mysql:mysql /var/log/mysqld-slow.log
+
 ```
 cat >/etc/my.cnf <<EOF
 # For advice on how to change settings please see
