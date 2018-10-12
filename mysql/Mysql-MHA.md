@@ -74,7 +74,7 @@ yum -y install perl-DBD-MySQL perl-Config-Tiny perl-Log-Dispatch perl-Parallel-F
 
 ````
 
-## 四、Node节点
+## 四、Node节点(node需要先安装)
 
     1、在三个节点上都装mha的node软件
 ```
