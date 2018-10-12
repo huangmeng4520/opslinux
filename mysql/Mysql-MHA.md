@@ -100,7 +100,6 @@ wget https://qiniu.wsfnk.com/mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
 #rpm -ivh mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
 yum install mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
 
-
 #卸载
 rpm -e mha4mysql-manager-0.58-0.el7.centos.noarch.rpm
 
