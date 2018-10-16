@@ -1,6 +1,9 @@
 ## 一、安装依赖
 ```bash
 yum install -y readline readline-devel gcc gcc-c++ zlib zlib-devel openssl openssl-devel sqlite-devel python-devel
+
+#python3.7版本需要
+yum install libffi-devel -y
 ```
 
 ## 二、下载并安装python3.6
