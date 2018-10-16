@@ -39,5 +39,11 @@ cmake \
 -DMYSQL_TCP_PORT=3306 \
 -DENABLE_DOWNLOADS=0
 ```
+    参数解释
  ![mysql5.6编译参数详解](https://github.com/Lancger/opslinux/blob/master/images/mysql5.6-make.png)
+    
+    注：重新运行配置，需要删除CMakeCache.txt文件
 
+```bash
+rm CMakeCache.txt
+```
