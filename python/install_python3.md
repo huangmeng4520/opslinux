@@ -19,7 +19,7 @@ ln -s /usr/local/python3.7/bin/pip3 /usr/bin/pip3
 ln -s /usr/local/python3.7/bin/pyvenv /usr/bin/pyvenv
 
 # 链接库文件
-cp /usr/local/python3.7/lib/libpython3.6m.so.1.0 /usr/local/lib
+cp /usr/local/python3.7/lib/libpython3.7m.so.1.0 /usr/local/lib
 cd /usr/local/lib
 ln -s libpython3.7m.so.1.0 libpython3.7m.so
 echo '/usr/local/lib' >> /etc/ld.so.conf
