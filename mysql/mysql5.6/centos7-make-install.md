@@ -48,8 +48,57 @@ cmake \
 rm CMakeCache.txt
 ```
 ```bash
-编译源码
+#编译源码
 make
-安装
+#安装
 make install
+```
+## 六、初始化mysql数据库
+```bash
+touch /usr/local/mysql/mysql.error
+
+chown -R mysql.mysql /usr/local/mysql
+
+cd /usr/local/mysql/scripts
+
+./mysql_install_db --user=mysql --basedir=/usr/local/mysql --datadir=/data/mysql
+```
+    #复制mysql服务启动配置文件
+    cp /usr/local/mysql/support-files/my-default.cnf /etc/my.cnf
+    
+    #复制mysql服务启动脚本及加入PATH路径
+    cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysqld 
+
+    vim /etc/profile
+    export  PATH=/usr/local/mysql/bin:/usr/local/mysql/lib:$PATH
+
+    source /etc/profile
+
+## 七、配置my.cnf
+```bash
+[client]
+port            = 3306
+socket          = /usr/local/mysql/mysql.sock   
+default-character-set=utf8    
+ 
+[mysqld]    
+port            = 3306
+socket          = /usr/local/mysql/mysql.sock
+pid-file        = /usr/local/mysql/mysql.pid
+character_set_server=utf8   
+character_set_client=utf8
+collation-server=utf8_general_ci
+log-error      = /usr/local/mysql/mysql.sock
+
+
+
+#(注意linux下mysql安装完后是默认：表名区分大小写，列名不区分大小写； 0：区分大小写，1：不区分大小写)    
+lower_case_table_names=1
+
+#(设置最大连接数，默认为 151，MySQL服务器允许的最大连接数16384; )    
+max_connections=1000
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+ 
+[mysql]
+default-character-set = utf8
 ```
