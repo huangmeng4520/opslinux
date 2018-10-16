@@ -1,4 +1,9 @@
-## 一、下载并安装python3.6
+## 一、安装依赖
+```bash
+yum install -y readline readline-devel gcc gcc-c++ zlib zlib-devel openssl openssl-devel sqlite-devel python-devel
+```
+
+## 二、下载并安装python3.6
 ```bash
 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz
