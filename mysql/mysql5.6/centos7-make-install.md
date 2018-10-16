@@ -47,3 +47,9 @@ cmake \
 ```bash
 rm CMakeCache.txt
 ```
+```bash
+编译源码
+make
+安装
+make install
+```
