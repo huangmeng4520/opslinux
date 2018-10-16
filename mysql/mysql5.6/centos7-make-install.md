@@ -39,4 +39,5 @@ cmake \
 -DMYSQL_TCP_PORT=3306 \
 -DENABLE_DOWNLOADS=0
 ```
+ ![mysql5.6编译参数详解](https://github.com/Lancger/opslinux/blob/master/images/mysql5.6-make.png)
 
