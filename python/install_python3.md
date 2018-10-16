@@ -25,3 +25,18 @@ ln -s libpython3.7m.so.1.0 libpython3.7m.so
 echo '/usr/local/lib' >> /etc/ld.so.conf
 /sbin/ldconfig
 ```
+
+## 三、pip升级
+```bash
+pip3 install --upgrade pip -i https://pypi.mirrors.ustc.edu.cn/simple/
+
+pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/  -r requirements.txt    #可用的
+```
+
+## 四、创建虚拟环境
+```bash
+cd /usr/local/
+/usr/local/python3.7/bin/pyvenv venv
+cd venv
+source bin/activate
+```
