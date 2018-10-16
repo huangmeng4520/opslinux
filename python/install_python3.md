@@ -36,7 +36,13 @@ pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/  -r requirements.txt   
 ## 四、创建虚拟环境
 ```bash
 cd /usr/local/
-/usr/local/python3.7/bin/pyvenv venv
-cd venv
+/usr/local/python3.7/bin/pyvenv demovenv
+cd demovenv
+source bin/activate
+
+#推荐使用
+cd /usr/local/
+python3 -m venv demovenv
+cd demovenv
 source bin/activate
 ```
