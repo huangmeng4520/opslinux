@@ -91,8 +91,6 @@ character_set_client=utf8
 collation-server=utf8_general_ci
 log-error      = /usr/local/mysql/mysql.sock
 
-
-
 #(注意linux下mysql安装完后是默认：表名区分大小写，列名不区分大小写； 0：区分大小写，1：不区分大小写)    
 lower_case_table_names=1
 
