@@ -133,3 +133,10 @@ lower_case_table_names=1
 log-error=/usr/local/mysql/mysqld.log
 pid-file=/usr/local/mysql/mysqld.pid
 ```
+
+## 八、启动mysql服务并加入开机自启动
+```bash
+service mysqld start
+chkconfig mysqld on
+```
+
