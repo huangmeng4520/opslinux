@@ -6,7 +6,8 @@ yum install -y gcc gcc-c++ ncurses-devel perl cmake autoconf
 ## 二、设置MySQL组和用户
 ```bash
 groupadd mysql
-useradd -M -s /sbin/nologin -r -g mysql mysql    
+useradd -M -s /sbin/nologin -r -g mysql mysql
+
 #useradd -r -g mysql mysql
 #passwd mysql
 ```
@@ -14,10 +15,10 @@ useradd -M -s /sbin/nologin -r -g mysql mysql
 ## 三、创建所需要的目录
 ```bash
 #新建mysql安装目录
-mkdir  -p /usr/local/mysql/
+mkdir -p /usr/local/mysql/
 
 #新建mysql数据库数据文件目录
-mkdir  -p /data/mysql/
+mkdir -p /data/mysql/
 ```
 
 ## 四、下载MySQL源码包并解压
