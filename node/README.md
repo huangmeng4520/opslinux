@@ -2,7 +2,8 @@
 
 ## 一、源码安装
 
-### 1、下载源码，你需要在https://nodejs.org/en/download/下载最新的Nodejs版本，本文v7.8.0以为例:
+### 1、下载源码
+    你需要在 https://nodejs.org/en/download/ 下载最新的Nodejs版本，本文v7.8.0以为例:
 ```bash
 yum install gcc gcc-c++
 cd /usr/local/src/
