@@ -8,7 +8,6 @@ yum install libffi-devel -y
 
 ## 二、下载并安装python3.6
 ```bash
-wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz
 tar -xzf Python-3.7.0.tgz 
 cd Python-3.7.0
