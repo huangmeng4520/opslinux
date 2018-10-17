@@ -56,7 +56,7 @@ make install
 ```
 ## 六、初始化mysql数据库
 ```bash
-touch /usr/local/mysql/mysql.error
+touch /usr/local/mysql/mysqld.log
 
 chown -R mysql.mysql /usr/local/mysql
 
@@ -68,10 +68,10 @@ cd /usr/local/mysql/scripts
     cp /usr/local/mysql/support-files/my-default.cnf /etc/my.cnf
     
     #复制mysql服务启动脚本及加入PATH路径
-    cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysqld 
+    cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysqld
 
     vim /etc/profile
-    export  PATH=/usr/local/mysql/bin:/usr/local/mysql/lib:$PATH
+    export PATH=/usr/local/mysql/bin:/usr/local/mysql/lib:$PATH
 
     source /etc/profile
 
