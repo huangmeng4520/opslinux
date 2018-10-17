@@ -2,6 +2,8 @@
 - [Mysql手册](https://github.com/Lancger/opslinux/blob/master/mysql/README.md)
 - [Linux手册](https://github.com/Lancger/opslinux/blob/master/linux/README.md)
 - [Python手册](https://github.com/Lancger/opslinux/blob/master/python/README.md)
+- [Node手册](https://github.com/Lancger/opslinux/blob/master/node/README.md)
+
 
 
 ## 二、git 初始化
