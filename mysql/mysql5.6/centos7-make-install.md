@@ -83,10 +83,11 @@ socket=/usr/local/mysql/mysql.sock
 default-character-set=utf8
 
 [mysql]
-default-character-set = utf8
+default-character-set=utf8
 
 [mysqld]
-datadir= /data/mysql
+basedir=/usr/local/mysql
+datadir=/data/mysql
 port=3306
 socket=/usr/local/mysql/mysql.sock
 pid-file=/usr/local/mysql/mysqld.pid
@@ -96,21 +97,36 @@ max_connections=1000
 character_set_server=utf8
 character_set_client=utf8
 
+#slow_query_log=on
+#slow-query-log-file=/usr/local/mysql/mysqld-slow.log
+#long_query_time=1
+
 server-id=1
 log-bin=/data/mysql/mysql-bin
+
+## 主从复制的格式（mixed,statement,row，默认格式是statement）
 binlog_format=MIXED
 
-slow_query_log=on
-slow-query-log-file=/usr/local/mysql/mysqld-slow.log
-long_query_time=1
+## 二进制日志自动删除/过期的天数。默认值为0，表示不自动删除。
+expire_logs_days=7
 
-# Disabling symbolic-links is recommended to prevent assorted security risks
+## 复制过滤：也就是指定哪个数据库不用同步（mysql、information_schema库一般不同步）
+binlog-ignore-db=mysql
+binlog-ignore-db=information_schema
+
+## 指定需要同步的数据库
+#binlog-do-db=memberdb
+
+## 为每个session 分配的内存，在事务过程中用来存储二进制日志的缓存
+binlog_cache_size=1M
+
+## Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
 
-# Recommended in standard MySQL setup
+## Recommended in standard MySQL setup
 sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 
-#(注意linux下mysql安装完后是默认：表名区分大小写，列名不区分大小写； 0：区分大小写，1：不区分大小写)
+## (注意linux下mysql安装完后是默认：表名区分大小写，列名不区分大小写； 0：区分大小写，1：不区分大小写)
 lower_case_table_names=1
 
 [mysqld_safe]
