@@ -143,7 +143,7 @@ chkconfig mysqld on
 
 ## 九、修改密码
 ```bash
-/usr/bin/mysqladmin -u root password '123456'
+mysqladmin -u root password '123456'
 
 #Mysql赋权限和修改密码
 mysql> set password=password('123456');
