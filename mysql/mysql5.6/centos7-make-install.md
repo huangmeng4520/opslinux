@@ -78,26 +78,42 @@ cd /usr/local/mysql/scripts
 ## 七、配置my.cnf
 ```bash
 [client]
-port            = 3306
-socket          = /usr/local/mysql/mysql.sock   
-default-character-set=utf8    
- 
-[mysqld]    
-port            = 3306
-socket          = /usr/local/mysql/mysql.sock
-pid-file        = /usr/local/mysql/mysql.pid
-character_set_server=utf8   
-character_set_client=utf8
-collation-server=utf8_general_ci
-log-error      = /usr/local/mysql/mysql.sock
+port=3306
+socket=/usr/local/mysql/mysql.sock
+default-character-set=utf8
 
-#(注意linux下mysql安装完后是默认：表名区分大小写，列名不区分大小写； 0：区分大小写，1：不区分大小写)    
-lower_case_table_names=1
-
-#(设置最大连接数，默认为 151，MySQL服务器允许的最大连接数16384; )    
-max_connections=1000
-sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
- 
 [mysql]
 default-character-set = utf8
+
+[mysqld]
+datadir= /data/mysql
+port=3306
+socket=/usr/local/mysql/mysql.sock
+pid-file=/usr/local/mysql/mysqld.pid
+collation-server=utf8_general_ci
+max_connections=1000
+
+character_set_server=utf8
+character_set_client=utf8
+
+server-id=1
+log-bin=/data/mysql/mysql-bin
+binlog_format=MIXED
+
+slow_query_log=on
+slow-query-log-file=/usr/local/mysql/mysqld-slow.log
+long_query_time=1
+
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+
+# Recommended in standard MySQL setup
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+
+#(注意linux下mysql安装完后是默认：表名区分大小写，列名不区分大小写； 0：区分大小写，1：不区分大小写)
+lower_case_table_names=1
+
+[mysqld_safe]
+log-error=/usr/local/mysql/mysqld.log
+pid-file=/usr/local/mysql/mysqld.pid
 ```
