@@ -8,7 +8,7 @@ yum install libffi-devel -y
 
 ## 二、下载并安装python3.6
 ```bash
-wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
+wget https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tgz
 tar -xzf Python-3.6.6.tgz 
 cd Python-3.6.6
 ./configure --prefix=/usr/local/python3.6 --enable-shared
