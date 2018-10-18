@@ -152,4 +152,8 @@
     3. 以为MySQL 5.5是老古董了，但官方仍然在不断更新。
     
     
-参考文档： https://www.cnblogs.com/ivictor/p/9807284.html
+参考文档： 
+
+https://en.wikipedia.org/wiki/MySQL#Release_history
+
+https://www.cnblogs.com/ivictor/p/9807284.html
