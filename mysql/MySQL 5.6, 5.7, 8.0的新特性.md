@@ -143,7 +143,7 @@
 
     最后，看看下面这个表格，表中给出了最近几个大版本的发布时间，及截止到本书出版，其最新的小版本及其发布时间。
     
-   ![mysql发展历史](https://github.com/Lancger/opslinux/blob/master/images/mysql发展.png)
+![mysql发展历史](https://github.com/Lancger/opslinux/blob/master/images/mysql发展.png)
 
 
     从表中的数据来看，
