@@ -1,35 +1,35 @@
 # 看看MySQL 5.6, 5.7, 8.0的新特性
 
-对于MySQL的历史，相信很多人早已耳熟能详，这里就不要赘述。下面仅从产品特性的角度梳理其发展过程中的里程碑事件。
+    对于MySQL的历史，相信很多人早已耳熟能详，这里就不要赘述。下面仅从产品特性的角度梳理其发展过程中的里程碑事件。
 
-1995年，MySQL 1.0发布，仅供内部使用。
+    1995年，MySQL 1.0发布，仅供内部使用。
 
-1996年，MySQL 3.11.1发布，直接跳过了MySQL 2.x版本。
+    1996年，MySQL 3.11.1发布，直接跳过了MySQL 2.x版本。
 
-1999年，MySQL AB公司成立。同年，发布MySQL 3.23，该版本集成了Berkeley DB存储引擎。该引擎由Sleepycat公司开发，支持事务。在集成该引擎的过程中，对源码进行了改造，为后续可插拔式存储引擎架构奠定了基础。
+    1999年，MySQL AB公司成立。同年，发布MySQL 3.23，该版本集成了Berkeley DB存储引擎。该引擎由Sleepycat公司开发，支持事务。在集成该引擎的过程中，对源码进行了改造，为后续可插拔式存储引擎架构奠定了基础。
 
-2000年，ISAM升级为MyISAM存储引擎。同年，MySQL基于GPL协议开放源码。
+    2000年，ISAM升级为MyISAM存储引擎。同年，MySQL基于GPL协议开放源码。
 
-2002年，MySQL 4.0发布，集成了后来大名鼎鼎的InnoDB存储引擎。该引擎由Innobase公司开发，支持事务，支持行级锁，适用于OLTP等高并发场景。
+    2002年，MySQL 4.0发布，集成了后来大名鼎鼎的InnoDB存储引擎。该引擎由Innobase公司开发，支持事务，支持行级锁，适用于OLTP等高并发场景。
 
-2005年，MySQL 5.0发布，开始支持游标，存储过程，触发器，视图，XA事务等特性。同年，Oracle收购Innobase公司。
+    2005年，MySQL 5.0发布，开始支持游标，存储过程，触发器，视图，XA事务等特性。同年，Oracle收购Innobase公司。
 
-2008年，Sun以10亿美金收购MySQL AB。同年，发布MySQL 5.1，其开始支持定时器（Event scheduler），分区，基于行的复制等特性。
+    2008年，Sun以10亿美金收购MySQL AB。同年，发布MySQL 5.1，其开始支持定时器（Event scheduler），分区，基于行的复制等特性。
 
-2009年，Oracle以74亿美金收购Sun公司。
+    2009年，Oracle以74亿美金收购Sun公司。
 
 ## 2010年，MySQL 5.5发布，其包括如下重要特性及更新。
 
-InnoDB代替MyISAM成为MySQL默认的存储引擎。
-多核扩展，能更充分地使用多核CPU。
-InnoDB的性能提升，包括支持索引的快速创建，表压缩，I/O子系统的性能提升，PURGE操作从主线程中剥离出来，Buffer Pool可拆分为多个Instances。
-半同步复制。
-引入utf8mb4字符集，可用来存储emoji表情。
-引入metadata locks（元数据锁）。
-分区表的增强，新增两个分区类型：RANGE COLUMNS和LIST COLUMNS。
-MySQL企业版引入线程池。
-可配置IO读写线程的数量（innodb_read_io_threads，innodb_write_io_threads）。在此之前，其数量为1，且不可配置。
-引入innodb_io_capacity选项，用于控制脏页刷新的数量。
+    InnoDB代替MyISAM成为MySQL默认的存储引擎。
+    多核扩展，能更充分地使用多核CPU。
+    InnoDB的性能提升，包括支持索引的快速创建，表压缩，I/O子系统的性能提升，PURGE操作从主线程中剥离出来，Buffer Pool可拆分为多个Instances。
+    半同步复制。
+    引入utf8mb4字符集，可用来存储emoji表情。
+    引入metadata locks（元数据锁）。
+    分区表的增强，新增两个分区类型：RANGE COLUMNS和LIST COLUMNS。
+    MySQL企业版引入线程池。
+    可配置IO读写线程的数量（innodb_read_io_threads，innodb_write_io_threads）。在此之前，其数量为1，且不可配置。
+    引入innodb_io_capacity选项，用于控制脏页刷新的数量。
 
 ## 2013年，MySQL 5.6发布，其包括如下重要特性及更新。
 
@@ -139,8 +139,7 @@ MySQL企业版引入线程池。
     BLOB, TEXT, GEOMETRY和JSON字段允许设置默认值。
     可通过RESTART命令重启MySQL实例。
  
+   
+   需要注意的是，上面提到的发布，一般指的是GA版本。
 
-需要注意的是，上面提到的发布，一般指的是GA版本。
-
-
-最后，看看下面这个表格，表中给出了最近几个大版本的发布时间，及截止到本书出版，其最新的小版本及其发布时间。
+   最后，看看下面这个表格，表中给出了最近几个大版本的发布时间，及截止到本书出版，其最新的小版本及其发布时间。
