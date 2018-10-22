@@ -98,6 +98,9 @@ max_connections=1000
 character_set_server=utf8
 character_set_client=utf8
 
+#跳过密码验证登录
+#skip-grant-tables
+
 #slow_query_log=on
 #slow-query-log-file=/usr/local/mysql/mysqld-slow.log
 #long_query_time=1
