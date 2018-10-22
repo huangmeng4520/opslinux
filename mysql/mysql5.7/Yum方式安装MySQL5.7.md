@@ -119,8 +119,8 @@ socket=/var/lib/mysql/mysql.sock
 character_set_server=utf8
 init_connect='SET NAMES utf8'
 
-#密码验证登录
-skip-grant-tables
+#跳过密码验证登录
+#skip-grant-tables
 
 ## 开启binlog日志记录
 server-id=1
