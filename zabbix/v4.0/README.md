@@ -84,4 +84,4 @@
     systemctl restart zabbix-server zabbix-agent httpd
     systemctl enable zabbix-server zabbix-agent httpd
 
-    http://172.16.8.69/zabbix/setup.php
+    http://192.168.56.100/zabbix/setup.php
