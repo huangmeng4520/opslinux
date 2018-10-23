@@ -85,3 +85,5 @@
     systemctl enable zabbix-server zabbix-agent httpd
 
     http://192.168.56.100/zabbix/setup.php
+
+  ![zabbux4.0-1.png](https://github.com/Lancger/opslinux/blob/master/images/mysql-ab.png)
