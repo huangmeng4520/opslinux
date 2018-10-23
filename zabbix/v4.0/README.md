@@ -33,12 +33,12 @@
 ## 二、安装及配置 Zabbix server
 
 ### 1. Install Repository with MySQL database
-      cd /tmp
-      wget https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-1.el7.noarch.rpm
-      yum -y install zabbix-release-4.0-1.el7.noarch.rpm
+    cd /tmp
+    wget https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-1.el7.noarch.rpm
+    yum -y install zabbix-release-4.0-1.el7.noarch.rpm
 
 ### 2. 安装Zabbix server, frontend, agent
-      yum -y install zabbix-server-mysql zabbix-web-mysql zabbix-agent
+    yum -y install zabbix-server-mysql zabbix-web-mysql zabbix-agent
 
 ### 3. mysql5.6安装及配置数据库
 
