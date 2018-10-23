@@ -49,7 +49,7 @@ git config --global user.email "1151980610@qq.com"
   
 git config --global user.name "Lancger"
 
-git add *
+git add *   (如果是目录的，则需要改成git add test/)
   
 git commit -m "项目更新"
 
