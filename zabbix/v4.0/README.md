@@ -33,7 +33,7 @@
 ## 二、安装及配置 Zabbix server
 
 ### 1. Install Repository with MySQL database
-      mkdir /app/tools -p && cd /app/tools
+      cd /tmp
       wget https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-1.el7.noarch.rpm
       yum -y install zabbix-release-4.0-1.el7.noarch.rpm
 
@@ -44,6 +44,7 @@
 
     centos自带的repo是不会自动更新每个软件的最新版本，所以无法通过yum方式安装MySQL的高级版本。
     安装mysql5姿势是要先安装带有可用的mysql5系列社区版资源的rpm包
+    cd /tmp
     wget http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
     yum -y install mysql-community-release-el7-5.noarch.rpm
 
