@@ -177,6 +177,7 @@ chkconfig mysqld on
 /usr/bin/mysqladmin -u root password '123456'
 
 #Mysql赋权限和修改密码
+mysql> use mysql;
 mysql> grant all privileges on *.* to root@"%" identified by '123456';
 Query OK, 0 rows affected, 1 warning (0.01 sec)
 
@@ -192,7 +193,7 @@ mysql> show grants for root@"%";
 1 row in set (0.00 sec)
 
 #####################
-mysql> update user set Password = password('123456') where User='root';
+mysql> update user set Password = password('123456') where User='root' and Host='localhost';
 mysql> select Host,User,Password from user where User='root';
 mysql> flush privileges;
 #####################
