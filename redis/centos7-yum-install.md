@@ -48,3 +48,5 @@
 
     redis-cli
 
+
+https://www.cnblogs.com/autohome7390/p/6433956.html
