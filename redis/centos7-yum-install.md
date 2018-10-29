@@ -48,4 +48,3 @@
 
     redis-cli
 
-在azure vm centos7.4 安装了最新的redis 4.0.6 bind 0.0.0.0 发现外网连接不上，发现azure vm 打开端口的地方已经变了，需要注意：要将源端口设置为 * ，目标端口为我们要打开的redis 端口，打开后可以使用telnet 命令测试一下：telnet 101.200.189.125 6379
