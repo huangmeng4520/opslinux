@@ -138,6 +138,8 @@
     重新加载配置测试验证
     /usr/local/nginx/sbin/nginx -t
     /usr/local/nginx/sbin/nginx -s reload
+    
+    然后访问http://xxx.xxx.xxx.xxx/hello 如果出现hello,lua。表示安装完成,然后就可以。
 
 ## 六、编辑nginx配置文件(详见github中的nginx.conf文件)
 
