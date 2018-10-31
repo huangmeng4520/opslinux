@@ -74,12 +74,8 @@
                 --add-module=/usr/local/src/lua-nginx-module --without-http_upstream_check_module --with-http_concat_module --with-http_dav_module \
                 --with-http_dyups_module --with-http_dyups_lua_api  --with-http_v2_module --with-http_sysguard_module
 
-
-    #2.1.1 版本前
-    #--add-module=/usr/local/src/ngx_http_dyups_module/ 
-
     #修改版本信息
-    #vi src/core/nginx.h
+    vi src/core/nginx.h
 
     make && make install
 
