@@ -34,125 +34,118 @@ https://github.com/loveshell/ngx_lua_waf
 ```
 
 ### Tengine部署
-```
-###关闭网络管理工具###
-chkconfig NetworkManager off
-```
-```
-###关闭防火墙###
-/etc/init.d/iptables stop
-chkconfig iptables off
-```
-```
-###关闭selinux###
-sed -i.bak "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
-sed -i "s/SELINUXTYPE=targeted/SELINUXTYPE=disabled/g" /etc/selinux/config
-setenforce 0 #使配置立即生效
-```
-```
-###安装ntpdate,保证各服务器间时间一致###
-yum install -y ntpdate wget lrzsz
-# 加入crontab
-1 * * * *  (/usr/sbin/ntpdate -s ntp1.aliyun.com;/usr/sbin/hwclock -w) > /dev/null 2>&1
-1 * * * * /usr/sbin/ntpdate -s ntp1.aliyun.com  > /dev/null 2>&1
-```
-```
-###安装依赖包###
-yum install pcre-devel zlib zlib-devel git -y
-yum install -y gcc gcc-c++ make pcre-devel perl perl-devel git openssh-clients zlib-devel
-#yum install -y gcc gcc-c++ make pcre-devel perl perl-devel git tmux wget curl openssl openssl-devel openldap openldap-devel
-```
-```
-groupadd www -g 600     #指定www组ID号为600
-adduser www -u 600 -g www    #-u 指定用户ID号 -g 指定用户所属的起始群组 -G指定用户所属的附加群组
-```
-```
-cd /usr/local/src/
-wget https://www.openssl.org/source/old/1.0.2/openssl-1.0.2j.tar.gz
-tar -zxf  /usr/local/src/openssl-1.0.2j.tar.gz
 
-cd /usr/local/src/
-wget http://luajit.org/download/LuaJIT-2.0.5.tar.gz
-tar zxvf LuaJIT-2.0.5.tar.gz
-cd LuaJIT-2.0.5
-make   &&  make install
+    ###关闭网络管理工具###
+    chkconfig NetworkManager off
 
-cd /usr/local/src/
-git clone https://github.com/simpl/ngx_devel_kit.git
+    ###关闭防火墙###
+    /etc/init.d/iptables stop
+    chkconfig iptables off
 
-cd /usr/local/src/
-git clone https://github.com/chaoslawful/lua-nginx-module.git
+    ###关闭selinux###
+    sed -i.bak "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
+    sed -i "s/SELINUXTYPE=targeted/SELINUXTYPE=disabled/g" /etc/selinux/config
+    setenforce 0 #使配置立即生效
+
+    ###安装ntpdate,保证各服务器间时间一致###
+    yum install -y ntpdate wget lrzsz
+    # 加入crontab
+    1 * * * *  (/usr/sbin/ntpdate -s ntp1.aliyun.com;/usr/sbin/hwclock -w) > /dev/null 2>&1
+    1 * * * * /usr/sbin/ntpdate -s ntp1.aliyun.com  > /dev/null 2>&1
+
+    ###安装依赖包###
+    yum install pcre-devel zlib zlib-devel git -y
+    yum install -y gcc gcc-c++ make pcre-devel perl perl-devel git openssh-clients zlib-devel
+    #yum install -y gcc gcc-c++ make pcre-devel perl perl-devel git tmux wget curl openssl openssl-devel openldap openldap-devel
+
+    groupadd www -g 600     #指定www组ID号为600
+    adduser www -u 600 -g www    #-u 指定用户ID号 -g 指定用户所属的起始群组 -G指定用户所属的附加群组
+
+    cd /usr/local/src/
+    wget https://www.openssl.org/source/old/1.0.2/openssl-1.0.2j.tar.gz
+    tar -zxf  /usr/local/src/openssl-1.0.2j.tar.gz
+
+    cd /usr/local/src/
+    wget http://luajit.org/download/LuaJIT-2.0.5.tar.gz
+    tar zxvf LuaJIT-2.0.5.tar.gz
+    cd LuaJIT-2.0.5
+    make   &&  make install
+
+    cd /usr/local/src/
+    git clone https://github.com/simpl/ngx_devel_kit.git
+
+    cd /usr/local/src/
+    git clone https://github.com/chaoslawful/lua-nginx-module.git
 
 
-cd /usr/local/src/
-wget http://www.kyne.com.au/~mark/software/download/lua-cjson-2.1.0.tar.gz
-tar zxf lua-cjson-2.1.0.tar.gz
-cd lua-cjson-2.1.0
-注：
-vim Makefile
-修改：LUA_INCLUDE_DIR =   $(PREFIX)/include/luajit-2.0
-make
-make install
+    cd /usr/local/src/
+    wget http://www.kyne.com.au/~mark/software/download/lua-cjson-2.1.0.tar.gz
+    tar zxf lua-cjson-2.1.0.tar.gz
+    cd lua-cjson-2.1.0
+    注：
+    vim Makefile
+    修改：LUA_INCLUDE_DIR =   $(PREFIX)/include/luajit-2.0
+    make
+    make install
 
-#tengine 2.1.2版本已经包括dyups,不需另外安装
-#cd /root/work
-#git clone https://github.com/yzprofile/ngx_http_dyups_module.git
-
-
-#创建Nginx运行的普通用户
-useradd -s /sbin/nologin -M nginx
-
-#git clone git://github.com/alibaba/tengine.git;
-#cd  tengine
-cd /usr/local/src/
-wget http://tengine.taobao.org/download/tengine-2.2.0.tar.gz
-tar zxf tengine-2.2.0.tar.gz
-cd tengine-2.2.0
-
-export LUAJIT_INC=/usr/local/include/luajit-2.0/
-export LUAJIT_LIB=/usr/local/lib
-./configure --user=nginx --group=nginx --prefix=/usr/local/nginx --with-http_ssl_module --with-openssl-opt="enable-tlsext"  \
-            --with-openssl="/usr/local/src/openssl-1.0.2j/" --with-ld-opt="-Wl,-rpath,$LUAJIT_LIB" --add-module=/usr/local/src/ngx_devel_kit \
-            --add-module=/usr/local/src/lua-nginx-module --without-http_upstream_check_module --with-http_concat_module --with-http_dav_module \
-            --with-http_dyups_module --with-http_dyups_lua_api  --with-http_v2_module --with-http_sysguard_module
+    #tengine 2.1.2版本已经包括dyups,不需另外安装
+    #cd /root/work
+    #git clone https://github.com/yzprofile/ngx_http_dyups_module.git
 
 
-#2.1.1 版本前
-#--add-module=/usr/local/src/ngx_http_dyups_module/ 
+    #创建Nginx运行的普通用户
+    useradd -s /sbin/nologin -M nginx
 
-#修改版本信息
-#vi src/core/nginx.h
+    #git clone git://github.com/alibaba/tengine.git;
+    #cd  tengine
+    cd /usr/local/src/
+    wget http://tengine.taobao.org/download/tengine-2.2.0.tar.gz
+    tar zxf tengine-2.2.0.tar.gz
+    cd tengine-2.2.0
 
-make && make install
-
-安装完成，启动nginx服务
-注：如果有以下错误:
-root># service nginx test
-/usr/local/src/nginx/sbin/nginx: error while loading shared libraries: libluajit-5.1.so.2: cannot open shared object file: No such file or directory
-
-#报错处理
-ln -s /usr/local/lib/libluajit-5.1.so.2 /lib64/libluajit-5.1.so.2   
-
-解决：
->echo "/usr/local/src/lib" > /etc/ld.so.conf.d/usr_local_lib.conf
->ldconfig
-
-部署waf
-root># cd /tmp
-
-root># git clone https://github.com/unixhot/waf.git
-
-root># cp -a ./waf/waf /usr/local/nginx/conf/
-
-修改waf配置
-#应用防火墙
-lua_code_cache off;
-init_by_lua_file  /usr/local/nginx/conf/waf/init.lua;
-access_by_lua_file /usr/local/nginx/conf/waf/waf.lua;
-lua_shared_dict updatedict 10m;
+    export LUAJIT_INC=/usr/local/include/luajit-2.0/
+    export LUAJIT_LIB=/usr/local/lib
+    ./configure --user=nginx --group=nginx --prefix=/usr/local/nginx --with-http_ssl_module --with-openssl-opt="enable-tlsext"  \
+                --with-openssl="/usr/local/src/openssl-1.0.2j/" --with-ld-opt="-Wl,-rpath,$LUAJIT_LIB" --add-module=/usr/local/src/ngx_devel_kit \
+                --add-module=/usr/local/src/lua-nginx-module --without-http_upstream_check_module --with-http_concat_module --with-http_dav_module \
+                --with-http_dyups_module --with-http_dyups_lua_api  --with-http_v2_module --with-http_sysguard_module
 
 
-```
+    #2.1.1 版本前
+    #--add-module=/usr/local/src/ngx_http_dyups_module/ 
+
+    #修改版本信息
+    #vi src/core/nginx.h
+
+    make && make install
+
+    安装完成，启动nginx服务
+    注：如果有以下错误:
+    root># service nginx test
+    /usr/local/src/nginx/sbin/nginx: error while loading shared libraries: libluajit-5.1.so.2: cannot open shared object file: No such file or directory
+
+    #报错处理
+    ln -s /usr/local/lib/libluajit-5.1.so.2 /lib64/libluajit-5.1.so.2   
+
+    解决：
+    >echo "/usr/local/src/lib" > /etc/ld.so.conf.d/usr_local_lib.conf
+    >ldconfig
+
+    部署waf
+    root># cd /tmp
+
+    root># git clone https://github.com/unixhot/waf.git
+
+    root># cp -a ./waf/waf /usr/local/nginx/conf/
+
+    修改waf配置
+    #应用防火墙
+    lua_code_cache off;
+    init_by_lua_file  /usr/local/nginx/conf/waf/init.lua;
+    access_by_lua_file /usr/local/nginx/conf/waf/waf.lua;
+    lua_shared_dict updatedict 10m;
+
+
 
 ###nginx启动脚本
 ```
