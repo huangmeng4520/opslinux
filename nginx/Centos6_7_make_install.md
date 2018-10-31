@@ -125,10 +125,10 @@
                 default_type 'text/plain';
                 content_by_lua 'ngx.say("hello,lua")';
         }
-    
-[root@webs-ebt src]# /usr/local/nginx/sbin/nginx -t
-[root@webs-ebt src]# /usr/local/nginx/sbin/nginx -t
 
+    重新加载配置测试验证
+    /usr/local/nginx/sbin/nginx -t
+    /usr/local/nginx/sbin/nginx -s reload
 
 ## 六、编辑nginx配置文件(详见github中的nginx.conf文件)
 
