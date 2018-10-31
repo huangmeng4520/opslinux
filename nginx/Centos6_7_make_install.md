@@ -111,9 +111,8 @@
 
     mv ngx_lua_waf /usr/local/nginx/conf/waf
 
-    https://github.com/loveshell/ngx_lua_waf
     
-###编辑nginx配置文件
+## 五、编辑nginx配置文件
 ```
 cd /usr/local/nginx/conf/
 cp -rf nginx.conf nginx.conf.bak
