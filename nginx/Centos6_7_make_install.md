@@ -122,21 +122,21 @@
     cp -rf nginx.conf nginx.conf.bak
     touch upstream.conf
     mkdir vhost
-    mkdir -p /data0/upload    #nginx配置文件中定义了curl 上传文件的路径
+    #mkdir -p /data0/upload    #nginx配置文件中定义了curl 上传文件的路径
 
 
 ## 六、Web host案例
 
     cd /usr/local/nginx/conf/vhost/
-    root># cat quant.hstong.com.conf
+    root># cat daily.test.com.conf
     server
     {
           listen          80;
-          server_name     daily.quant.hstong.com;
+          server_name     daily.test.com;
 
           index index.jsp index.html index.htm ;
-          access_log  /usr/local/nginx/logs/daily.quant.hstong.com.log  zwccdn;
-          error_log   /usr/local/nginx/logs/daily.quant.hstong.com.error.log info;
+          access_log  /usr/local/nginx/logs/daily.test.com.com.log  main;
+          error_log   /usr/local/nginx/logs/daily.test.com.com.error.log main;
 
           location ~* ^/webapi {
                  include /usr/local/nginx/conf/proxy_store_off.conf;
@@ -154,30 +154,30 @@
     }
 
 
-###添加域名vhost配置文件
+## 添加域名vhost配置文件
 ```
 cd /usr/local/nginx/conf/vhost/
-root># cat dbgw.inzwc.com.conf
-upstream zwcdbgw {
+root># cat dbgw.test.com.conf
+upstreamdbgw {
     server unix:///tmp/uwsgi_dbgw.sock;
 }
 
 server {
     listen          80;
-    server_name     localhost dbgw.inzwc.com;
+    server_name     localhost dbgw.test.com;
     rewrite ^(.*)$  https://$host$1;
 }
 
 # server {
 #     listen          80;
-#     server_name     localhost dbgw.inzwc.com;
+#     server_name     localhost dbgw.test.com;
 #     set $purge_uri $request_uri;
 #     index index.jsp index.html index.htm ;
-#     root /data0/www/dbgw.inzwc.com;
+#     root /data0/www/dbgw.test.com;
 #
 #     error_page 405 =200 @405;
-#     access_log  /usr/local/nginx/logs/dbgw.inzwc.com.log  zwccdn;
-#     error_log   /usr/local/nginx/logs/dbgw.inzwc.com.error.log info;
+#     access_log  /usr/local/nginx/logs/dbgw.test.com.log  zwccdn;
+#     error_log   /usr/local/nginx/logs/dbgw.test.com.error.log info;
 #
 #     location / {
 #         include /usr/local/nginx/conf/uwsgi_params;
@@ -192,22 +192,22 @@ server {
 
 server {
     listen          443;
-    server_name     localhost dbgw.inzwc.com;
+    server_name     localhost dbgw.test.com;
     set $purge_uri $request_uri;
     index index.jsp index.html index.htm ;
     root /data0/www/dbgw.inzwc.com;
 
     ssl on;
-    ssl_certificate /home/www/dbgw/cert/ssl/dbgw.inzwc.com.crt;
-    ssl_certificate_key /home/www/dbgw/cert/ssl/dbgw.inzwc.com.key;
+    ssl_certificate /home/www/dbgw/cert/ssl/dbgw.test.com.crt;
+    ssl_certificate_key /home/www/dbgw/cert/ssl/dbgw.test.com.key;
     ssl_session_timeout 10m;
     ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
     ssl_ciphers  ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-RC4-SHA:ECDHE-RSA-RC4-SHA:ECDH-ECDSA-RC4-SHA:ECDH-RSA-RC4-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES256-SHA:RC4-SHA;
     ssl_prefer_server_ciphers on;
 
     error_page 405 =200 @405;
-    access_log  /usr/local/nginx/logs/dbgw.inzwc.com.log  zwccdn;
-    error_log   /usr/local/nginx/logs/dbgw.inzwc.com.error.log info;
+    access_log  /usr/local/nginx/logs/dbgw.test.com.log  zwccdn;
+    error_log   /usr/local/nginx/logs/dbgw.test.com.error.log info;
 
     location / {
         include /usr/local/nginx/conf/uwsgi_params;
