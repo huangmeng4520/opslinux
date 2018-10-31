@@ -92,7 +92,7 @@
     ldconfig
 
 
-## 三、nginx启动脚本
+## 三、nginx启动脚本(详见github中的nginx文件)
 
     为启动脚本添加执行权限
 
@@ -116,7 +116,7 @@
         init_by_lua_file "/usr/local/nginx/conf/waf/init.lua";
         access_by_lua_file "/usr/local/nginx/conf/waf/access.lua";
     
-## 五、编辑nginx配置文件
+## 五、编辑nginx配置文件(详见github中的nginx.conf文件)
 ```
 cd /usr/local/nginx/conf/
 cp -rf nginx.conf nginx.conf.bak
