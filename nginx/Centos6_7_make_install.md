@@ -117,70 +117,42 @@
         access_by_lua_file "/usr/local/nginx/conf/waf/access.lua";
     
 ## 五、编辑nginx配置文件(详见github中的nginx.conf文件)
-```
-cd /usr/local/nginx/conf/
-cp -rf nginx.conf nginx.conf.bak
-touch upstream.conf
-mkdir vhost
-mkdir -p /data0/upload    #nginx配置文件中定义了curl 上传文件的路径
-```
-```
-root># cat nginx.conf
 
-```
-###设置代理配置文件
-```
-#vim /usr/local/nginx/conf/proxy_store_off.conf
-proxy_redirect off;
-proxy_set_header Host $host;
-proxy_set_header X-Real-IP $remote_addr;
-proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-client_max_body_size 50m;
-client_body_buffer_size 256k;
-proxy_connect_timeout 300;
-proxy_send_timeout 300;
-proxy_read_timeout 300;
-proxy_buffer_size 4k;
-proxy_buffers 4 32k;
-proxy_busy_buffers_size 64k;
-proxy_temp_file_write_size 64k;
-proxy_next_upstream error timeout invalid_header http_500 http_503 http_404;
-proxy_max_temp_file_size 128m;
+    cd /usr/local/nginx/conf/
+    cp -rf nginx.conf nginx.conf.bak
+    touch upstream.conf
+    mkdir vhost
+    mkdir -p /data0/upload    #nginx配置文件中定义了curl 上传文件的路径
 
-proxy_hide_header Expires;
-proxy_hide_header Pragma;
-proxy_hide_header Cache-Control;
 
-proxy_store off;
-```
-###Web host案例
-```
-cd /usr/local/nginx/conf/vhost/
-root># cat quant.hstong.com.conf
-server
-{
-      listen          80;
-      server_name     daily.quant.hstong.com;
+## 六、Web host案例
 
-      index index.jsp index.html index.htm ;
-      access_log  /usr/local/nginx/logs/daily.quant.hstong.com.log  zwccdn;
-      error_log   /usr/local/nginx/logs/daily.quant.hstong.com.error.log info;
+    cd /usr/local/nginx/conf/vhost/
+    root># cat quant.hstong.com.conf
+    server
+    {
+          listen          80;
+          server_name     daily.quant.hstong.com;
 
-      location ~* ^/webapi {
-             include /usr/local/nginx/conf/proxy_store_off.conf;
-             add_header  Cache-Control  no-cache;
-             expires -1;
-             proxy_pass http://quant-webapi;
-          }
+          index index.jsp index.html index.htm ;
+          access_log  /usr/local/nginx/logs/daily.quant.hstong.com.log  zwccdn;
+          error_log   /usr/local/nginx/logs/daily.quant.hstong.com.error.log info;
 
-      location / {
-             include /usr/local/nginx/conf/proxy_store_off.conf;
-             add_header  Cache-Control  no-cache;
-             expires -1;
-             proxy_pass http://quant-webclient;
-          }
-}
-```
+          location ~* ^/webapi {
+                 include /usr/local/nginx/conf/proxy_store_off.conf;
+                 add_header  Cache-Control  no-cache;
+                 expires -1;
+                 proxy_pass http://quant-webapi;
+              }
+
+          location / {
+                 include /usr/local/nginx/conf/proxy_store_off.conf;
+                 add_header  Cache-Control  no-cache;
+                 expires -1;
+                 proxy_pass http://quant-webclient;
+              }
+    }
+
 
 ###添加域名vhost配置文件
 ```
@@ -278,16 +250,6 @@ configuration file /usr/local/nginx/conf/nginx.conf test is successful
     
     yum update -y nss curl libcurl
 
-```
-
-
-
-在nginx.conf的http段添加    
-    #waf
-    lua_package_path "/usr/local/nginx/conf/waf/?.lua";
-    lua_shared_dict limit 10m;
-    init_by_lua_file  /usr/local/nginx/conf/waf/init.lua;
-    access_by_lua_file /usr/local/nginx/conf/waf/waf.lua;
 ```
 
 
