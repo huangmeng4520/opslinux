@@ -140,6 +140,8 @@
     /usr/local/nginx/sbin/nginx -s reload
     
     然后访问http://xxx.xxx.xxx.xxx/hello 如果出现hello,lua。表示安装完成,然后就可以。
+    
+    http://xxx.xxx.xxx.xxx/?id=../etc/password  会跳到网站防火墙页面
 
 ## 六、编辑nginx配置文件(详见github中的nginx.conf文件)
 
