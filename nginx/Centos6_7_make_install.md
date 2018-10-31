@@ -508,7 +508,7 @@ configuration file /usr/local/nginx/conf/nginx.conf test is successful
 ```
 
 
-报错问题：
+## 报错问题：
 
     1、Git版本导致的
 
@@ -517,6 +517,10 @@ configuration file /usr/local/nginx/conf/nginx.conf test is successful
     error:  while accessing https://github.com/simplresty/ngx_devel_kit.git/info/refs
 
     fatal: HTTP request failed
+    
+    问题原因是：是curl 版本问题，更新curl版本后问题解决。
+    
+    yum update -y nss curl libcurl
 
 ```
 cd /tmp
