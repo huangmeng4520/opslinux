@@ -1,12 +1,9 @@
-### Tengine介绍
-
+## 一、Tengine介绍
 
 　Tengine是由淘宝网发起的Web服务器项目。它在Nginx的基础上，针对大访问量网站的需求，添加了很多高级功能和特性。Tengine的性能和稳定性已经在大型的网站如淘宝网，天猫商城等得到了很好的检验。
 官方主页
 
-
-
-### Tengine部署
+### 二、Tengine部署
 
     ###关闭网络管理工具###
     chkconfig NetworkManager off
