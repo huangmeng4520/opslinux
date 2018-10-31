@@ -63,9 +63,9 @@
     #git clone git://github.com/alibaba/tengine.git;
     #cd  tengine
     cd /usr/local/src/
-    wget http://tengine.taobao.org/download/tengine-2.2.0.tar.gz
-    tar zxf tengine-2.2.0.tar.gz
-    cd tengine-2.2.0
+    wget http://tengine.taobao.org/download/tengine-2.2.2.tar.gz
+    tar zxf tengine-2.2.2.tar.gz
+    cd tengine-2.2.2
 
     export LUAJIT_INC=/usr/local/include/luajit-2.0/
     export LUAJIT_LIB=/usr/local/lib
