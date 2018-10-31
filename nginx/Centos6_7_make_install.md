@@ -1,4 +1,5 @@
 ### Tengine介绍
+
 　http://blog.csdn.net/qq_25551295/article/details/51744815
 
 ```
@@ -23,15 +24,15 @@ https://github.com/loveshell/ngx_lua_waf
 官方主页
 
 报错问题：
-```
-1、Git版本导致的
 
-root># git clone https://github.com/simplresty/ngx_devel_kit.git
-Initialized empty Git repository in /usr/local/src/ngx_devel_kit/.git/
-error:  while accessing https://github.com/simplresty/ngx_devel_kit.git/info/refs
+    1、Git版本导致的
 
-fatal: HTTP request failed
-```
+    root># git clone https://github.com/simplresty/ngx_devel_kit.git
+    Initialized empty Git repository in /usr/local/src/ngx_devel_kit/.git/
+    error:  while accessing https://github.com/simplresty/ngx_devel_kit.git/info/refs
+
+    fatal: HTTP request failed
+
 
 ### Tengine部署
 ```
