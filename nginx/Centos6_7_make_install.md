@@ -57,10 +57,6 @@
     修改：LUA_INCLUDE_DIR =   $(PREFIX)/include/luajit-2.0
     make & make install
 
-    #tengine 2.1.2版本已经包括dyups,不需另外安装
-    #cd /root/work
-    #git clone https://github.com/yzprofile/ngx_http_dyups_module.git
-
     #创建Nginx运行的普通用户
     useradd -s /sbin/nologin -M nginx
 
