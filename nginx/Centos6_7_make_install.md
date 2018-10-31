@@ -109,14 +109,28 @@
     git clone https://github.com/unixhot/waf.git
     cp -a ./waf/waf /usr/local/nginx/conf/
 
-    #修改Nginx的配置文件，加入以下配置。注意路径，同时WAF日志默认存放在/tmp/日期_waf.log
+    #修改Nginx的配置文件，http段加入以下配置。注意路径，同时WAF日志默认存放在/tmp/日期_waf.log
         #WAF
         lua_shared_dict limit 50m;
         lua_package_path "/usr/local/nginx/conf/waf/?.lua";
         init_by_lua_file "/usr/local/nginx/conf/waf/init.lua";
         access_by_lua_file "/usr/local/nginx/conf/waf/access.lua";
     
-## 五、编辑nginx配置文件(详见github中的nginx.conf文件)
+
+## 五、测试waf
+
+    #测试安装 安装完毕后，下面可以测试安装了，修改nginx.conf server段添加如下配置
+
+        location /hello {
+                default_type 'text/plain';
+                content_by_lua 'ngx.say("hello,lua")';
+        }
+    
+[root@webs-ebt src]# /usr/local/nginx/sbin/nginx -t
+[root@webs-ebt src]# /usr/local/nginx/sbin/nginx -t
+
+
+## 六、编辑nginx配置文件(详见github中的nginx.conf文件)
 
     cd /usr/local/nginx/conf/
     cp -rf nginx.conf nginx.conf.bak
@@ -125,7 +139,7 @@
     #mkdir -p /data0/upload    #nginx配置文件中定义了curl 上传文件的路径
 
 
-## 六、Web host案例
+## 七、Web host案例
 
     cd /usr/local/nginx/conf/vhost/
     root># cat daily.test.com.conf
@@ -154,7 +168,7 @@
     }
 
 
-## 添加域名vhost配置文件
+## 八、添加域名vhost配置文件
 ```
 cd /usr/local/nginx/conf/vhost/
 root># cat dbgw.test.com.conf
