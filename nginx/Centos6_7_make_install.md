@@ -105,7 +105,7 @@
     access_by_lua_file /usr/local/nginx/conf/waf/waf.lua;
     lua_shared_dict updatedict 10m;
 
-###nginx启动脚本
+## 三、nginx启动脚本
 ```
 vim /etc/init.d/nginx
 ```
@@ -201,6 +201,16 @@ chmod 755 /etc/init.d/nginx
 chkconfig nginx on
 ```
 
+## 四、部署waf
+
+    cd /tmp
+
+    git clone https://github.com/loveshell/ngx_lua_waf
+
+    mv ngx_lua_waf /usr/local/nginx/conf/waf
+
+    https://github.com/loveshell/ngx_lua_waf
+    
 ###编辑nginx配置文件
 ```
 cd /usr/local/nginx/conf/
@@ -511,13 +521,7 @@ configuration file /usr/local/nginx/conf/nginx.conf test is successful
     yum update -y nss curl libcurl
 
 ```
-cd /tmp
 
-git clone https://github.com/loveshell/ngx_lua_waf
-
-mv ngx_lua_waf /usr/local/nginx/conf/waf
-
-https://github.com/loveshell/ngx_lua_waf
 
 
 在nginx.conf的http段添加    
