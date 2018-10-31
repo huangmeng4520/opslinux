@@ -47,7 +47,6 @@
     cd /usr/local/src/
     git clone https://github.com/chaoslawful/lua-nginx-module.git
 
-
     cd /usr/local/src/
     wget http://www.kyne.com.au/~mark/software/download/lua-cjson-2.1.0.tar.gz
     tar zxf lua-cjson-2.1.0.tar.gz
@@ -61,7 +60,6 @@
     #tengine 2.1.2版本已经包括dyups,不需另外安装
     #cd /root/work
     #git clone https://github.com/yzprofile/ngx_http_dyups_module.git
-
 
     #创建Nginx运行的普通用户
     useradd -s /sbin/nologin -M nginx
