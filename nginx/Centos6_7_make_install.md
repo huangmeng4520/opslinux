@@ -88,8 +88,8 @@
     ln -s /usr/local/lib/libluajit-5.1.so.2 /lib64/libluajit-5.1.so.2   
 
     解决：
-    >echo "/usr/local/src/lib" > /etc/ld.so.conf.d/usr_local_lib.conf
-    >ldconfig
+    echo "/usr/local/src/lib" > /etc/ld.so.conf.d/usr_local_lib.conf
+    ldconfig
 
     部署waf
     root># cd /tmp
