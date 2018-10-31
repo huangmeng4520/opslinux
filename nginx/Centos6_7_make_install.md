@@ -91,19 +91,6 @@
     echo "/usr/local/src/lib" > /etc/ld.so.conf.d/usr_local_lib.conf
     ldconfig
 
-    部署waf
-    root># cd /tmp
-
-    root># git clone https://github.com/unixhot/waf.git
-
-    root># cp -a ./waf/waf /usr/local/nginx/conf/
-
-    修改waf配置
-    #应用防火墙
-    lua_code_cache off;
-    init_by_lua_file  /usr/local/nginx/conf/waf/init.lua;
-    access_by_lua_file /usr/local/nginx/conf/waf/waf.lua;
-    lua_shared_dict updatedict 10m;
 
 ## 三、nginx启动脚本
 ```
