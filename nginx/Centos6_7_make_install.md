@@ -28,7 +28,7 @@
     yum install -y gcc gcc-c++ make pcre-devel perl perl-devel git openssh-clients zlib-devel
     #yum install -y gcc gcc-c++ make pcre-devel perl perl-devel git tmux wget curl openssl openssl-devel openldap openldap-devel
 
-    groupadd nginx -g 600                                           #指定www组ID号为600
+    groupadd nginx -g 600                                  #指定www组ID号为600
     useradd -M -s /sbin/nologin -u 600 -r -g nginx nginx   #-u 指定用户ID号 -g 指定用户所属的起始群组 -G指定用户所属的附加群组
 
     cd /usr/local/src/
