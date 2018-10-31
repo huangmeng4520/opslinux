@@ -119,6 +119,12 @@
     #还需注意/usr/local/nginx/conf/waf/config.lua里面配置的一个路径
     config_rule_dir = "/usr/local/nginx/conf/waf/rule-config"
     
+    或者
+    方式二：直接克隆这个项目
+    git clone https://github.com/Lancger/waf.git
+    cp -a ./waf/waf /usr/local/nginx/conf/
+
+    
 
 ## 五、测试waf
 
