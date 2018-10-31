@@ -518,7 +518,7 @@ configuration file /usr/local/nginx/conf/nginx.conf test is successful
 
     fatal: HTTP request failed
     
-    问题原因是：是curl 版本问题，更新curl版本后问题解决。
+    #问题原因是：是curl 版本问题，更新curl版本后问题解决（或者升级git版本）
     
     yum update -y nss curl libcurl
 
