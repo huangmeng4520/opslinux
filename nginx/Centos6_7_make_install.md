@@ -51,11 +51,11 @@
     wget http://www.kyne.com.au/~mark/software/download/lua-cjson-2.1.0.tar.gz
     tar zxf lua-cjson-2.1.0.tar.gz
     cd lua-cjson-2.1.0
+    
     注：
     vim Makefile
     修改：LUA_INCLUDE_DIR =   $(PREFIX)/include/luajit-2.0
-    make
-    make install
+    make & make install
 
     #tengine 2.1.2版本已经包括dyups,不需另外安装
     #cd /root/work
