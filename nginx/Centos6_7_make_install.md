@@ -115,6 +115,9 @@
         lua_package_path "/usr/local/nginx/conf/waf/?.lua";
         init_by_lua_file "/usr/local/nginx/conf/waf/init.lua";
         access_by_lua_file "/usr/local/nginx/conf/waf/access.lua";
+        
+    #还需注意/usr/local/nginx/conf/waf/config.lua里面配置的一个路径
+    config_rule_dir = "/usr/local/nginx/conf/waf/rule-config"
     
 
 ## 五、测试waf
