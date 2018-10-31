@@ -105,8 +105,6 @@
     access_by_lua_file /usr/local/nginx/conf/waf/waf.lua;
     lua_shared_dict updatedict 10m;
 
-
-
 ###nginx启动脚本
 ```
 vim /etc/init.d/nginx
