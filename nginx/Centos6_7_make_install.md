@@ -45,10 +45,11 @@ https://github.com/loveshell/ngx_lua_waf
     ###关闭selinux###
     sed -i.bak "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
     sed -i "s/SELINUXTYPE=targeted/SELINUXTYPE=disabled/g" /etc/selinux/config
-    setenforce 0 #使配置立即生效
+    setenforce 0
 
     ###安装ntpdate,保证各服务器间时间一致###
     yum install -y ntpdate wget lrzsz
+    
     # 加入crontab
     1 * * * *  (/usr/sbin/ntpdate -s ntp1.aliyun.com;/usr/sbin/hwclock -w) > /dev/null 2>&1
     1 * * * * /usr/sbin/ntpdate -s ntp1.aliyun.com  > /dev/null 2>&1
