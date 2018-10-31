@@ -2,6 +2,19 @@
 
 　http://blog.csdn.net/qq_25551295/article/details/51744815
 
+　Tengine是由淘宝网发起的Web服务器项目。它在Nginx的基础上，针对大访问量网站的需求，添加了很多高级功能和特性。Tengine的性能和稳定性已经在大型的网站如淘宝网，天猫商城等得到了很好的检验。
+官方主页
+
+报错问题：
+
+    1、Git版本导致的
+
+    root># git clone https://github.com/simplresty/ngx_devel_kit.git
+    Initialized empty Git repository in /usr/local/src/ngx_devel_kit/.git/
+    error:  while accessing https://github.com/simplresty/ngx_devel_kit.git/info/refs
+
+    fatal: HTTP request failed
+
 ```
 cd /tmp
 
@@ -19,20 +32,6 @@ https://github.com/loveshell/ngx_lua_waf
     init_by_lua_file  /usr/local/nginx/conf/waf/init.lua;
     access_by_lua_file /usr/local/nginx/conf/waf/waf.lua;
 ```
-
-　Tengine是由淘宝网发起的Web服务器项目。它在Nginx的基础上，针对大访问量网站的需求，添加了很多高级功能和特性。Tengine的性能和稳定性已经在大型的网站如淘宝网，天猫商城等得到了很好的检验。
-官方主页
-
-报错问题：
-
-    1、Git版本导致的
-
-    root># git clone https://github.com/simplresty/ngx_devel_kit.git
-    Initialized empty Git repository in /usr/local/src/ngx_devel_kit/.git/
-    error:  while accessing https://github.com/simplresty/ngx_devel_kit.git/info/refs
-
-    fatal: HTTP request failed
-
 
 ### Tengine部署
 ```
