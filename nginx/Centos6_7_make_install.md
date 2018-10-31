@@ -141,12 +141,15 @@
     
     然后访问http://xxx.xxx.xxx.xxx/hello 如果出现hello,lua。表示安装完成,然后就可以。
     
+    测试一：
     http://xxx.xxx.xxx.xxx/?id=../etc/password  会跳到网站防火墙页面
     
+    测试二：
     白名单测试(将hello加到url黑名单，那么http://192.168.56.131/hello 就会被拦截，将其加到url白名单就可以正常
     [root@localhost rule-config]# cat url.rule
     hello
     
+    拦截日志
     {"user_agent":"Mozilla\/5.0 (Macintosh; Intel Mac OS X 10.14; rv:62.0) Gecko\/20100101 Firefox\/62.0","rule_tag":"hello","req_url":"\/hello","client_ip":"192.168.56.1","local_time":"2018-10-31 12:05:39","attack_method":"Deny_URL","req_data":"-","server_name":"localhost"}--这里显示是被Deny_URL拦截了
     
     
