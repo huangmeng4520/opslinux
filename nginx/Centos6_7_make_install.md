@@ -110,7 +110,13 @@
     git clone https://github.com/loveshell/ngx_lua_waf
 
     mv ngx_lua_waf /usr/local/nginx/conf/waf
-
+    
+    在nginx.conf的http段添加
+        #waf
+        lua_package_path "/usr/local/nginx/conf/waf/?.lua";
+        lua_shared_dict limit 10m;
+        init_by_lua_file  /usr/local/nginx/conf/waf/init.lua;
+        access_by_lua_file /usr/local/nginx/conf/waf/waf.lua;
     
 ## 五、编辑nginx配置文件
 ```
