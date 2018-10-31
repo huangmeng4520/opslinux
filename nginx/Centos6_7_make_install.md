@@ -181,7 +181,7 @@ server {
 #
 #     location / {
 #         include /usr/local/nginx/conf/uwsgi_params;
-#         uwsgi_pass zwcdbgw;
+#         uwsgi_pass dbgw;
 #         uwsgi_param UWSGI_PYHOME /home/www/dbgw/venv/;
 #         uwsgi_param UWSGI_CHDIR  /home/www/dbgw/;
 #         uwsgi_param UWSGI_SCRIPT run:app;
