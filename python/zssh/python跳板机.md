@@ -1,3 +1,12 @@
+    yum install mysql-devel
+    yum install mysql-python
+    
+    
+    wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py
+    python get-pip.py
+
+    pip install -i https://pypi.douban.com/simple/ mysql-python
+
     create database sa;
     use sa;
     create table password (ip varchar(15) primary key not null, muser varchar(15), mpass varchar(30), rpass varchar(30));
