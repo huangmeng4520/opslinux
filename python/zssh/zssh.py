@@ -1,4 +1,3 @@
-[root@ip-172-31-17-178 opt]# cat zssh.py
 #!/usr/local/bin/python
 # coding: utf-8
 
