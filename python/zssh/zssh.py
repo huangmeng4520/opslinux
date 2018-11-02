@@ -41,9 +41,9 @@ cursor.execute('select muser,mpass,rpass from password where ip=%s', (ip,))
 result = cursor.fetchall()
 
 if len(result) == 0:
-    muser = raw_input('输入用户名:')
-    mpass = raw_input('输入用户密码: ')
-    rpass = raw_input('输入root密码: ')
+    muser = raw_input('输入用户名: ')
+    mpass = raw_input('输入 %s 用户密码: '% muser)
+    rpass = raw_input('输入 root 密码: ')
     cursor.execute('insert into password values (%s,%s,%s,%s)', (ip, muser, mpass, rpass))
     conn.commit()
 elif len(result) == 1:
@@ -66,8 +66,7 @@ while True:
             break
         elif index2 == 0:
             while True:
-                muser = raw_input('输入用户名:')
-                mpass = raw_input('用户密码不对,重新输入: ')
+                mpass = raw_input('用户 %s 密码不对,重新输入: ' % muser)
                 foo.sendline(mpass)
                 index3 = foo.expect([']\$', 'assword'], timeout=5)
                 if index3 == 0:
@@ -82,9 +81,7 @@ while True:
     break
 
 while True:
-    #foo.expect(']$')
     foo.sendline('su - root')
-    #index4 = foo.expect(['口令', '密码', 'assword', pexpect.TIMEOUT, pexpect.EOF],timeout=5)
     foo.sendline(rpass)
     index5 = foo.expect(['\]#', 'failure', pexpect.EOF, pexpect.TIMEOUT], timeout=5)
     if index5  == 0:
@@ -93,7 +90,7 @@ while True:
         break
     elif index5 == 1:
         while True:
-            rpass = raw_input('root密码不对,请输入: ')
+            rpass = raw_input('root 密码不对,请输入: ')
             foo.sendline('su - root')
             foo.sendline(rpass)
             index7 = foo.expect(['\]#', 'failure', pexpect.EOF, pexpect.TIMEOUT], timeout=5)
