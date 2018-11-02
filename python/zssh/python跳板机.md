@@ -4,7 +4,9 @@
 
     mysql -uroot -p1Qaz2Wsx3Edc -e 'delete from sa.password where ip="120.79.210.87";'
 
-    python zssh.py 120.79.210.87
+    [root@ip-172-31-17-178 opt]# python zssh.py 120.79.210.87
+    www 登录成功
+    root 登录成功
 
 ### 参考文档：
 
