@@ -87,3 +87,6 @@
     http://192.168.56.100/zabbix/setup.php
 
   ![zabbux4.0-1.png](https://github.com/Lancger/opslinux/blob/master/images/mysql-ab.png)
+
+参看文档：
+https://blog.csdn.net/xiegh2014/article/details/83045412
