@@ -23,7 +23,7 @@ CLIEXEC="/usr/bin/redis-cli"
 REDISHOST="172.98.98.244"
 REDISPORT="6379"
 REDIS_CONFIG="/etc/redis.conf"
-AUTH="xiaozhu"
+AUTH="test"
 
 
 lockfile=/var/lock/subsys/redis
