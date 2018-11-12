@@ -11,7 +11,7 @@ wget_proxy ()
 	if [ -f "ssh_proxy.zip" ]; then
 		printf "\033[32m$(date +'%Y-%m-%d %H:%M:%S') %-30s 代理包已经存在 \n\033[0m"|tee -a $logfile
     else
-        wget http://120.132.71.213:8090/ssh_proxy.zip
+        wget http://*****:8090/ssh_proxy.zip
         printf "\033[32m$(date +'%Y-%m-%d %H:%M:%S') %-30s 开始下载代理包 \n\033[0m"|tee -a $logfile
     fi
 }
@@ -87,7 +87,7 @@ start_proxy ()
 main () 
 {
 	if [ $# != 2 ] ; then
-		printf "\033[32mUSAGE: $0  玩客云SN号      代理端口 \n\033[0m" |tee -a $logfile
+		printf "\033[32mUSAGE: $0  机器SN号      代理端口 \n\033[0m" |tee -a $logfile
 		printf "\033[32mUSAGE: $0  OCPZ121115201   10005   \n\033[0m"|tee -a $logfile
         exit 1;
     fi
