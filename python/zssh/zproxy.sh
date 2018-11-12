@@ -47,7 +47,7 @@ check_proxy ()
 start_proxy ()
 {
     printf "\033[32m$(date +'%Y-%m-%d %H:%M:%S') %-30s $1 端口代理服务启动中...... \n\033[0m"|tee -a $logfile
-	sh /ssh_proxy/bin/ssh_proxy.sh -U root  -P Tempzgb@  -i  120.79.210.87  -p $1 >/dev/null 2>&1
+	sh /ssh_proxy/bin/ssh_proxy.sh -U root  -P test  -i  0.0.0.0  -p $1 >/dev/null 2>&1
     
     sleep 5
 	res=`ps -ef|grep -v grep|grep ssh|awk '{print $6}'|awk -F":" '{print $1}'`
