@@ -34,7 +34,7 @@ def getwinsize():
     return struct.unpack('HHHH', x)[0:2]
 
 ip = opt[1]
-conn = MySQLdb.connect(host='localhost', user='root', passwd='1Qaz2Wsx3Edc', db='sa')
+conn = MySQLdb.connect(host='localhost', user='root', passwd='tempzgb', db='sa')
 cursor = conn.cursor()
 
 cursor.execute('select muser,mpass from password where ip=%s', (ip,))
@@ -59,7 +59,7 @@ while True:
     elif index == 1:
         foo.sendline(mpass)
         #这里需要根据不同服务登录账号的后缀，这里是以#结尾的
-        index2 = foo.expect(['password', ']\#'])
+        index2 = foo.expect(['password', '\#'])
         if index2 == 1:
             print '%s 登录成功' % muser
             break
@@ -67,7 +67,7 @@ while True:
             while True:
                 mpass = raw_input('用户 %s 密码不对,重新输入: ' % muser)
                 foo.sendline(mpass)
-                index3 = foo.expect([']\#', 'assword'], timeout=5)
+                index3 = foo.expect(['\#', 'assword'], timeout=5)
                 if index3 == 0:
                     cursor.execute('update sa.password set muser=%s, mpass=%s where ip=%s ', (muser, mpass, ip))
                     conn.commit()
