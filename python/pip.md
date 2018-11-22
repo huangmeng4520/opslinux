@@ -9,9 +9,12 @@
 
     pip install -i https://pypi.douban.com/simple/  -r requirements.txt       可用的
 
-    
     遇到SSL错误可使用下面方式
     pip install -r requirements.txt -i http://pypi.douban.com/simple --trusted-host pypi.douban.com 
+    
+    
+    ##pip版本升级
+    pip install --upgrade pip
 
 
 ##  二、安装mysql-python
