@@ -12,3 +12,12 @@
     
     遇到SSL错误可使用下面方式
     pip install -r requirements.txt -i http://pypi.douban.com/simple --trusted-host pypi.douban.com 
+
+
+##  二、安装mysql-python
+
+    yum install mysql-devel gcc
+
+    pip install MySQL-python --trusted-host mirrors.aliyun.com -i https://mirrors.aliyun.com/pypi/simple/ 
+    
+    
