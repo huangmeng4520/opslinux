@@ -16,7 +16,7 @@
 
 ##  二、安装mysql-python
 
-    yum install -y mysql-devel gcc
+    yum install -y python-devel mysql-devel gcc
 
     pip install MySQL-python --trusted-host mirrors.aliyun.com -i https://mirrors.aliyun.com/pypi/simple/ 
     
