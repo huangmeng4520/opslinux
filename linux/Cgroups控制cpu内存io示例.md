@@ -92,18 +92,12 @@ group io-test {
 
 
 
-```
-
-
 参考文档：
 
-
 https://stackoverflow.com/questions/24959846/cgroup-blkio-files-cannot-be-written     限制IO的参考
-
 
 https://www.cnblogs.com/yanghuahui/p/3751826.html
 
 https://www.jianshu.com/p/dc3140699e79
-
 
 https://blog.csdn.net/lanyang123456/article/details/82319911
