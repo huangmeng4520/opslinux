@@ -99,7 +99,7 @@ group io-test {
 
 ## 四、配置解释
 
- ![CGROUP](https://github.com/Lancger/opslinux/blob/master/images/cgroup.png)
+  ![CGROUP](https://github.com/Lancger/opslinux/blob/master/images/cgroup.png)
 
 ```
  在上面的行中，我们设置以下规则：
