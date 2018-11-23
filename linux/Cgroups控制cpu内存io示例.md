@@ -9,8 +9,6 @@ yum -y install hdparm
 
 hdparm --direct -t /dev/sda
 
-
-
 ```
 测试
 ```
