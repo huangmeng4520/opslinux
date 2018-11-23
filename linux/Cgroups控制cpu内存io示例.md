@@ -1,8 +1,11 @@
+```
+yum -y install libcgroup gcc libcap-devel 
+```
 
 
+参考文档：
 
-
-参考文档：https://www.cnblogs.com/yanghuahui/p/3751826.html
+https://www.cnblogs.com/yanghuahui/p/3751826.html
 
 https://www.jianshu.com/p/dc3140699e79
 
