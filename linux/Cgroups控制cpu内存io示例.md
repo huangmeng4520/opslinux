@@ -10,7 +10,7 @@ yum -y install hdparm
 hdparm --direct -t /dev/sda
 
 ```
-测试
+## 一、测试
 ```
 chkconfig cgred on
 chkconfig cgconfig on
@@ -20,7 +20,7 @@ service cgconfig restart
 
 dd if=/dev/sda of=/dev/null
 ```
-## 一、配置文件/etc/cgconfig.conf
+## 二、配置文件/etc/cgconfig.conf
 
 ```
 [root@localhost ~]# cat /etc/cgconfig.conf
@@ -74,7 +74,7 @@ group io-test {
     }
 }
 ```
-## 二、配置文件/etc/cgrules.conf
+## 三、配置文件/etc/cgrules.conf
 ```
 [root@localhost ~]# cat /etc/cgrules.conf
 # /etc/cgrules.conf
