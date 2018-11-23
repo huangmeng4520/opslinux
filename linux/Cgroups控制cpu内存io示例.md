@@ -1,8 +1,6 @@
 ```
 yum -y install libcgroup gcc libcap-devel 
 
-
-
 yum -y install hdparm
 
 #首先用 hdparm测试磁盘读取的最大带宽:
@@ -91,6 +89,8 @@ group io-test {
 # End of file
 ```
 
+## 四、配置解释
+```
  在上面的行中，我们设置以下规则：
 
     任何用户使用Firefox进程将被自动添加到browsers CGROUP，并在CPU和内存子系统的限制。
@@ -101,7 +101,7 @@ group io-test {
 
 我们需要启动cgred服务为cgrules配置更改生效，为此使用以下命令： 
 
-
+```
 
 参考文档：
 
