@@ -17,6 +17,14 @@ service cgred restart
 service cgconfig restart
 
 dd if=/dev/sda of=/dev/null
+
+
+cpu.cfs_period_us：cpu分配的周期(微秒），默认为100000。
+
+cpu.cfs_quota_us：表示该control group限制占用的时间（微秒），默认为-1，表示不限制。如果设为50000，表示占用50000/10000=50%的CPU。
+
+这里，我们设置占用30%的CPU，即把cpu.cfs_quota_us设置为30000。
+
 ```
 
 ## 二、配置文件/etc/cgconfig.conf
