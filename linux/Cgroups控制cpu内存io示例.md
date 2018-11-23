@@ -101,18 +101,6 @@ group io-test {
 
   ![CGROUP](https://github.com/Lancger/opslinux/blob/master/images/cgroup.jpg)
 
-```
- 在上面的行中，我们设置以下规则：
-
-    任何用户使用Firefox进程将被自动添加到browsers CGROUP，并在CPU和内存子系统的限制。
-    由任何用户运行hdparm的进程将被添加到limitio cgroup中，并根据在该cgroup中指定的参数值将在blkio子系统的限制。
-    由用户sammy运行的所有进程将被添加到limitio cgroup中和在blkio子系统的限制。
-    memhog处理由任何人运行admin组将被添加到该cgroup limitmem和在存储器子系统的限制。
-    由任何用户运行CPUHOG进程将被添加到该cgroup limitcpu并在CPU子系统的限制。 
-
-我们需要启动cgred服务为cgrules配置更改生效，为此使用以下命令： 
-
-```
 
 参考文档：
 
