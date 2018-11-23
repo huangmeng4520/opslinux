@@ -67,8 +67,8 @@ group io-test {
     } blkio {
         blkio.throttle.write_iops_device="";
         blkio.throttle.read_iops_device="";
-        blkio.throttle.write_bps_device="8:0 1048576";
-        blkio.throttle.read_bps_device="8:0 1048576";
+        blkio.throttle.write_bps_device="8:0 1048576";    --限速的1M/s的速率
+        blkio.throttle.read_bps_device="8:0 1048576";     --限速的1M/s的速率
         blkio.reset_stats="";
         blkio.weight="500";
         blkio.weight_device="";
