@@ -1,6 +1,26 @@
 ```
 yum -y install libcgroup gcc libcap-devel 
 
+
+
+yum -y install hdparm
+
+#首先用 hdparm测试磁盘读取的最大带宽:
+
+hdparm --direct -t /dev/sda
+
+
+
+```
+测试
+```
+chkconfig cgred on
+chkconfig cgconfig on
+
+service cgred restart
+service cgconfig restart
+
+dd if=/dev/sda of=/dev/null
 ```
 ## 一、配置文件/etc/cgconfig.conf
 
@@ -72,11 +92,7 @@ group io-test {
 # End of file
 ```
 
-chkconfig cgred on
-chkconfig cgconfig on
 
-service cgred restart
-service cgconfig restart
 
 ```
 
