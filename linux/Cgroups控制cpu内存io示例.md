@@ -1,7 +1,10 @@
 ```
 yum -y install libcgroup gcc libcap-devel 
 
+```
+## 一、配置文件/etc/cgconfig.conf
 
+```
 [root@localhost ~]# cat /etc/cgconfig.conf
 #
 #  Copyright IBM Corporation. 2007
@@ -52,7 +55,22 @@ group io-test {
         blkio.weight_device="";
     }
 }
-
+```
+## 二、配置文件/etc/cgrules.conf
+```
+[root@localhost ~]# cat /etc/cgrules.conf
+# /etc/cgrules.conf
+#The format of this file is described in cgrules.conf(5)
+#manual page.
+#
+# Example:
+#<user>		<controllers>	<destination>
+#@student	cpu,memory	usergroup/student/
+#peter		cpu		test1/
+#%		memory		test2/
+*:       blkio            io-test
+# End of file
+```
 
 chkconfig cgred on
 chkconfig cgconfig on
