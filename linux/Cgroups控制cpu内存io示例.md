@@ -107,8 +107,11 @@ group io-test {
 
 https://stackoverflow.com/questions/24959846/cgroup-blkio-files-cannot-be-written     限制IO的参考
 
+https://www.howtoing.com/how-to-limit-resources-using-cgroups-on-centos-6   如何限制资源使用在CentOS 6的cgroup
+
 https://www.cnblogs.com/yanghuahui/p/3751826.html
 
 https://www.jianshu.com/p/dc3140699e79
 
 https://blog.csdn.net/lanyang123456/article/details/82319911
+
