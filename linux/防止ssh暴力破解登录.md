@@ -21,5 +21,5 @@ done
 ```
 # 定时任务
 ```
- */1 * * * /bin/bash /root/Denyhosts.sh
+*/1 * * * * /bin/bash /root/Denyhosts.sh
 ```
