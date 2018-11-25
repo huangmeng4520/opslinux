@@ -17,3 +17,6 @@ ss-panel-v3-mod一键前后端脚本暂时做下收藏。
 参考文档：
 
 http://www.tfss.me/article/26
+
+
+http://www.tfss.me/article/20#comment-29   搭建属于自己的科学代理服务器
