@@ -20,3 +20,6 @@ http://www.tfss.me/article/26
 
 
 http://www.tfss.me/article/20#comment-29   搭建属于自己的科学代理服务器
+
+
+https://www.cnblogs.com/pigercc/p/6391147.html   ss-panel安装笔记 
