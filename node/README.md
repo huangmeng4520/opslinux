@@ -69,4 +69,8 @@ root># npm -v
 ### 验证nodejs环境是否正常
 
     参考  http://www.runoob.com/nodejs/nodejs-http-server.html
+    
+### 安装cnpm
+
+    npm install -g cnpm --registry=https://registry.npm.taobao.org
 
