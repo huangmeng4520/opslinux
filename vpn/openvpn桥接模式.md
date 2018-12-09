@@ -272,6 +272,10 @@ log-append  openvpn.log
 verb 1
 mute 20
 ```
+启动服务
+```
+[root@localhost ~]# systemctl start openvpn@server
+```
  参考文档：
  
  https://blog.rj-bai.com/post/132.html#menu_index_11
