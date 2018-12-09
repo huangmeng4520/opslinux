@@ -123,6 +123,46 @@ DH parameters of size 2048 created at /etc/openvpn/easy-rsa/3.0.3/pki/dh.pem
 ```
 到这里服务端的证书就创建完了，然后创建客户端的证书。
 
+# 三、创建客户端证书
+复制文件
+```
+cp -r /usr/share/easy-rsa/ /etc/openvpn/client/easy-rsa
+cd /etc/openvpn/client/easy-rsa/
+rm -f 3 3.0 
+cd 3.0.3/
+find / -type f -name "vars.example" | xargs -i cp {} . && mv vars.example vars
+```
+生成证书
+```
+[root@localhost 3.0.3]# pwd
+/etc/openvpn/client/easy-rsa/3.0.3
+[root@localhost 3.0.3]# ./easyrsa init-pki #创建新的pki
+
+Note: using Easy-RSA configuration from: ./vars
+
+init-pki complete; you may now create a CA or requests.
+Your newly created PKI dir is: /etc/openvpn/client/easy-rsa/3.0.3/pki
+[root@localhost 3.0.3]# ./easyrsa gen-req dalin nopass  #客户证书名为大林，木有密码
+
+Note: using Easy-RSA configuration from: ./vars
+Generating a 2048 bit RSA private key
+....................................................+++
+............+++
+writing new private key to '/etc/openvpn/client/easy-rsa/3.0.3/pki/private/dalin.key.FkrLzXH9Bm'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Common Name (eg: your user, host, or server name) [dalin]: 回车
+
+Keypair and certificate request completed. Your files are:
+req: /etc/openvpn/client/easy-rsa/3.0.3/pki/reqs/dalin.req
+key: /etc/openvpn/client/easy-rsa/3.0.3/pki/private/dalin.key
+```
  参考文档：
  
  https://blog.rj-bai.com/post/132.html#menu_index_11
