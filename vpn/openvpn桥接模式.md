@@ -54,7 +54,7 @@ There are quite a few fields but you can leave some blank
 For some fields there will be a default value,
 If you enter '.', the field will be left blank.
 -----
-Common Name (eg: your user, host, or server name) [Easy-RSA CA]: 回车
+Common Name (eg: your user, host, or server name) [Easy-RSA CA]: ------------回车
 
 CA creation complete and you may now import and sign cert requests.
 Your new CA certificate file for publishing is at:
