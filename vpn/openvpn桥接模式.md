@@ -13,7 +13,7 @@ wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 ``` 
 2. 安装 openvpn
 ```shell
-    yum -y install openvpn easy-rsa
+yum -y install openvpn easy-rsa
 ```
 
 
