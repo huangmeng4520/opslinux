@@ -136,13 +136,13 @@ find / -type f -name "vars.example" | xargs -i cp {} . && mv vars.example vars
 ```
 [root@localhost 3.0.3]# pwd
 /etc/openvpn/client/easy-rsa/3.0.3
-[root@localhost 3.0.3]# ./easyrsa init-pki #创建新的pki
+[root@localhost 3.0.3]# ./easyrsa init-pki    ------------#创建新的pki
 
 Note: using Easy-RSA configuration from: ./vars
 
 init-pki complete; you may now create a CA or requests.
 Your newly created PKI dir is: /etc/openvpn/client/easy-rsa/3.0.3/pki
-[root@localhost 3.0.3]# ./easyrsa gen-req dalin nopass  #客户证书名为大林，木有密码
+[root@localhost 3.0.3]# ./easyrsa gen-req dalin nopass  --------------#客户证书名为大林，木有密码
 
 Note: using Easy-RSA configuration from: ./vars
 Generating a 2048 bit RSA private key
@@ -157,7 +157,7 @@ There are quite a few fields but you can leave some blank
 For some fields there will be a default value,
 If you enter '.', the field will be left blank.
 -----
-Common Name (eg: your user, host, or server name) [dalin]: 回车
+Common Name (eg: your user, host, or server name) [dalin]: ---------------回车
 
 Keypair and certificate request completed. Your files are:
 req: /etc/openvpn/client/easy-rsa/3.0.3/pki/reqs/dalin.req
