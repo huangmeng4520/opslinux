@@ -18,6 +18,15 @@ yum makecache
 yum -y install openvpn easy-rsa
 ```
 
+# 二、配置easy-rsa-3.0
+1. 复制文件
+```
+cp -r /usr/share/easy-rsa/ /etc/openvpn/easy-rsa
+cd /etc/openvpn/easy-rsa/
+rm -y 3 3.0
+cd 3.0.3/
+find / -type f -name "vars.example" | xargs -i cp {} . && mv vars.example vars
+```
 
  参考文档：
  
