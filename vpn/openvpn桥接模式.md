@@ -83,6 +83,38 @@ Keypair and certificate request completed. Your files are:
 req: /etc/openvpn/easy-rsa/3.0.3/pki/reqs/server.req
 key: /etc/openvpn/easy-rsa/3.0.3/pki/private/server.key
 ```
+4. 签约服务端证书
+```
+[root@localhost 3.0.3]# ./easyrsa sign server server
+
+Note: using Easy-RSA configuration from: ./vars
+
+
+You are about to sign the following certificate.
+Please check over the details shown below for accuracy. Note that this request
+has not been cryptographically verified. Please be sure it came from a trusted
+source or that you have verified the request checksum with the sender.
+
+Request subject, to be signed as a server certificate for 3650 days:
+
+subject=
+    commonName                = server
+
+
+Type the word 'yes' to continue, or any other input to abort.
+  Confirm request details: yes
+Using configuration from ./openssl-1.0.cnf
+Check that the request matches the signature
+Signature ok
+The Subject's Distinguished Name is as follows
+commonName            :ASN.1 12:'server'
+Certificate is to be certified until Apr  7 14:54:08 2028 GMT (3650 days)
+
+Write out database with 1 new entries
+Data Base Updated
+
+Certificate created at: /etc/openvpn/easy-rsa/3.0.3/pki/issued/server.crt
+```
  参考文档：
  
  https://blog.rj-bai.com/post/132.html#menu_index_11
