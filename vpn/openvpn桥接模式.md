@@ -60,7 +60,29 @@ CA creation complete and you may now import and sign cert requests.
 Your new CA certificate file for publishing is at:
 /etc/openvpn/easy-rsa/3.0.3/pki/ca.crt
 ```
+3. 创建服务端证书
+```
+[root@localhost 3.0.3]# ./easyrsa gen-req server nopass
 
+Note: using Easy-RSA configuration from: ./vars
+Generating a 2048 bit RSA private key
+...........................+++
+..............................................................................+++
+writing new private key to '/etc/openvpn/easy-rsa/3.0.3/pki/private/server.key.wy7Q0fuG6A'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Common Name (eg: your user, host, or server name) [server]: 回车
+
+Keypair and certificate request completed. Your files are:
+req: /etc/openvpn/easy-rsa/3.0.3/pki/reqs/server.req
+key: /etc/openvpn/easy-rsa/3.0.3/pki/private/server.key
+```
  参考文档：
  
  https://blog.rj-bai.com/post/132.html#menu_index_11
