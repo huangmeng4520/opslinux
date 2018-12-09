@@ -32,14 +32,14 @@ find / -type f -name "vars.example" | xargs -i cp {} . && mv vars.example vars
 ```
 [root@localhost 3.0.3]# pwd
 /etc/openvpn/easy-rsa/3.0.3
-[root@localhost 3.0.3]# ./easyrsa init-pki  ------------------#创建空的pki
+[root@localhost 3.0.3]# ./easyrsa init-pki            ------------------#创建空的pki
 
 Note: using Easy-RSA configuration from: ./vars
 
 init-pki complete; you may now create a CA or requests.
 Your newly created PKI dir is: /etc/openvpn/easy-rsa/3.0.3/pki
 
-[root@localhost 3.0.3]# ./easyrsa build-ca nopass ----------------#创建新的CA，不使用密码
+[root@localhost 3.0.3]# ./easyrsa build-ca nopass     ----------------#创建新的CA，不使用密码
 
 Note: using Easy-RSA configuration from: ./vars
 Generating a 2048 bit RSA private key
@@ -54,7 +54,7 @@ There are quite a few fields but you can leave some blank
 For some fields there will be a default value,
 If you enter '.', the field will be left blank.
 -----
-Common Name (eg: your user, host, or server name) [Easy-RSA CA]: ------------回车
+Common Name (eg: your user, host, or server name) [Easy-RSA CA]:        ------------回车
 
 CA creation complete and you may now import and sign cert requests.
 Your new CA certificate file for publishing is at:
