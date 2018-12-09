@@ -163,6 +163,115 @@ Keypair and certificate request completed. Your files are:
 req: /etc/openvpn/client/easy-rsa/3.0.3/pki/reqs/dalin.req
 key: /etc/openvpn/client/easy-rsa/3.0.3/pki/private/dalin.key
 ```
+3、最后签约客户端证书
+```
+[root@localhost 3.0.3]# cd /etc/openvpn/easy-rsa/3.0.3/
+[root@localhost 3.0.3]# pwd
+/etc/openvpn/easy-rsa/3.0.3
+[root@localhost 3.0.3]# ./easyrsa import-req /etc/openvpn/client/easy-rsa/3.0.3/pki/reqs/dalin.req dalin
+
+Note: using Easy-RSA configuration from: ./vars
+
+The request has been successfully imported with a short name of: dalin
+You may now use this name to perform signing operations on this request.
+
+[root@localhost 3.0.3]# ./easyrsa sign client dalin
+
+Note: using Easy-RSA configuration from: ./vars
+
+
+You are about to sign the following certificate.
+Please check over the details shown below for accuracy. Note that this request
+has not been cryptographically verified. Please be sure it came from a trusted
+source or that you have verified the request checksum with the sender.
+
+Request subject, to be signed as a client certificate for 3650 days:
+
+subject=
+    commonName                = dalin
+
+
+Type the word 'yes' to continue, or any other input to abort.
+  Confirm request details: yes
+Using configuration from ./openssl-1.0.cnf
+Check that the request matches the signature
+Signature ok
+The Subject's Distinguished Name is as follows
+commonName            :ASN.1 12:'dalin'
+Certificate is to be certified until Apr  8 01:54:57 2028 GMT (3650 days)
+
+Write out database with 1 new entries
+Data Base Updated
+
+Certificate created at: /etc/openvpn/easy-rsa/3.0.3/pki/issued/dalin.crt
+```
+# 四、整理证书
+
+现在所有的证书都已经生成完了，下面来整理一下。
+服务端所需要的文件
+```
+[root@localhost ~]# mkdir /etc/openvpn/certs
+[root@localhost ~]# cd /etc/openvpn/certs/  
+[root@localhost certs]# cp /etc/openvpn/easy-rsa/3.0.3/pki/dh.pem .        
+[root@localhost certs]# cp /etc/openvpn/easy-rsa/3.0.3/pki/ca.crt .
+[root@localhost certs]# cp /etc/openvpn/easy-rsa/3.0.3/pki/issued/server.crt .
+[root@localhost certs]# cp /etc/openvpn/easy-rsa/3.0.3/pki/private/server.key .
+[root@localhost certs]# ll
+总用量 20
+-rw-------. 1 root root 1172 4月  11 10:02 ca.crt
+-rw-------. 1 root root  424 4月  11 10:03 dh.pem
+-rw-------. 1 root root 4547 4月  11 10:03 server.crt
+-rw-------. 1 root root 1704 4月  11 10:02 server.key
+```
+客户端所需的文件
+```
+[root@localhost certs]# mkdir /etc/openvpn/client/dalin/
+[root@localhost certs]# cp /etc/openvpn/easy-rsa/3.0.3/pki/ca.crt /etc/openvpn/client/dalin/
+[root@localhost certs]# cp /etc/openvpn/easy-rsa/3.0.3/pki/issued/dalin.crt /etc/openvpn/client/dalin/
+[root@localhost certs]# cp /etc/openvpn/client/easy-rsa/3.0.3/pki/private/dalin.key /etc/openvpn/client/dalin/
+[root@localhost certs]# ll /etc/openvpn/client/dalin/
+总用量 16
+-rw-------. 1 root root 1172 4月  11 10:07 ca.crt
+-rw-------. 1 root root 4431 4月  11 10:08 dalin.crt
+-rw-------. 1 root root 1704 4月  11 10:08 dalin.key
+```
+其实这三个文件就够了，之前全下载下来是因为方便，然而这次懒得弄了，哈哈，编写服务端配置文件。顺便提一下再添加用户在./easyrsa gen-req这里开始就行了,像是吊销用户证书的命令都自己用./easyrsa --help去看吧，GitHub项目地址
+服务器配置文件
+```
+[root@localhost ~]# vim /etc/openvpn/server.conf
+local 192.168.1.113
+port 1194
+proto tcp
+dev tun
+
+ca /etc/openvpn/certs/ca.crt
+cert /etc/openvpn/certs/server.crt
+key /etc/openvpn/certs/server.key
+dh /etc/openvpn/certs/dh.pem
+
+ifconfig-pool-persist /etc/openvpn/ipp.txt
+
+server 17.166.221.0 255.255.255.0
+push "route 192.168.1.0 255.255.255.0"
+push "redirect-gateway def1 bypass-dhcp"
+push "dhcp-option DNS 223.5.5.5"
+push "dhcp-option DNS 223.6.6.6"
+client-to-client
+   
+keepalive 20 120
+comp-lzo
+#duplicate-cn
+
+user openvpn
+group openvpn
+
+persist-key                               
+persist-tun
+status openvpn-status.log    
+log-append  openvpn.log     
+verb 1
+mute 20
+```
  参考文档：
  
  https://blog.rj-bai.com/post/132.html#menu_index_11
