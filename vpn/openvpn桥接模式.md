@@ -124,7 +124,7 @@ DH parameters of size 2048 created at /etc/openvpn/easy-rsa/3.0.3/pki/dh.pem
 到这里服务端的证书就创建完了，然后创建客户端的证书。
 
 # 三、创建客户端证书
-复制文件
+1、复制文件
 ```
 cp -r /usr/share/easy-rsa/ /etc/openvpn/client/easy-rsa
 cd /etc/openvpn/client/easy-rsa/
@@ -132,7 +132,7 @@ rm -f 3 3.0
 cd 3.0.3/
 find / -type f -name "vars.example" | xargs -i cp {} . && mv vars.example vars
 ```
-生成证书
+2、生成证书
 ```
 [root@localhost 3.0.3]# pwd
 /etc/openvpn/client/easy-rsa/3.0.3
