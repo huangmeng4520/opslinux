@@ -6,6 +6,10 @@
 
     路由模式则是一对一的关系，客户端只能访问安装了vpn server段的服务器，这里讲的是openvpn桥接模式的搭建
 
+
+
+
+
  参考文档：
  
  https://blog.rj-bai.com/post/132.html#menu_index_11
