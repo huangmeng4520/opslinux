@@ -210,12 +210,13 @@ Certificate created at: /etc/openvpn/easy-rsa/3.0.3/pki/issued/dalin.crt
 现在所有的证书都已经生成完了，下面来整理一下。
 服务端所需要的文件
 ```
-[root@localhost ~]# mkdir /etc/openvpn/certs
-[root@localhost ~]# cd /etc/openvpn/certs/  
-[root@localhost certs]# cp /etc/openvpn/easy-rsa/3.0.3/pki/dh.pem .        
-[root@localhost certs]# cp /etc/openvpn/easy-rsa/3.0.3/pki/ca.crt .
-[root@localhost certs]# cp /etc/openvpn/easy-rsa/3.0.3/pki/issued/server.crt .
-[root@localhost certs]# cp /etc/openvpn/easy-rsa/3.0.3/pki/private/server.key .
+mkdir /etc/openvpn/certs
+cd /etc/openvpn/certs/  
+cp /etc/openvpn/easy-rsa/3.0.3/pki/dh.pem .        
+cp /etc/openvpn/easy-rsa/3.0.3/pki/ca.crt .
+cp /etc/openvpn/easy-rsa/3.0.3/pki/issued/server.crt .
+cp /etc/openvpn/easy-rsa/3.0.3/pki/private/server.key .
+
 [root@localhost certs]# ll
 总用量 20
 -rw-------. 1 root root 1172 4月  11 10:02 ca.crt
