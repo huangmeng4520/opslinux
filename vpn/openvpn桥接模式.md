@@ -62,7 +62,7 @@ Your new CA certificate file for publishing is at:
 ```
 3. 创建服务端证书
 ```
-[root@localhost 3.0.3]# ./easyrsa gen-req server nopass
+[root@localhost 3.0.3]# ./easyrsa gen-req server nopass       ------------回车
 
 Note: using Easy-RSA configuration from: ./vars
 Generating a 2048 bit RSA private key
@@ -77,7 +77,7 @@ There are quite a few fields but you can leave some blank
 For some fields there will be a default value,
 If you enter '.', the field will be left blank.
 -----
-Common Name (eg: your user, host, or server name) [server]: ------------ 回车
+Common Name (eg: your user, host, or server name) [server]:   ------------ 回车
 
 Keypair and certificate request completed. Your files are:
 req: /etc/openvpn/easy-rsa/3.0.3/pki/reqs/server.req
@@ -85,7 +85,7 @@ key: /etc/openvpn/easy-rsa/3.0.3/pki/private/server.key
 ```
 4. 签约服务端证书
 ```
-[root@localhost 3.0.3]# ./easyrsa sign server server
+[root@localhost 3.0.3]# ./easyrsa sign server server   ------------ 签约服务端证书
 
 Note: using Easy-RSA configuration from: ./vars
 
@@ -102,7 +102,7 @@ subject=
 
 
 Type the word 'yes' to continue, or any other input to abort.
-  Confirm request details: yes
+  Confirm request details: yes           -------------------- yes
 Using configuration from ./openssl-1.0.cnf
 Check that the request matches the signature
 Signature ok
@@ -117,7 +117,7 @@ Certificate created at: /etc/openvpn/easy-rsa/3.0.3/pki/issued/server.crt
 ```
 5. 创建Diffie-Hellman
 ```
-[root@localhost 3.0.3]# ./easyrsa gen-dh
+[root@localhost 3.0.3]# ./easyrsa gen-dh     ----------------创建Diffie-Hellman
 ............................................................
 DH parameters of size 2048 created at /etc/openvpn/easy-rsa/3.0.3/pki/dh.pem
 ```
