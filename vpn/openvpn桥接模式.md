@@ -77,7 +77,7 @@ There are quite a few fields but you can leave some blank
 For some fields there will be a default value,
 If you enter '.', the field will be left blank.
 -----
-Common Name (eg: your user, host, or server name) [server]: 回车
+Common Name (eg: your user, host, or server name) [server]: ------------ 回车
 
 Keypair and certificate request completed. Your files are:
 req: /etc/openvpn/easy-rsa/3.0.3/pki/reqs/server.req
