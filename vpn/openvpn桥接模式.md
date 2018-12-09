@@ -6,7 +6,13 @@
 
     路由模式则是一对一的关系，客户端只能访问安装了vpn server段的服务器，这里讲的是openvpn桥接模式的搭建
 
+1. 添加yum源
 
+    wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo
+    wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
+    
+2. 安装 openvpn
+    yum -y install openvpn easy-rsa
 
 
 
