@@ -115,6 +115,14 @@ Data Base Updated
 
 Certificate created at: /etc/openvpn/easy-rsa/3.0.3/pki/issued/server.crt
 ```
+5. 创建Diffie-Hellman
+```
+[root@localhost 3.0.3]# ./easyrsa gen-dh
+............................................................
+DH parameters of size 2048 created at /etc/openvpn/easy-rsa/3.0.3/pki/dh.pem
+```
+到这里服务端的证书就创建完了，然后创建客户端的证书。
+
  参考文档：
  
  https://blog.rj-bai.com/post/132.html#menu_index_11
