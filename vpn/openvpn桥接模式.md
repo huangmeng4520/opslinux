@@ -281,3 +281,6 @@ mute 20
  参考文档：
  
  https://blog.rj-bai.com/post/132.html#menu_index_11
+
+
+ https://blog.rj-bai.com/post/132.html#menu_index_11   Centos7.4搭建openvpn
