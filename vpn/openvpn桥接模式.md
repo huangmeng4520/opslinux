@@ -236,7 +236,7 @@ cp /etc/openvpn/easy-rsa/3.0.3/pki/private/server.key .
 ```
 mkdir /etc/openvpn/client/tokok_vpn/
 cp /etc/openvpn/easy-rsa/3.0.3/pki/ca.crt /etc/openvpn/client/tokok_vpn/
-cp /etc/openvpn/easy-rsa/3.0.3/pki/issued/dalin.crt /etc/openvpn/client/tokok_vpn/
+cp /etc/openvpn/easy-rsa/3.0.3/pki/issued/tokok_c1.crt /etc/openvpn/client/tokok_vpn/
 cp /etc/openvpn/client/easy-rsa/3.0.3/pki/private/dalin.key /etc/openvpn/client/tokok_vpn/
 
 [root@localhost certs]# ll /etc/openvpn/client/dalin/
