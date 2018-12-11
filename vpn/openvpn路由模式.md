@@ -23,7 +23,7 @@ yum -y install openvpn easy-rsa
 ```
 cp -r /usr/share/easy-rsa/ /etc/openvpn/easy-rsa
 cd /etc/openvpn/easy-rsa/
-rm -f 3 3.0
+\rm 3 3.0
 cd 3.0.3/
 find / -type f -name "vars.example" | xargs -i cp {} . && mv vars.example vars
 touch /etc/openvpn/easy-rsa/3.0.3/pki/.rnd
