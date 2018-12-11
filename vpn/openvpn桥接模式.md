@@ -142,13 +142,17 @@ Note: using Easy-RSA configuration from: ./vars
 
 init-pki complete; you may now create a CA or requests.
 Your newly created PKI dir is: /etc/openvpn/client/easy-rsa/3.0.3/pki
-[root@localhost 3.0.3]# ./easyrsa gen-req dalin nopass  --------------#客户证书名为大林，木有密码
+
+
+[root@localhost 3.0.3]# ./easyrsa gen-req tokok_vpnc1 nopass   --------------#客户证书名为tokok_vpnc1，木有密码
 
 Note: using Easy-RSA configuration from: ./vars
-Generating a 2048 bit RSA private key
-....................................................+++
-............+++
-writing new private key to '/etc/openvpn/client/easy-rsa/3.0.3/pki/private/dalin.key.FkrLzXH9Bm'
+Can't load /etc/openvpn/client/easy-rsa/3.0.3/pki/.rnd into RNG
+139640017237824:error:2406F079:random number generator:RAND_load_file:Cannot open file:crypto/rand/randfile.c:88:Filename=/etc/openvpn/client/easy-rsa/3.0.3/pki/.rnd
+Generating a RSA private key
+...........................................................................................+++++
+.................................................................+++++
+writing new private key to '/etc/openvpn/client/easy-rsa/3.0.3/pki/private/tokok_vpnc1.key.JvpQMoiIi6'
 -----
 You are about to be asked to enter information that will be incorporated
 into your certificate request.
@@ -157,28 +161,31 @@ There are quite a few fields but you can leave some blank
 For some fields there will be a default value,
 If you enter '.', the field will be left blank.
 -----
-Common Name (eg: your user, host, or server name) [dalin]: ---------------回车
+Common Name (eg: your user, host, or server name) [tokok_vpnc1]:
 
 Keypair and certificate request completed. Your files are:
-req: /etc/openvpn/client/easy-rsa/3.0.3/pki/reqs/dalin.req
-key: /etc/openvpn/client/easy-rsa/3.0.3/pki/private/dalin.key
+req: /etc/openvpn/client/easy-rsa/3.0.3/pki/reqs/tokok_vpnc1.req
+key: /etc/openvpn/client/easy-rsa/3.0.3/pki/private/tokok_vpnc1.key
 ```
+
 3、最后签约客户端证书
 ```
-[root@localhost 3.0.3]# cd /etc/openvpn/easy-rsa/3.0.3/
+[root@localhost 3.0.3]# cd /etc/openvpn/easy-rsa/3.0.3/        --------------
 [root@localhost 3.0.3]# pwd
 /etc/openvpn/easy-rsa/3.0.3
-[root@localhost 3.0.3]# ./easyrsa import-req /etc/openvpn/client/easy-rsa/3.0.3/pki/reqs/dalin.req dalin
+[root@localhost 3.0.3]# ./easyrsa import-req /etc/openvpn/client/easy-rsa/3.0.3/pki/reqs/tokok_vpnc1.req tokok_c1    ---------
 
 Note: using Easy-RSA configuration from: ./vars
 
-The request has been successfully imported with a short name of: dalin
+The request has been successfully imported with a short name of: tokok_c1
 You may now use this name to perform signing operations on this request.
 
-[root@localhost 3.0.3]# ./easyrsa sign client dalin
+
+[root@izuf62w1juq9pm5jar66slz 3.0.3]# ./easyrsa sign client tokok_c1         --------------
 
 Note: using Easy-RSA configuration from: ./vars
-
+Extra arguments given.
+rand: Use -help for summary.
 
 You are about to sign the following certificate.
 Please check over the details shown below for accuracy. Note that this request
@@ -188,22 +195,23 @@ source or that you have verified the request checksum with the sender.
 Request subject, to be signed as a client certificate for 3650 days:
 
 subject=
-    commonName                = dalin
-
+    commonName                = tokok_vpnc1
 
 Type the word 'yes' to continue, or any other input to abort.
   Confirm request details: yes
 Using configuration from ./openssl-1.0.cnf
+Can't load /etc/openvpn/easy-rsa/3.0.3/pki/.rnd into RNG
+140137388939072:error:2406F079:random number generator:RAND_load_file:Cannot open file:crypto/rand/randfile.c:88:Filename=/etc/openvpn/easy-rsa/3.0.3/pki/.rnd
 Check that the request matches the signature
 Signature ok
 The Subject's Distinguished Name is as follows
-commonName            :ASN.1 12:'dalin'
-Certificate is to be certified until Apr  8 01:54:57 2028 GMT (3650 days)
+commonName            :ASN.1 12:'tokok_vpnc1'
+Certificate is to be certified until Dec  8 02:25:50 2028 GMT (3650 days)
 
 Write out database with 1 new entries
 Data Base Updated
 
-Certificate created at: /etc/openvpn/easy-rsa/3.0.3/pki/issued/dalin.crt
+Certificate created at: /etc/openvpn/easy-rsa/3.0.3/pki/issued/tokok_c1.crt
 ```
 # 四、整理证书
 
