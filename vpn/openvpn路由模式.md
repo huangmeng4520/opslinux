@@ -26,6 +26,7 @@ cd /etc/openvpn/easy-rsa/
 rm -f 3 3.0
 cd 3.0.3/
 find / -type f -name "vars.example" | xargs -i cp {} . && mv vars.example vars
+touch /etc/openvpn/easy-rsa/3.0.3/pki/.rnd
 ```
 2. 生成证书
 创建一个新的PKI和CA
