@@ -203,8 +203,8 @@ Certificate created at: /etc/openvpn/easy-rsa/3.0.3/pki/issued/tokok_c1.crt
 服务端所需要的文件
 ```
 mkdir /etc/openvpn/certs
-cd /etc/openvpn/certs/  
-cp /etc/openvpn/easy-rsa/3.0.3/pki/dh.pem .        
+cd /etc/openvpn/certs/
+cp /etc/openvpn/easy-rsa/3.0.3/pki/dh.pem .
 cp /etc/openvpn/easy-rsa/3.0.3/pki/ca.crt .
 cp /etc/openvpn/easy-rsa/3.0.3/pki/issued/server.crt .
 cp /etc/openvpn/easy-rsa/3.0.3/pki/private/server.key .
