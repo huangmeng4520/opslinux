@@ -211,7 +211,7 @@ Certificate created at: /etc/openvpn/easy-rsa/3.0.3/pki/issued/tokok_c1.crt
 
 
 ./easyrsa gen-req tokok_vpnc3 nopass
-./easyrsa import-req /etc/openvpn/easy-rsa/3.0.3/pki/reqs/tokok_vpnc2.req tokok_c3
+./easyrsa import-req /etc/openvpn/easy-rsa/3.0.3/pki/reqs/tokok_vpnc3.req tokok_c3
 ./easyrsa sign client tokok_c3
 
 ```
