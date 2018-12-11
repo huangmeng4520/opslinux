@@ -216,18 +216,32 @@ cp /etc/openvpn/easy-rsa/3.0.3/pki/private/server.key .
 -rw-------. 1 root root 4547 4月  11 10:03 server.crt
 -rw-------. 1 root root 1704 4月  11 10:02 server.key
 ```
+
 客户端所需的文件
 ```
+####tokok_vpnc1的操作
 mkdir -p /etc/openvpn/client/tokok_vpnc1/
 cp /etc/openvpn/easy-rsa/3.0.3/pki/ca.crt /etc/openvpn/client/tokok_vpnc1/
 cp /etc/openvpn/easy-rsa/3.0.3/pki/issued/tokok_c1.crt /etc/openvpn/client/tokok_vpnc1/
 cp /etc/openvpn/easy-rsa/3.0.3/pki/private/tokok_vpnc1.key /etc/openvpn/client/tokok_vpnc1/
 
-[root@localhost certs]# ll /etc/openvpn/client/dalin/
-总用量 16
--rw-------. 1 root root 1172 4月  11 10:07 ca.crt
--rw-------. 1 root root 4431 4月  11 10:08 dalin.crt
--rw-------. 1 root root 1704 4月  11 10:08 dalin.key
+[root@localhost tokok_vpnc1]# ll
+total 16
+-rw------- 1 root root 1204 Dec 11 10:57 ca.crt
+-rw------- 1 root root 4429 Dec 11 10:59 tokok_c1.crt
+-rw------- 1 root root 1704 Dec 11 10:59 tokok_vpnc1.key
+
+####tokok_vpnc2的操作
+mkdir -p /etc/openvpn/client/tokok_vpnc1/
+cp /etc/openvpn/easy-rsa/3.0.3/pki/ca.crt /etc/openvpn/client/tokok_vpnc1/
+cp /etc/openvpn/easy-rsa/3.0.3/pki/issued/tokok_c1.crt /etc/openvpn/client/tokok_vpnc1/
+cp /etc/openvpn/easy-rsa/3.0.3/pki/private/tokok_vpnc1.key /etc/openvpn/client/tokok_vpnc1/
+
+[root@localhost tokok_vpnc1]# ll
+total 16
+-rw------- 1 root root 1204 Dec 11 10:57 ca.crt
+-rw------- 1 root root 4429 Dec 11 10:59 tokok_c1.crt
+-rw------- 1 root root 1704 Dec 11 10:59 tokok_vpnc1.key
 ```
 其实这三个文件就够了，之前全下载下来是因为方便，然而这次懒得弄了，哈哈，编写服务端配置文件。顺便提一下再添加用户在./easyrsa gen-req这里开始就行了,像是吊销用户证书的命令都自己用./easyrsa --help去看吧，GitHub项目地址
 服务器配置文件
