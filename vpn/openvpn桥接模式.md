@@ -124,16 +124,17 @@ DH parameters of size 2048 created at /etc/openvpn/easy-rsa/3.0.3/pki/dh.pem
 到这里服务端的证书就创建完了，然后创建客户端的证书。
 
 # 三、创建客户端证书
+① 创建客户端key及生成证书
 ```
-[root@localhost 3.0.3]# ./easyrsa gen-req tokok_vpnc1 nopass   --------------#客户证书名为tokok_vpnc1，木有密码
+[root@izuf62w1juq9pm5jar66slz 3.0.3]# ./easyrsa gen-req tokok_vpnc1 nopass
 
 Note: using Easy-RSA configuration from: ./vars
-Can't load /etc/openvpn/client/easy-rsa/3.0.3/pki/.rnd into RNG
-139640017237824:error:2406F079:random number generator:RAND_load_file:Cannot open file:crypto/rand/randfile.c:88:Filename=/etc/openvpn/client/easy-rsa/3.0.3/pki/.rnd
+Can't load /etc/openvpn/easy-rsa/3.0.3/pki/.rnd into RNG
+139976687028032:error:2406F079:random number generator:RAND_load_file:Cannot open file:crypto/rand/randfile.c:88:Filename=/etc/openvpn/easy-rsa/3.0.3/pki/.rnd
 Generating a RSA private key
-...........................................................................................+++++
-.................................................................+++++
-writing new private key to '/etc/openvpn/client/easy-rsa/3.0.3/pki/private/tokok_vpnc1.key.JvpQMoiIi6'
+.......+++++
+................+++++
+writing new private key to '/etc/openvpn/easy-rsa/3.0.3/pki/private/tokok_vpnc1.key.l6ZKPIWzFy'
 -----
 You are about to be asked to enter information that will be incorporated
 into your certificate request.
@@ -145,55 +146,20 @@ If you enter '.', the field will be left blank.
 Common Name (eg: your user, host, or server name) [tokok_vpnc1]:
 
 Keypair and certificate request completed. Your files are:
-req: /etc/openvpn/client/easy-rsa/3.0.3/pki/reqs/tokok_vpnc1.req
-key: /etc/openvpn/client/easy-rsa/3.0.3/pki/private/tokok_vpnc1.key
+req: /etc/openvpn/easy-rsa/3.0.3/pki/reqs/tokok_vpnc1.req
+key: /etc/openvpn/easy-rsa/3.0.3/pki/private/tokok_vpnc1.key
 ```
 
-3、最后签约客户端证书
+② 将得到的tokok_vpnc1.req导入然后签约证书
 ```
-[root@localhost 3.0.3]# cd /etc/openvpn/easy-rsa/3.0.3/        --------------
-[root@localhost 3.0.3]# pwd
-/etc/openvpn/easy-rsa/3.0.3
-[root@localhost 3.0.3]# ./easyrsa import-req /etc/openvpn/client/easy-rsa/3.0.3/pki/reqs/tokok_vpnc1.req tokok_c1    ---------
+root># ./easyrsa import-req /etc/openvpn/easy-rsa/3.0.3/pki/reqs/tokok_vpnc1.req tokok_c1
 
-Note: using Easy-RSA configuration from: ./vars
-
-The request has been successfully imported with a short name of: tokok_c1
-You may now use this name to perform signing operations on this request.
-
-
-[root@izuf62w1juq9pm5jar66slz 3.0.3]# ./easyrsa sign client tokok_c1         --------------
-
-Note: using Easy-RSA configuration from: ./vars
-Extra arguments given.
-rand: Use -help for summary.
-
-You are about to sign the following certificate.
-Please check over the details shown below for accuracy. Note that this request
-has not been cryptographically verified. Please be sure it came from a trusted
-source or that you have verified the request checksum with the sender.
-
-Request subject, to be signed as a client certificate for 3650 days:
-
-subject=
-    commonName                = tokok_vpnc1
-
-Type the word 'yes' to continue, or any other input to abort.
-  Confirm request details: yes
-Using configuration from ./openssl-1.0.cnf
-Can't load /etc/openvpn/easy-rsa/3.0.3/pki/.rnd into RNG
-140137388939072:error:2406F079:random number generator:RAND_load_file:Cannot open file:crypto/rand/randfile.c:88:Filename=/etc/openvpn/easy-rsa/3.0.3/pki/.rnd
-Check that the request matches the signature
-Signature ok
-The Subject's Distinguished Name is as follows
-commonName            :ASN.1 12:'tokok_vpnc1'
-Certificate is to be certified until Dec  8 02:25:50 2028 GMT (3650 days)
-
-Write out database with 1 new entries
-Data Base Updated
-
-Certificate created at: /etc/openvpn/easy-rsa/3.0.3/pki/issued/tokok_c1.crt
 ```
+③ 签约证书
+```
+./easyrsa sign client tokok_c1
+```
+
 # 四、整理证书
 
 现在所有的证书都已经生成完了，下面来整理一下。
