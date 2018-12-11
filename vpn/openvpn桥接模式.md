@@ -267,6 +267,44 @@ persist-tun
 status openvpn-status.log
 verb 3
 ```
+固定ip
+```
+[root@localhost ccd]# ll
+total 8
+-rw-r--r-- 1 root root 40 Dec 11 11:35 tokok_vpnc1
+-rw-r--r-- 1 root root 40 Dec 11 11:08 tokok_vpnc2
+
+[root@localhost ccd]# cat tokok_vpnc1 
+ifconfig-push 10.10.100.21 10.10.100.22
+
+[root@localhost ccd]# cat tokok_vpnc2
+ifconfig-push 10.10.200.23 10.10.200.24
+```
+防火墙配置
+```
+[root@izuf62w1juq9pm5jar66slz ccd]# cat /etc/sysconfig/iptables
+# sample configuration for iptables service
+# you can edit this manually or use system-config-firewall
+# please do not ask us to add additional ports/services to this default configuration
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+COMMIT
+*nat
+:PREROUTING ACCEPT [1:60]
+:POSTROUTING ACCEPT [0:0]
+:OUTPUT ACCEPT [1:76]
+-A POSTROUTING -s 10.10.100.0/24 -j MASQUERADE 
+COMMIT
+```
+服务器需要开启转发
+```
+#服务器端必须开启转发
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+sysctl -w net.ipv4.ip_forward=1
+```
 启动服务
 ```
 [root@localhost ~]# systemctl start openvpn@server
