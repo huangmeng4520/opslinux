@@ -322,7 +322,7 @@ sysctl -w net.ipv4.ip_forward=1
 ```
 启动服务
 ```
-[root@localhost ~]# systemctl start openvpn@server
+[root@localhost ~]# systemctl restart openvpn@server
 ```
  参考文档：
  
