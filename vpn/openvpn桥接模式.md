@@ -232,16 +232,16 @@ total 16
 -rw------- 1 root root 1704 Dec 11 10:59 tokok_vpnc1.key
 
 ####tokok_vpnc2的操作
-mkdir -p /etc/openvpn/client/tokok_vpnc1/
-cp /etc/openvpn/easy-rsa/3.0.3/pki/ca.crt /etc/openvpn/client/tokok_vpnc1/
-cp /etc/openvpn/easy-rsa/3.0.3/pki/issued/tokok_c1.crt /etc/openvpn/client/tokok_vpnc1/
-cp /etc/openvpn/easy-rsa/3.0.3/pki/private/tokok_vpnc1.key /etc/openvpn/client/tokok_vpnc1/
+mkdir -p /etc/openvpn/client/tokok_vpnc2/
+cp /etc/openvpn/easy-rsa/3.0.3/pki/ca.crt /etc/openvpn/client/tokok_vpnc2/
+cp /etc/openvpn/easy-rsa/3.0.3/pki/issued/tokok_c2.crt /etc/openvpn/client/tokok_vpnc2/
+cp /etc/openvpn/easy-rsa/3.0.3/pki/private/tokok_vpnc2.key /etc/openvpn/client/tokok_vpnc2/
 
 [root@localhost tokok_vpnc1]# ll
 total 16
 -rw------- 1 root root 1204 Dec 11 10:57 ca.crt
--rw------- 1 root root 4429 Dec 11 10:59 tokok_c1.crt
--rw------- 1 root root 1704 Dec 11 10:59 tokok_vpnc1.key
+-rw------- 1 root root 4429 Dec 11 10:59 tokok_c2.crt
+-rw------- 1 root root 1704 Dec 11 10:59 tokok_vpnc2.key
 ```
 其实这三个文件就够了，之前全下载下来是因为方便，然而这次懒得弄了，哈哈，编写服务端配置文件。顺便提一下再添加用户在./easyrsa gen-req这里开始就行了,像是吊销用户证书的命令都自己用./easyrsa --help去看吧，GitHub项目地址
 服务器配置文件
