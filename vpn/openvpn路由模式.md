@@ -39,10 +39,6 @@ Note: using Easy-RSA configuration from: ./vars
 init-pki complete; you may now create a CA or requests.
 Your newly created PKI dir is: /etc/openvpn/easy-rsa/3.0.3/pki
 
-
-touch /etc/openvpn/easy-rsa/3.0.3/pki/.rnd      -----不然会报错
-
-
 [root@localhost 3.0.3]# ./easyrsa build-ca nopass     ----------------#创建新的CA，不使用密码
 
 Note: using Easy-RSA configuration from: ./vars
