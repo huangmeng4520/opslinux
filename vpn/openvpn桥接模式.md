@@ -126,7 +126,7 @@ DH parameters of size 2048 created at /etc/openvpn/easy-rsa/3.0.3/pki/dh.pem
 # 三、创建客户端证书
 ① 创建客户端key及生成证书
 ```
-[root@izuf62w1juq9pm5jar66slz 3.0.3]# ./easyrsa gen-req tokok_vpnc1 nopass
+[root@localhost 3.0.3]# ./easyrsa gen-req tokok_vpnc1 nopass
 
 Note: using Easy-RSA configuration from: ./vars
 Can't load /etc/openvpn/easy-rsa/3.0.3/pki/.rnd into RNG
@@ -152,12 +152,12 @@ key: /etc/openvpn/easy-rsa/3.0.3/pki/private/tokok_vpnc1.key
 
 ② 将得到的tokok_vpnc1.req导入然后签约证书
 ```
-root># ./easyrsa import-req /etc/openvpn/easy-rsa/3.0.3/pki/reqs/tokok_vpnc1.req tokok_c1
+[root@localhost 3.0.3]# ./easyrsa import-req /etc/openvpn/easy-rsa/3.0.3/pki/reqs/tokok_vpnc1.req tokok_c1
 
 ```
 ③ 签约证书
 ```
-./easyrsa sign client tokok_c1
+[root@localhost 3.0.3]#./easyrsa sign client tokok_c1
 ```
 
 # 四、整理证书
