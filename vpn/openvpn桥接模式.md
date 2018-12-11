@@ -247,38 +247,25 @@ total 16
 服务器配置文件
 ```
 [root@localhost ~]# vim /etc/openvpn/server.conf
-local 192.168.1.113
 port 1194
 proto tcp
 dev tun
-
 ca /etc/openvpn/certs/ca.crt
 cert /etc/openvpn/certs/server.crt
 key /etc/openvpn/certs/server.key
-dh /etc/openvpn/certs/dh.pem
-
-ifconfig-pool-persist /etc/openvpn/ipp.txt
-
-server 17.166.221.0 255.255.255.0
-push "route 192.168.1.0 255.255.255.0"
-push "redirect-gateway def1 bypass-dhcp"
-push "dhcp-option DNS 223.5.5.5"
-push "dhcp-option DNS 223.6.6.6"
-client-to-client
-   
-keepalive 20 120
-comp-lzo
-#duplicate-cn
-
+dh /etc/openvpn/certs/dh.pem 
 user openvpn
 group openvpn
-
-persist-key                               
+server 10.10.100.0 255.255.255.0
+client-config-dir /etc/openvpn/ccd    #为了配置固定IP
+client-to-client
+duplicate-cn
+keepalive 10 120
+comp-lzo
+persist-key
 persist-tun
-status openvpn-status.log    
-log-append  openvpn.log     
-verb 1
-mute 20
+status openvpn-status.log
+verb 3
 ```
 启动服务
 ```
