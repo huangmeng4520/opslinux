@@ -126,6 +126,7 @@ DH parameters of size 2048 created at /etc/openvpn/easy-rsa/3.0.3/pki/dh.pem
 # 三、创建客户端证书
 ① 创建客户端key及生成证书
 ```
+[root@localhost 3.0.3]# cd /etc/openvpn/easy-rsa/3.0.3
 [root@localhost 3.0.3]# ./easyrsa gen-req tokok_vpnc1 nopass
 
 Note: using Easy-RSA configuration from: ./vars
