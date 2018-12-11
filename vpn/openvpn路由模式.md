@@ -26,7 +26,6 @@ cd /etc/openvpn/easy-rsa/
 \rm 3 3.0
 cd 3.0.3/
 find / -type f -name "vars.example" | xargs -i cp {} . && mv vars.example vars
-touch /etc/openvpn/easy-rsa/3.0.3/pki/.rnd
 ```
 2. 生成证书
 创建一个新的PKI和CA
@@ -63,6 +62,8 @@ Your new CA certificate file for publishing is at:
 ```
 3. 创建服务端证书
 ```
+touch /etc/openvpn/easy-rsa/3.0.3/pki/.rnd      -----不然会报错
+
 [root@localhost 3.0.3]# ./easyrsa gen-req server nopass       ------------回车
 
 Note: using Easy-RSA configuration from: ./vars
