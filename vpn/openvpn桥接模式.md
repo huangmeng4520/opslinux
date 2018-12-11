@@ -234,10 +234,10 @@ cp /etc/openvpn/easy-rsa/3.0.3/pki/private/server.key .
 ```
 客户端所需的文件
 ```
-mkdir /etc/openvpn/client/dalin/
-cp /etc/openvpn/easy-rsa/3.0.3/pki/ca.crt /etc/openvpn/client/dalin/
-cp /etc/openvpn/easy-rsa/3.0.3/pki/issued/dalin.crt /etc/openvpn/client/dalin/
-cp /etc/openvpn/client/easy-rsa/3.0.3/pki/private/dalin.key /etc/openvpn/client/dalin/
+mkdir /etc/openvpn/client/tokok_vpn/
+cp /etc/openvpn/easy-rsa/3.0.3/pki/ca.crt /etc/openvpn/client/tokok_vpn/
+cp /etc/openvpn/easy-rsa/3.0.3/pki/issued/dalin.crt /etc/openvpn/client/tokok_vpn/
+cp /etc/openvpn/client/easy-rsa/3.0.3/pki/private/dalin.key /etc/openvpn/client/tokok_vpn/
 
 [root@localhost certs]# ll /etc/openvpn/client/dalin/
 总用量 16
