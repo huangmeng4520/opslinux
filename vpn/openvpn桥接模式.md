@@ -150,15 +150,50 @@ Keypair and certificate request completed. Your files are:
 req: /etc/openvpn/easy-rsa/3.0.3/pki/reqs/tokok_vpnc1.req
 key: /etc/openvpn/easy-rsa/3.0.3/pki/private/tokok_vpnc1.key
 ```
-
 ② 将得到的tokok_vpnc1.req导入然后签约证书
 ```
 [root@localhost 3.0.3]# ./easyrsa import-req /etc/openvpn/easy-rsa/3.0.3/pki/reqs/tokok_vpnc1.req tokok_c1
 
+Note: using Easy-RSA configuration from: ./vars
+
+The request has been successfully imported with a short name of: tokok_c1
+You may now use this name to perform signing operations on this request.
 ```
 ③ 签约证书
 ```
-[root@localhost 3.0.3]#./easyrsa sign client tokok_c1
+[root@localhost 3.0.3]# ./easyrsa sign client tokok_c1
+
+Note: using Easy-RSA configuration from: ./vars
+Extra arguments given.
+rand: Use -help for summary.
+
+
+You are about to sign the following certificate.
+Please check over the details shown below for accuracy. Note that this request
+has not been cryptographically verified. Please be sure it came from a trusted
+source or that you have verified the request checksum with the sender.
+
+Request subject, to be signed as a client certificate for 3650 days:
+
+subject=
+    commonName                = tokok_vpnc1
+
+
+Type the word 'yes' to continue, or any other input to abort.
+  Confirm request details: yes
+Using configuration from ./openssl-1.0.cnf
+Can't load /etc/openvpn/easy-rsa/3.0.3/pki/.rnd into RNG
+140158222518080:error:2406F079:random number generator:RAND_load_file:Cannot open file:crypto/rand/randfile.c:88:Filename=/etc/openvpn/easy-rsa/3.0.3/pki/.rnd
+Check that the request matches the signature
+Signature ok
+The Subject's Distinguished Name is as follows
+commonName            :ASN.1 12:'tokok_vpnc1'
+Certificate is to be certified until Dec  8 02:48:52 2028 GMT (3650 days)
+
+Write out database with 1 new entries
+Data Base Updated
+
+Certificate created at: /etc/openvpn/easy-rsa/3.0.3/pki/issued/tokok_c1.crt
 ```
 
 # 四、整理证书
