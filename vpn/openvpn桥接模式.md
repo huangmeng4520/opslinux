@@ -195,6 +195,7 @@ Data Base Updated
 
 Certificate created at: /etc/openvpn/easy-rsa/3.0.3/pki/issued/tokok_c1.crt
 ```
+如果要生成多套证书，重复生成客户端①②③步骤即可
 
 # 四、整理证书
 
