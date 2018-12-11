@@ -196,6 +196,21 @@ Data Base Updated
 Certificate created at: /etc/openvpn/easy-rsa/3.0.3/pki/issued/tokok_c1.crt
 ```
 如果要生成多套证书，重复生成客户端①②③步骤即可
+```
+./easyrsa gen-req tokok_vpnc1 nopass
+./easyrsa import-req /etc/openvpn/easy-rsa/3.0.3/pki/reqs/tokok_vpnc1.req tokok_c1
+./easyrsa sign client tokok_c1
+
+./easyrsa gen-req tokok_vpnc2 nopass
+./easyrsa import-req /etc/openvpn/easy-rsa/3.0.3/pki/reqs/tokok_vpnc2.req tokok_c2
+./easyrsa sign client tokok_c2
+
+
+./easyrsa gen-req tokok_vpnc3 nopass
+./easyrsa import-req /etc/openvpn/easy-rsa/3.0.3/pki/reqs/tokok_vpnc2.req tokok_c3
+./easyrsa sign client tokok_c3
+
+```
 
 # 四、整理证书
 
