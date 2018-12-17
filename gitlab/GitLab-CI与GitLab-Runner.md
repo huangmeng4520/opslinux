@@ -71,5 +71,9 @@ Runner可以分布在不同的主机上，同一个主机上也可以有多个Ru
 如果要注册Specific Runner，你需要到项目的设置的Runner页面里面去找注册token。如下图所示：
 
  ![Specific Runner](https://github.com/Lancger/opslinux/blob/master/images/Specific%20Runner.png)
+ 
+ 找到token之后，运行下面这条命令注册Runner（当然，除了url和token之外，还需要其他的信息，比如执行器executor、构建目录builds_dir等）。
+gitlab-ci-multi-runner register
+注册完成之后，GitLab-CI就会多出一条Runner记录，如下图所示：
 
 参考资料：  https://www.cnblogs.com/cnundefined/p/7095368.html
