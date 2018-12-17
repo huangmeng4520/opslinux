@@ -66,10 +66,10 @@ Runner可以分布在不同的主机上，同一个主机上也可以有多个Ru
 
 如果要注册Shared Runner，你需要到管理界面的Runners页面里面去找注册token。如下图所示：
 
- ![Shared Runner](https://github.com/Lancger/opslinux/blob/master/images/Shared Runner.png)
+ ![Shared Runner](https://github.com/Lancger/opslinux/blob/master/images/Shared%20Runner.png)
 
 如果要注册Specific Runner，你需要到项目的设置的Runner页面里面去找注册token。如下图所示：
 
- ![Specific Runner](https://github.com/Lancger/opslinux/blob/master/images/Specific Runner.png)
+ ![Specific Runner](https://github.com/Lancger/opslinux/blob/master/images/Specific%20Runner.png)
 
 参考资料：  https://www.cnblogs.com/cnundefined/p/7095368.html
