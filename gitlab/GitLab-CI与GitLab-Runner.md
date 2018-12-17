@@ -76,4 +76,7 @@ Runner可以分布在不同的主机上，同一个主机上也可以有多个Ru
 gitlab-ci-multi-runner register
 注册完成之后，GitLab-CI就会多出一条Runner记录，如下图所示：
 
+ ![Shared Runner](https://github.com/Lancger/opslinux/blob/master/images/Shared%20Runner.png)
+
+
 参考资料：  https://www.cnblogs.com/cnundefined/p/7095368.html
