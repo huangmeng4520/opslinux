@@ -1,6 +1,6 @@
 ## 一、安装依赖
 ```bash
-yum install -y readline readline-devel gcc gcc-c++ zlib zlib-devel openssl openssl-devel sqlite-devel python-devel
+yum install -y git readline readline-devel gcc gcc-c++ zlib zlib-devel openssl openssl-devel sqlite-devel python-devel mysql-devel
 
 #python3.7版本需要
 yum install libffi-devel -y
