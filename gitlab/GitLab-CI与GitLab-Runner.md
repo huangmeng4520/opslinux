@@ -26,6 +26,7 @@
     所以，GitLab-Runner就是一个用来执行软件集成脚本的东西。你可以想象一下：Runner就像一个个的工人，而GitLab-CI就是这些工人的一个管理中心，所有工人都要在GitLab-CI里面登记注册，并且表明自己是为哪个工程服务的。当相应的工程发生变化时，GitLab-CI就会通知相应的工人执行软件集成脚本。
 
 如下图所示： 
+
  ![gitrunner架构图](https://github.com/Lancger/opslinux/blob/master/images/git.png)
 
 
