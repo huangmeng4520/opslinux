@@ -29,5 +29,16 @@
 
  ![gitrunner架构图](https://github.com/Lancger/opslinux/blob/master/images/git.png)
 
+GitLab-CI与GitLab-Runner关系示意图
+
+Runner可以分布在不同的主机上，同一个主机上也可以有多个Runner。
+
+### Runner类型
+
+       GitLab-Runner可以分类两种类型：Shared Runner（共享型）和Specific Runner（指定型）。
+
+       Shared Runner：这种Runner（工人）是所有工程都能够用的。只有系统管理员能够创建Shared Runner。
+
+       Specific Runner：这种Runner（工人）只能为指定的工程服务。拥有该工程访问权限的人都能够为该工程创建Shared Runner。
 
 参考资料：  https://www.cnblogs.com/cnundefined/p/7095368.html
