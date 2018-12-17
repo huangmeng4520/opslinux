@@ -93,8 +93,59 @@ GitLab-CI会为这个Runner生成一个唯一的token，以后Runner就通过这
 
 问题：如果不运行gitlab-ci-multi-runner register命令，直接在配置文件里面添加Runner的配置信息可以吗？
 回答：当然不可以。因为gitlab-ci-multi-runner register的作用除了把Runner的信息保存到配置文件以外，还有一个很重要的作用，那就是向GitLab-CI发出请求，在GitLab-CI中登记这个Runner的信息并且获取后续通信所需要的token。
-让注册好的Runner运行起来
+
+
+## 让注册好的Runner运行起来
 
 Runner注册完成之后还不行，还必须让它运行起来，否则它无法接收到GitLab-CI的通知并且执行软件集成脚本。怎么让Runner运行起来呢？gitlab-ci-multi-runner提供了这样一条命令gitlab-ci-multi-runner run-single，详情如下：
+
+```
+[root@iZ25bjcxoq5Z ~]# gitlab-ci-multi-runner run-single --help
+NAME:
+   run-single - start single runner
+
+USAGE:
+   command run-single [command options] [arguments...]
+
+OPTIONS:
+   --name, --description   Runner name [$RUNNER_NAME]
+   --limit     Maximum number of builds processed by this runner [$RUNNER_LIMIT]
+   --ouput-limit    Maximum build trace size [$RUNNER_OUTPUT_LIMIT]
+   -u, --url     Runner URL [$CI_SERVER_URL]
+   -t, --token     Runner token [$CI_SERVER_TOKEN]
+   --tls-ca-file    File containing the certificates to verify the peer when using HTTPS [$CI_SERVER_TLS_CA_FILE]
+   --executor     Select executor, eg. shell, docker, etc. [$RUNNER_EXECUTOR]
+   --builds-dir    Directory where builds are stored [$RUNNER_BUILDS_DIR]
+   --cache-dir     Directory where build cache is stored [$RUNNER_CACHE_DIR]
+   --env     Custom environment variables injected to build environment [$RUNNER_ENV]
+   --shell     Select bash, cmd or powershell [$RUNNER_SHELL]
+   --ssh-user     User name [$SSH_USER]
+   --ssh-password    User password [$SSH_PASSWORD]
+   --ssh-host     Remote host [$SSH_HOST]
+   --ssh-port     Remote host port [$SSH_PORT]
+   --ssh-identity-file    Identity file to be used [$SSH_IDENTITY_FILE]
+   --docker-host    Docker daemon address [$DOCKER_HOST]
+   --docker-cert-path    Certificate path [$DOCKER_CERT_PATH]
+   --docker-tlsverify    Use TLS and verify the remote [$DOCKER_TLS_VERIFY]
+   --docker-hostname    Custom container hostname [$DOCKER_HOSTNAME]
+   --docker-image    Docker image to be used [$DOCKER_IMAGE]
+   --docker-privileged   Give extended privileges to container [$DOCKER_PRIVILEGED]
+   --docker-disable-cache   Disable all container caching [$DOCKER_DISABLE_CACHE]
+   --docker-volumes    Bind mount a volumes [$DOCKER_VOLUMES]
+   --docker-cache-dir    Directory where to store caches [$DOCKER_CACHE_DIR]
+   --docker-extra-hosts   Add a custom host-to-IP mapping [$DOCKER_EXTRA_HOSTS]
+   --docker-links    Add link to another container [$DOCKER_LINKS]
+   --docker-services    Add service that is started with container [$DOCKER_SERVICES]
+   --docker-wait-for-services-timeout  How long to wait for service startup [$DOCKER_WAIT_FOR_SERVICES_TIMEOUT]
+   --docker-allowed-images   Whitelist allowed images [$DOCKER_ALLOWED_IMAGES]
+   --docker-allowed-services   Whitelist allowed services [$DOCKER_ALLOWED_SERVICES]
+   --docker-image-ttl     [$DOCKER_IMAGE_TTL]
+   --parallels-base-name   VM name to be used [$PARALLELS_BASE_NAME]
+   --parallels-template-name   VM template to be created [$PARALLELS_TEMPLATE_NAME]
+   --parallels-disable-snapshots  Disable snapshoting to speedup VM creation [$PARALLELS_DISABLE_SNAPSHOTS]
+   --virtualbox-base-name   VM name to be used [$VIRTUALBOX_BASE_NAME]
+   --virtualbox-disable-snapshots  Disable snapshoting to speedup VM creation [$VIRTUALBOX_DISABLE_SNAPSHOTS]
+```
+
 
 参考资料：  https://www.cnblogs.com/cnundefined/p/7095368.html
