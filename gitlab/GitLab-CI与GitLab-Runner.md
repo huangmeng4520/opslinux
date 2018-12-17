@@ -147,5 +147,107 @@ OPTIONS:
    --virtualbox-disable-snapshots  Disable snapshoting to speedup VM creation [$VIRTUALBOX_DISABLE_SNAPSHOTS]
 ```
 
+要让一个Runner运行起来，--url、--token和--executor选项是必要的。其他选项可根据具体情况和需求进行设置。我们可以看出来，这个命令里面的选项跟配置文件中Runner的配置项基本上是一样的。那这个命令的运行和配置文件有没有什么关系呢？从我的试验和思考来看，应该是没有什么关系的。因为：
+
+    这个命令里面并没有指定配置文件位置的选项，如果读取配置文件难道去读取默认位置吗？但是配置文件的位置是可以指定的，不一定在默认位置，这不符合逻辑，所以它应该不会去读配置文件。
+    我删掉配置文件，这个命令依然能够运行
+
+所以，这个命令应该只是一个能让Runner运行起来的基础命令。但这个命令运行起来的前提是，GitLab-CI中必须事先注册有这个Runner。
+
+那配置文件有毛用？配置文件的作用在后面，但是从这里我们知道一点：配置文件里面有Runner运行时所需要的信息。
+
+可能你还有一个问题：我用root的用户注册Runner时，注册完Runner就可以用了，并没有手动地去运行Runner啊？这个后面讲。
+
+## 批量地运行Runner
+
+正常情况下，如果我有多个Runner，我并不想手动一个个地运行，要是能一次运行多个Runner多爽啊！嗯哼，gitlab-ci-multi-runner就提供了这样一个命令gitlab-ci-multi-runner run，详情如下：
+
+```
+[root@iZ25bjcxoq5Z gitlab-runner]# gitlab-ci-multi-runner run --help
+NAME:
+   run - run multi runner service
+
+USAGE:
+   command run [command options] [arguments...]
+
+OPTIONS:
+   -c, --config "/etc/gitlab-runner/config.toml" Config file [$CONFIG_FILE]
+   -n, --service "gitlab-runner"   Use different names for different services
+   -d, --working-directory     Specify custom working directory
+   -u, --user       Use specific user to execute shell scripts
+   --syslog      Log to syslog
+```
+
+这个命令总共有5个选项，让我们从选项来理解一下这个命令：
+
+    -c, --config选项
+    这个选项是用来指定配置文件路径的。如果你想同时运行多个Runner，你必须得知道你要运行哪些Runner以及这些Runner运行时所需要的信息。而前面我们说过，配置文件里面就存放着Runner运行时所需要的信息。而且一个配置文件是可以存放多个Runner的信息的。如果不指定这个选项，就会使用默认的配置文件。
+    -n, --service选项
+    这个选项是用来指定服务的别名的。为什么要有这个选项呢？指定别名有什么意义呢？我们从上一个选项可以看出来，一次只能运行一批Runner，因为一次只能指定一个配置文件。那如果我有多个配置文件，我要运行多批Runner，那是不是给每一次批量运行服务取不同的别名来区分更好一点呢。
+    -d, --working-directory选项
+    这个选项是用来指定此次批量运行服务的工作目录的。如果自己没有指定builds_dir的话，此次运行起来的Runner会把builds_dir放到这个目录里面。
+    -u, --user选项
+    这个选项很重要，它指定了该以什么用户权限来运行Runner。为了安全，我认为不应该给运行Runner的用户过高的权限，更不应该以root用户来运行Runner。
+    --syslog选项
+    如果指定了这个选项，则把日志记录到系统日志。
+
+## 使用服务
+
+能够批量地运行Runner已经很好了，但是还不够好，为什么呢？
+
+首先，gitlab-ci-multi-runner run默认是前台运行的，使用体验不好；
+其次，当gitlab-ci-multi-runner run在后台运行的时候，要查看其运行状态不方便，而且也没有提供停止gitlab-ci-multi-runner run的命令。
+所以，要是能将批量运行Runner这个功能安装为一项服务，就更爽了！
+
+gitlab-ci-multi-runner确实就提供了这样的功能。
+install、uninstall、start、stop、restart、status这6个命令就是和服务相关的。
+我一开始对gitlab-ci-multi-runner的服务概念感觉比较懵，让我们来看看安装服务install这个命令到底干了一件什么事情。
+
+```
+[root@iZ25bjcxoq5Z ~]# gitlab-ci-multi-runner install --help
+NAME:
+   install - install service
+
+USAGE:
+   command install [command options] [arguments...]
+
+OPTIONS:
+   --service, -n "gitlab-runner"   Specify service name to use
+   --working-directory, -d "/root"   Specify custom root directory where all data are stored
+   --config, -c "/etc/gitlab-runner/config.toml" Specify custom config file
+   --user, -u       Specify user-name to secure the runner
+```
+
+从选项可以看出，一项服务的信息有4个：服务名、工作目录、配置文件和用户。这个命令的选项和gitlab-ci-multi-runner run的选项基本一样。可见，批量运行Runner和服务之间的关系暧昧。至于是什么关系，往下看gitlab-ci-multi-runner start这个命令。
+```
+[root@iZ25bjcxoq5Z ~]# gitlab-ci-multi-runner start --help
+NAME:
+   start - start service
+
+USAGE:
+   command start [command options] [arguments...]
+
+OPTIONS:
+   --service, -n "gitlab-runner" Specify service name to use
+```
+启动一项服务，只要指定服务的名称就行了（默认服务名称是gitlab-runner）。启动服务后，运行命令ps -aux | grep gitlab-runner查看后台程序，发现启动服务其实就是在后台执行了一个批量运行Runner的任务，所以服务安装命令的选项才会和批量运行Runner命令的选项基本一样。
+```
+root     18219  0.0  0.1 331872  5332 ?        Ssl  00:06   0:00 /usr/bin/gitlab-ci-multi-runner run --working-directory /home/gitlab-runner --config /etc/gitlab-runner/config.toml --service gitlab-runner --user gitlab-runner --syslog
+```
+还有stop命令用于停止服务，restart命令用于重启服务，status用于查看服务状态。这三个命令的使用方法和start类似，就不一一介绍了。
+五、其他一些思考
+
+    什么情况下需要注册Shared Runner？
+    比如，GitLab上面所有的工程都有可能需要在公司的服务器上进行编译、测试、部署等工作，这个时候注册一个Shared Runner供所有工程使用就很合适。
+
+    什么情况下需要注册Specific Runner？
+    比如，我可能需要在我个人的电脑或者服务器上自动构建我参与的某个工程，这个时候注册一个Specific Runner就很合适。
+
+    什么情况下需要在同一台机器上注册多个Runner？
+    比如，我是GitLab的普通用户，没有管理员权限，我同时参与多个项目，那我就需要为我的所有项目都注册一个Specific Runner，这个时候就需要在同一台机器上注册多个Runner。
+
+六、最后
+
+啰啰嗦嗦写了一堆，大体上也算把自己对GitLab-Runner的理解过程写清楚了。为了把GitLab-Runner的用法了解清楚，自己做了很多的测试，但也难全面，中间有一些内容也只是个人理解，未必准确，欢迎批评指正。
 
 参考资料：  https://www.cnblogs.com/cnundefined/p/7095368.html
