@@ -76,7 +76,25 @@ Runner可以分布在不同的主机上，同一个主机上也可以有多个Ru
 gitlab-ci-multi-runner register
 注册完成之后，GitLab-CI就会多出一条Runner记录，如下图所示：
 
- ![Shared Runner](https://github.com/Lancger/opslinux/blob/master/images/Shared%20Runner.png)
+ ![Shared Runner](https://github.com/Lancger/opslinux/blob/master/images/GitLab-CI-Runner.png)
 
+GitLab-CI会为这个Runner生成一个唯一的token，以后Runner就通过这个token与GitLab-CI进行通信。
+
+那么，问题来了。注册好了的Runner的信息存放在哪儿了呢？
+原来，Runner的信息是存放在一个配置文件里面的，配置文件的格式一般是.toml。这个配置文件的存放位置有以下几种情况：
+
+    在类Unix操作系统下（0.5.0之后版本）
+        如果是以root用户身份运行gitlab-ci-multi-runner register，那么配置文件默认是/etc/gitlab-runner/config.toml
+        如果是以非root用户身份运行gitlab-ci-multi-runner register，那么配置文件默认是~/.gitlab-runner/config.toml
+    在其他操作系统下以及0.5.0之前版本
+    配置文件默认在当前工作目录下./config.toml
+
+一般情况下，使用默认的配置文件存放Runner的配置信息就可以了。当然，如果你有更细化的分类需求，你也可以在注册的时候通过-c或--config选项指定配置文件的位置。具体查看register命令的使用方法：gitlab-ci-multi-runner register --help。
+
+问题：如果不运行gitlab-ci-multi-runner register命令，直接在配置文件里面添加Runner的配置信息可以吗？
+回答：当然不可以。因为gitlab-ci-multi-runner register的作用除了把Runner的信息保存到配置文件以外，还有一个很重要的作用，那就是向GitLab-CI发出请求，在GitLab-CI中登记这个Runner的信息并且获取后续通信所需要的token。
+让注册好的Runner运行起来
+
+Runner注册完成之后还不行，还必须让它运行起来，否则它无法接收到GitLab-CI的通知并且执行软件集成脚本。怎么让Runner运行起来呢？gitlab-ci-multi-runner提供了这样一条命令gitlab-ci-multi-runner run-single，详情如下：
 
 参考资料：  https://www.cnblogs.com/cnundefined/p/7095368.html
