@@ -35,10 +35,36 @@ Runner可以分布在不同的主机上，同一个主机上也可以有多个Ru
 
 ### Runner类型
 
-       GitLab-Runner可以分类两种类型：Shared Runner（共享型）和Specific Runner（指定型）。
+    GitLab-Runner可以分类两种类型：Shared Runner（共享型）和Specific Runner（指定型）。
 
-       Shared Runner：这种Runner（工人）是所有工程都能够用的。只有系统管理员能够创建Shared Runner。
+     Shared Runner：这种Runner（工人）是所有工程都能够用的。只有系统管理员能够创建Shared Runner。
 
-       Specific Runner：这种Runner（工人）只能为指定的工程服务。拥有该工程访问权限的人都能够为该工程创建Shared Runner。
+     Specific Runner：这种Runner（工人）只能为指定的工程服务。拥有该工程访问权限的人都能够为该工程创建Shared Runner。
+
+
+## 四、GitLab-Runner的安装与使用
+我的操作系统是：Centos 7.0 64位
+安装gitlab-ci-multi-runner
+
+    添加yum源
+
+    curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.rpm.sh | sudo bash
+
+    安装
+
+    yum install gitlab-ci-multi-runner
+
+    这里是官网的安装教程，其它操作系统的请参考
+    https://gitlab.com/gitlab-org/gitlab-ci-multi-runner
+
+使用gitlab-ci-multi-runner注册Runner
+
+安装好gitlab-ci-multi-runner这个软件之后，我们就可以用它向GitLab-CI注册Runner了。
+
+向GitLab-CI注册一个Runner需要两样东西：GitLab-CI的url和注册token。
+其中，token是为了确定你这个Runner是所有工程都能够使用的Shared Runner还是具体某一个工程才能使用的Specific Runner。
+
+如果要注册Shared Runner，你需要到管理界面的Runners页面里面去找注册token。如下图所示：
+
 
 参考资料：  https://www.cnblogs.com/cnundefined/p/7095368.html
