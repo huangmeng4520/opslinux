@@ -1,6 +1,6 @@
-```
-1、Git版本导致的
+## 1、Git版本导致的
 
+```
 root># git clone https://github.com/simplresty/ngx_devel_kit.git
 Initialized empty Git repository in /usr/local/src/ngx_devel_kit/.git/
 error:  while accessing https://github.com/simplresty/ngx_devel_kit.git/info/refs
