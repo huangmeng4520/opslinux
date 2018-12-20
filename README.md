@@ -3,9 +3,7 @@
 - [Linux手册](https://github.com/Lancger/opslinux/blob/master/linux/README.md)
 - [Python手册](https://github.com/Lancger/opslinux/blob/master/python/README.md)
 - [Node手册](https://github.com/Lancger/opslinux/blob/master/node/README.md)
-- [git手册](https://github.com/Lancger/opslinux/blob/master/gitlab/git%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF.md)
-
-
+- [Git手册](https://github.com/Lancger/opslinux/blob/master/gitlab/git%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF.md)
 
 
 ## 二、git 初始化
