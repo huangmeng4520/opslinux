@@ -28,13 +28,13 @@ $ git checkout -b v0.9rc1 origin/v0.9rc1
 Branch v0.9rc1 set up to track remote branch v0.9rc1 from origin.
 Switched to a new branch 'v0.9rc1'
 ```
-＃已经切换到v0.9rc1分支了
+### 已经切换到v0.9rc1分支了
 ```bash
 $ git branch
   master
 * v0.9rc1
 ```
-＃切换回master分支
+### 切换回master分支
 ```bash
 $ git checkout master
 Switched to branch 'master'
