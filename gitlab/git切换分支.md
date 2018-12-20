@@ -3,7 +3,7 @@
  
 ### 1. 查看远程分支
 ```bash
-$ git branch -a 
+git branch -a 
 ```
 我在mxnet根目录下运行以上命令：
 ```bash
@@ -29,11 +29,14 @@ Branch v0.9rc1 set up to track remote branch v0.9rc1 from origin.
 Switched to a new branch 'v0.9rc1'
 ```
 ＃已经切换到v0.9rc1分支了
+```bash
 $ git branch
   master
 * v0.9rc1
-
+```
 ＃切换回master分支
+```bash
 $ git checkout master
 Switched to branch 'master'
 Your branch is up-to-date with 'origin/master'.
+```
